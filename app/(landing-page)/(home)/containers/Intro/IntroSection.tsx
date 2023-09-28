@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Typed from "react-typed";
+import {TypeAnimation} from "react-type-animation";
 import "./Intro.scss";
 
 const IntroSection = () => {
@@ -15,16 +15,18 @@ const IntroSection = () => {
             <h1 className="mb-2">
               I'm a{" "}
               <span className="home__container--intro__multi-text">
-                <Typed
-                  strings={[
-                    "Software Engineer",
+                <TypeAnimation
+                  sequence={[
+                       "Software Engineer",
                     "DevOps Engineer",
                     "Technical Writer",
                     "Graphics Designer",
+                    1000,
                   ]}
-                  typeSpeed={40}
-                  backSpeed={10}
-                  loop
+                  wrapper="span"
+                  speed={50}
+                  style={{ fontSize: "1.4rem", display: "inline-block" }}
+                  repeat={Infinity}
                 />
               </span>
             </h1>
