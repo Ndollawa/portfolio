@@ -1,4 +1,6 @@
-import React from "react";
+"use client"
+
+import React, {useState} from "react";
 import Insight from "./components/Insight";
 import {
   FaFacebook,
@@ -19,6 +21,7 @@ import "./index.scss";
 import Modal from "../components/SideBar/components copy/Modal";
 
 const page = () => {
+ const {isVisible,setIsVisible} = useState(false)
   const insightReports = [
     {
       title: "Total Projects",
@@ -69,7 +72,7 @@ const page = () => {
       <div className="page__content">
         <h2>Recent Projects</h2>
         <table></table>
-        <Modal />
+        <Modal onClose={()=>setIsVisible(false)} isVisible={isVisible} />
       </div>
     </div>
   );
