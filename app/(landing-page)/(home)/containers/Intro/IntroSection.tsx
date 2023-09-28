@@ -14,7 +14,7 @@ const IntroSection = () => {
           <div className="home__container--intro">
             <span className="home__container--intro__topline">Hello</span>
             <h1 className="mb-2">
-              I\'m a{" "}
+              I&lsquo;m a{" "}
               <span className="home__container--intro__multi-text">
                 <TypeAnimation
                   sequence={[
