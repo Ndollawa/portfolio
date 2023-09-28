@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image"
 import {TypeAnimation} from "react-type-animation";
 import "./Intro.scss";
 
@@ -13,11 +14,11 @@ const IntroSection = () => {
           <div className="home__container--intro">
             <span className="home__container--intro__topline">Hello</span>
             <h1 className="mb-2">
-              I'm a{" "}
+              I\'m a{" "}
               <span className="home__container--intro__multi-text">
                 <TypeAnimation
                   sequence={[
-                       "Software Engineer",
+                    "Software Engineer",
                     "DevOps Engineer",
                     "Technical Writer",
                     "Graphics Designer",
@@ -50,7 +51,7 @@ const IntroSection = () => {
         <div className="col-sm-12 col-md-6">
           <div className="home__container--image">
             <img src="assets/images/images(20).png" alt="" id="splash" />
-            <img src="assets/images/ei_1686252170869-removebg.png" alt="" />
+            <Image src="assets/images/ei_1686252170869-removebg.png" alt="" />
           </div>
         </div>
       </div>
