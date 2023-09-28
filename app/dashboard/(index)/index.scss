@@ -1,0 +1,120 @@
+@use '../../../styles/globals';
+@use '../../../styles/utils';
+@use '../../../styles/components';
+
+.main__content{
+    .insight {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.6rem;
+            margin-block: 1rem;
+    
+            &__card {
+                background: var(--color-white);
+                padding: var(--card-padding);
+                margin-top: 1rem;
+                border-radius: var(--card-border-radius);
+                box-shadow: var(--box-shadow);
+                transition: .3s ease;
+    
+                &:hover {
+                    box-shadow: none;
+                }
+    
+                span {
+                    @include globals.flexCenter;
+                    background: var(--color-primary);
+                    color: var(--color-white);
+                    padding: 0.5rem;
+                    width: utils.pxToRem(50);
+                    height: utils.pxToRem(50);
+                    border-radius: 50%;
+                    font-size: 2rem;
+    
+    
+                }
+    
+                &--content {
+                    @include globals.flexCenter;
+                    justify-content: space-between;
+                    padding: 0.5rem;
+    
+                    &__metrics {
+                        h3 {
+                            margin: 1rem 0 0.6rem;
+                            font-size: 1rem;
+                        }
+                    }
+    
+                    &__progress {
+                        position: relative;
+                        width: utils.pxToRem(92);
+                        height: utils.pxToRem(92);
+                        border-radius: 50%;
+                        padding: 0.2rem;
+    
+                        svg,
+                        i {
+                            width: 7rem;
+                            height: 7rem;
+                            padding: 0.5rem;
+                            color: var(--color-white) !important;
+    
+    
+                            circle {
+                                fill: none;
+                                stroke: var(--color-primary);
+                                stroke-width: 12;
+                                stroke-linecap: round;
+                                stroke-dashoffset: 110;
+                                stroke-dashoffset: 92;
+                                transform: translate(5px);
+    
+                            }
+                        }
+    
+                        .number {
+                            position: absolute;
+                            @include globals.flexCenter;
+                            top: .3rem;
+                            left: .7rem;
+                            height: 100%;
+                            width: 100%;
+                        }
+                    }
+                }
+    
+            }
+    
+            small {
+                display: block;
+                margin-top: 1.6rem;
+            }
+    
+            @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "lg")) {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+        }
+    
+        #{&}__content {
+    
+            h2 {
+                margin: 0.75rem;
+            }
+    
+            @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "lg")) {
+                display: flex;
+                justify-content: center;
+                margin: 2rem 0 0 8.8rem;
+                padding: 2.5rem;
+                width: 94%;
+            }
+    
+            @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
+                position: relative;
+                margin: 3rem 0 0 0;
+                width: 100%;
+            }
+        }
+}

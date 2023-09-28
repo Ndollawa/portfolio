@@ -1,0 +1,32 @@
+@use '../globals';
+
+button{
+    user-select: none;
+    
+}
+
+.btn{
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    padding: 8px 16px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+
+    @include globals.breakPointsDown(map-get(globals.$screenBreakPoints,"lg")){
+            margin: 1rem;
+            padding: 1rem 2rem ;
+        }
+    @include globals.breakPointsDown(map-get(globals.$screenBreakPoints,"md")){
+         margin: 0.65rem;
+         padding: .5rem 1rem ;
+         font-size: 0.85rem;
+    }
+   
+}
+.btn:hover{
+    opacity: 0.8;
+}

@@ -1,0 +1,18 @@
+@use 'sass:math';
+@use './fonts' as fonts;
+
+
+
+ @function pxToRem($value){
+    @if(math.is-unitless($value)){
+        @return math.div($value,16)+rem;
+    }
+    @else{
+        @error 'Sorry!, Function doesn\'t expect a unit.\n You must\'t  include units in #{$value} supplied';
+    }
+    
+ }
+
+ @function fontWeight($weightName){
+    @return map-get(fonts.$fontWeights,$weightName);
+ }

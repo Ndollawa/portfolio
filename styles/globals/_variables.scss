@@ -1,0 +1,567 @@
+@use'sass:math';
+
+:root{
+    --primary-color:hsl(270, 100%, 50%);
+    --transparent-primary-color:hsla(270, 100%, 50%, 0.145);
+    --secondary-color:hsl(201, 22%, 31%);
+    --transparent-secondary-color:hsla(201, 22%, 31%, 0.523);
+    --secondary-color2: hsl(180, 4%, 5%);
+    --transparent-secondary-color2: hsl(180, 4%, 5%,0.6);
+    // --primary-color:
+    --background-color: hsl(216, 26%, 96%);
+    --main-text-color: hsl(0, 0%, 100%);
+
+
+    --color-primary:#7380ec;
+    --color-info-dark:#7d8da1;
+    --color-info-light:#dce1eb;
+    --color-white:#fff;
+    --color-dark:#363949;
+    --color-light:rgb(132,139,200,0.18);
+    --color-primary--variant:#111e88;
+    --color-dark--variant:#677483;
+    --secondary-color:#363a3a;
+    --secondary-color-light:rgb(132, 139, 200,0.18);
+    --transparent-secondary-color:hsla(212, 12%, 46%, 0.141);
+
+    --card-border-radius:2rem;
+    --border-radius-1:0.4rem;
+    --border-radius-2:0.8rem;
+    --border-radius-3:1.2rem;
+    
+    --card-padding:1.8rem;
+    --padding-1: 1.2rem;
+
+    --box-shadow: 0 2rem 3rem var(--color-light);
+    
+    //Dark theme --dashboard-background-color:
+    .dark{
+    --background-color: #181a1e;
+    --color-background: #181a1e;
+    --color-white:#202528;
+    // --color-info-dark:#7d8da1;
+    --color-info-light:#dce1eb;
+    --color-dark:#edeffd;
+    --color-dark-variant:#a3bdcc;
+    --color-light:rgb(0,0,0,0.4);
+    --box-shadow: 0 2rem 3rem var(--color-light);
+
+    main h3, span, i, div {
+        color: var(--color-dark);
+    }
+}
+}
+
+$basePadding: 0.25rem;
+$baseMargin: 0.25rem;
+$baseBorder: 0.25rem;
+$baseGap: 0.25rem;
+$baseGutter: 0.25rem;
+$baseOpacity: 1%;
+
+$rangeBasedUtilityClasses:(
+"padding":(
+    "prefix":"p",
+    "baseValue":$basePadding,
+    "values":(
+        "start":0,
+        "end":100
+        ),
+),
+"padding-left":(
+    "prefix":"pl",
+    "baseValue":$basePadding,
+    "values":(
+        "start":0,
+        "end":100
+        ),
+),
+"padding-top":(
+    "prefix":"pt",
+    "baseValue":$basePadding,
+    "values":(
+        "start":0,
+        "end":100
+        ),
+),
+"padding-right":(
+    "prefix":"pr",
+    "baseValue":$basePadding,
+    "values":(
+        "start":0,
+        "end":100
+        ),
+),
+"padding-bottom":(
+    "prefix":"pb",
+    "baseValue":$basePadding,
+    "values":(
+        "start":0,
+        "end":100
+        ),
+),
+"padding-inline":(
+    "prefix":"px",
+    "baseValue":$basePadding,
+    "values":(
+        "start":0,
+        "end":100
+        ),
+),
+"padding-block":(
+    "prefix":"py",
+    "baseValue":$basePadding,
+    "values":(
+        "start":0,
+        "end":100
+        ),
+),
+//MARGIN
+
+"margin":(
+    "prefix":"m",
+    "baseValue":$baseMargin,
+    "values":(
+        "start":0,
+        "end":100
+        ),
+),
+"margin-left":(
+    "prefix":"ml",
+    "baseValue":$baseMargin,
+    "values":(
+        "start":0,
+        "end":100
+        ),
+),
+"margin-top":(
+    "prefix":"mt",
+    "baseValue":$baseMargin,
+    "values":(
+        "start":0,
+        "end":100
+        ),
+),
+"margin-right":(
+    "prefix":"mr",
+    "baseValue":$baseMargin,
+    "values":(
+        "start":0,
+        "end":100
+        ),
+),
+"margin-bottom":(
+    "prefix":"mb",
+    "baseValue":$baseMargin,
+    "values":(
+        "start":0,
+        "end":100
+        ),
+),
+"margin-inline":(
+    "prefix":"mx",
+    "baseValue":$baseMargin,
+    "values":(
+        "start":0,
+        "end":100
+        ),
+),
+"margin-block":(
+    "prefix":"my",
+    "baseValue":$baseMargin,
+    "values":(
+        "start":0,
+        "end":100
+        ),
+),
+
+//BORDER
+
+"border":(
+    "prefix":"border",
+    "values":(
+        "start":0,
+        "end":100
+        ),
+),
+"border-left":(
+    "prefix":"border-l",
+    "values":(
+        "start":0,
+        "end":100
+        ),
+),
+"border-top":(
+    "prefix":"border-t",
+    "values":(
+        "start":0,
+        "end":30
+        ),
+),
+"border-right":(
+    "prefix":"border-r",
+    "values":(
+        "start":0,
+        "end":30
+        ),
+),
+"border-bottom":(
+    "prefix":"border-b",
+    "values":(
+        "start":0,
+        "end":30
+        ),
+),
+"border-inline":(
+    "prefix":"border-x",
+    "values":(
+        "start":0,
+        "end":100
+        ),
+),
+"border-block":(
+    "prefix":"border-y",
+    "values":(
+        "start":0,
+        "end":30
+        ),
+),
+//BORDER
+
+"border-radius":(
+    "prefix":"r",
+    "baseValue":$baseBorder,
+    "values":(
+        "start":0,
+        "end":100
+        ),
+),
+"border-top-left-radius":(
+    "prefix":"r-tl",
+    "baseValue":$baseBorder,
+    "values":(
+        "start":0,
+        "end":100
+        ),
+),
+"border-top-right-radius":(
+    "prefix":"r-tr",
+    "baseValue":$baseBorder,
+    "values":(
+        "start":0,
+        "end":100
+        ),
+),
+"border-bottom-right-radius":(
+    "prefix":"r-br",
+    "baseValue":$baseBorder,
+    "values":(
+        "start":0,
+        "end":100
+        ),
+),
+"border-bottom-left-radius":(
+    "prefix":"r-bl",
+    "baseValue":$baseBorder,
+    "values":(
+        "start":0,
+        "end":100
+        ),
+),
+"border-start-end-radius":(
+    "prefix":"border-se",
+    "baseValue":$baseBorder,
+    "values":(
+        "start":0,
+        "end":100
+        ),
+),
+"border-end-end-radius":(
+    "prefix":"r-ee",
+    "baseValue":$baseBorder,
+    "values":(
+        "start":0,
+        "end":100
+        ),
+),
+"border-end-start-radius":(
+    "prefix":"r-es",
+    "baseValue":$baseBorder,
+    "values":(
+        "start":0,
+        "end":100
+        ),
+),
+"border-start-start-radius":(
+    "prefix":"r-ss",
+    "baseValue":$baseBorder,
+    "values":(
+        "start":0,
+        "end":100
+        ),
+),
+// GAP
+"gap":(
+    "prefix":"gap",
+    "baseValue":$baseGap,
+    "values":(
+        "start":0,
+        "end":100
+        ),
+),
+"row-gap":(
+    "prefix":"r-gap",
+    "baseValue":$baseGap,
+    "values":(
+        "start":0,
+        "end":100
+        ),
+),
+"column-gap":(
+    "prefix":"r-gap",
+    "baseValue":$baseGap,
+    "values":(
+        "start":0,
+        "end":100
+        ),
+),
+
+// OPACITY
+"opacity":(
+    "prefix":"o",
+    "baseValue":$baseOpacity,
+    "values":(
+        "start":0,
+        "end":100
+        ),
+),
+// flexbox
+"flex-shrink":(
+    "prefix":"shrink",
+    "values":(
+        "start":0,
+        "end":12
+        ),
+),
+"flex-grow":(
+    "prefix":"grow",
+    "values":(
+        "start":0,
+        "end":12
+        ),
+),
+"order":(
+    "prefix":"order",
+    "values":(
+        "start":0,
+        "end":12
+        ),
+),
+"width":(
+    "prefix":"w",
+    "baseValue":1%,
+    "values":(
+        "start":1,
+        "end":100
+        ),
+),
+"height":(
+    "prefix":"h",
+    "baseValue":1%,
+    "values":(
+        "start":0,
+        "end":12
+        ),
+),
+
+);
+.f{
+    visibility: collapse;
+}
+$valueBasedUtilityClasses:(
+"display":(
+    "prefix":"d",
+    "values":(
+        "inline":inline,
+        "inline-flex":inline-flex,
+        "inline-block":inline-block,
+        "flex":flex,
+        "block":block,
+        "table":table,
+        "grid":grid,
+        "table-row":table-row,
+        "table-cell":table-cell,
+        "none":none,
+        )
+),
+"visibilty":(
+    "prefix":"v",
+    "values":(
+        "hidden":hidden,
+        "visible":visible,
+        "collapse":collapse,
+      
+        )
+),
+"flex-direction":(
+    "prefix":"flex",
+    "values":(
+        "row":row,
+        "row-reverse":row-reverse,
+        "column-reverse":column-reverse,
+        "column":column,
+      
+        )
+),
+"flex-wrap":(
+    "prefix":"flex",
+    "values":(
+        "wrap":wrap,
+        "no-wrap":no-wrap,
+        "wrap-reverse":wrap-reverse,
+        )
+),
+"justify-content":(
+    "prefix":"justify",
+    "values":(
+    "center":center,
+    "flex-start":flex-start,
+    "flex-end":flex-end,
+    "start":start,
+    "end":end,
+    "left":left,
+    "right":right,
+    "evenly":space-evenly,
+    "space-around":space-around,
+    "space-between":space-between,
+    )
+    ),
+"justify-items":(
+    "prefix":"justify",
+    "values":(
+    "baseline":baseline,
+    "center":center,
+    "flex-start":flex-start,
+    "flex-end":flex-end,
+    "start":start,
+    "end":end,
+    "left":left,
+    "right":right,
+    "evenly":space-evenly,
+    "space-around":space-around,
+    "space-between":space-between,
+    )
+    ),
+"justify-self":(
+    "prefix":"justify",
+    "values":(
+    "baseline":baseline,
+    "center":center,
+    "flex-start":flex-start,
+    "flex-end":flex-end,
+    "start":start,
+    "end":end,
+    "left":left,
+    "right":right,
+    "evenly":space-evenly,
+    "space-around":space-around,
+    "space-between":space-between,
+    )
+    ),
+  "align-content":(
+     "prefix":"align",
+    "values":(
+    "center":center,
+    "flex-end":flex-end,
+    "flex-start":flex-start,
+    "end":end,
+    "start":start,
+    "baseline":baseline,
+    "stretch":space-stretch,
+    "space-around":space-around,
+    "space-between":space-between,
+    )),
+  "align-items":(
+     "prefix":"items",
+    "values":(
+    "center":center,
+    "left":left,
+    "right":right,
+    "flex-start":flex-start,
+    "flex-end":flex-end,
+    "start":start,
+    "end":end,
+    "baseline":baseline,
+    "stretch":stretch,
+    )),
+  "align-self":(
+     "prefix":"self",
+    "values":(
+        "center":center,
+        "left":left,
+        "right":right,
+        "flex-start":flex-start,
+        "flex-end":flex-end,
+        "start":start,
+        "end":end,
+        "baseline":baseline,
+        "stretch":stretch,
+        
+    ) ),
+  "place-items":(
+     "prefix":"place-items",
+    "values":(
+        "center":center,
+        "left":left,
+        "right":right,
+        "flex-start":flex-start,
+        "flex-end":flex-end,
+        "start":start,
+        "end":end,
+        "baseline":baseline,
+        "stretch":stretch,
+        
+    ) ),
+  "place-content":(
+     "prefix":"place-content",
+    "values":(
+        "center":center,
+        "left":left,
+        "right":right,
+        "flex-start":flex-start,
+        "flex-end":flex-end,
+        "start":start,
+        "end":end,
+        "baseline":baseline,
+        "stretch":stretch,
+        
+    ) ),
+  "place-self":(
+     "prefix":"place-self",
+    "values":(
+        "center":center,
+        "left":left,
+        "right":right,
+        "flex-start":flex-start,
+        "flex-end":flex-end,
+        "start":start,
+        "end":end,
+        "baseline":baseline,
+        "stretch":stretch,
+        
+    ) ),
+  "border-style":(
+     "prefix":"border",
+    "values":(
+        "dashed":dashed,
+        "solid":solid,
+        "ridge":ridge,
+        "double":double,
+        "dotted":dotted,
+        "groove":groove,
+        "outset":outset,
+        "none":none,
+        "hidden":hidden,
+        
+    ) ),
+)

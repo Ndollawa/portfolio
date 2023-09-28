@@ -1,0 +1,200 @@
+@use '../globals/variables';
+@use '../globals/colors';
+@use '../globals/mixins';
+@use '../utils/function' as func;
+
+@each $property, $map in variables.$rangeBasedUtilityClasses{
+    $prefix:map-get($map,"prefix");
+    $values:map-get($map,"values");
+    $baseValue:map-get($map,"baseValue");
+    @for $k from map-get($values,"start") through map-get($values,"end"){
+        
+        @if($k == "default"){
+            .#{$prefix}{
+                @if(map-has-key($map, 'baseValue')){
+                    #{$property}:$baseValue * $k !important;
+                 }@else{
+                    #{$property}:func.pxToRem($k) !important;
+                 }
+                }
+         }@else{
+            .#{$prefix}-#{$k}{
+                @if(map-has-key($map, 'baseValue')){
+                     #{$property}: $baseValue * $k !important;
+                }@else{
+                     #{$property}:func.pxToRem($k) !important
+                 };
+            } 
+         }
+    }
+}
+@include mixins.generateColorClasses(colors.$colors);
+
+@each $property, $map in variables.$valueBasedUtilityClasses{
+    $prefix:map-get($map,"prefix");
+    $values:map-get($map,"values");
+    @each $k ,$v in $values{
+        @if($k == "default"){
+            .#{$prefix}{
+                    #{$property}:$v !important;
+                }
+         }@else{
+            .#{$prefix}-#{$k}{
+                #{$property}:$v !important
+            } 
+         }
+    }
+}
+
+ .color-primary{
+    background:var(--color-primary);
+ }
+ .color-info-dark{
+    background: var(--color-info-dark);
+ }
+ .color-info-light{
+    background: var(--color-info-light);
+ }
+ .color-white{
+    background: var(--color-white);
+ }
+ .color-dark{
+    background: var(--color-dark);
+ }
+ .color-light{
+    background: var(--color-light);
+ }
+ .color-primary--variant{
+    background: var(--color-primary--variant);
+ }
+ .color-dark--variant{
+    background: var(--color-dark--variant);
+ }
+ .secondary-color{
+    background: var(--secondary-color);
+ }
+ .secondary-color-light{
+    background: var(--secondary-color-light);
+ }
+ .transparent-secondary-color{
+    background: var(--transparent-secondary-color);
+ }
+
+.p-auto{
+    padding: auto;
+}
+.px-auto{
+    padding-inline: auto;
+}
+.py-auto{
+    padding-block: auto;
+}
+
+.m-auto{
+    margin: auto;
+}
+
+.mx-auto{
+    margin-inline: auto;
+}
+
+.my-auto{
+    margin-block: auto ;
+}
+
+.flex-grow-0{
+     flex-grow: 0 !important;
+}
+.flex-grow-1{
+     flex-grow: 1 !important;
+}
+.flex-grow-2{
+     flex-grow: 2 !important;
+}
+.flex-grow-3{
+     flex-grow: 3 !important;
+}
+.flex-grow-4{
+     flex-grow: 4 !important;
+}
+.flex-grow-5{
+     flex-grow: 5 !important;
+}
+
+
+// TEXT CLAMP
+
+
+.s-card{
+    height:8rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    /* text-align: center; */
+    word-spacing: 2px;
+    color: black;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    }
+    .s-card-6{
+    height:8rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    /* text-align: center; */
+    word-spacing: 2px;
+    color: black;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    }
+    .s-card-7{
+    height:8rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    /* text-align: center; */
+    word-spacing: 2px;
+    color: black;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    }
+    .s-card-9{
+    height:8rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 9;
+    /* text-align: center; */
+    word-spacing: 2px;
+    color: black;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    }
+    .s-card-10{
+    height:8rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 10;
+    /* text-align: center; */
+    word-spacing: 2px;
+    color: black;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    }
+
+.center{
+    @include mixins.flexCenter(column);
+}
+
+.input-group{
+    display: flex;
+    justify-content:start;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.iput-group input, .input-group textarea{
+    width: 100%;
+    padding: 1.5rem;
+    font-size: 1.5rem;
+    border-radius: .8rem;
+    margin: .7rem 0;
+
+}
+// .center{
+//     @include mixins.flexCenter(column);
+// }

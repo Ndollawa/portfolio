@@ -1,0 +1,10 @@
+@use 'utils';
+
+$screenBreakPoints:(
+"xs": utils.pxToRem(0),
+"sm": utils.pxToRem(576),
+"md": utils.pxToRem(768),
+"lg": utils.pxToRem(992),
+"xl": utils.pxToRem(1200),
+"default":0,
+)
