@@ -25,7 +25,7 @@ const page = () => {
       icon: <SiAzuredevops />,
       counter: 103,
       progress: 80,
-      color: null,
+      color: undefined,
       timeAgo: "This week",
     },
     {
