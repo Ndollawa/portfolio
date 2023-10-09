@@ -1,27 +1,40 @@
 @use'sass:math';
 
+@mixin darkTheme{
+    --color-background: hsl(220, 11%, 11%);
+        --color-white: hsl(202, 11%, 14%);
+        // --primary-color:var(--color-primary);
+        // --color-info-dark:#7d8da1;
+        --color-info-light: hsl(220, 27%, 89%);
+        --color-dark: hsl(233, 80%, 96%);
+        --color-dark-variant: hsl(202, 29%, 72%);
+        --color-light: hsla(0, 0%, 0%, 0.4);
+        // --color-background-2: var(--color-dark--variant);
+        --box-shadow: 0 2rem 3rem var(--color-light);
+    
+        main h3,
+        span,
+        i,
+        div {
+            color: var(--color-dark);
+        }
+}
 :root{
     --primary-color:hsl(270, 100%, 50%);
     --transparent-primary-color:hsla(270, 100%, 50%, 0.145);
-    --secondary-color:hsl(201, 22%, 31%);
-    --transparent-secondary-color:hsla(201, 22%, 31%, 0.523);
-    --secondary-color2: hsl(180, 4%, 5%);
-    --transparent-secondary-color2: hsl(180, 4%, 5%,0.6);
+    --color-background-2:hsl(201, 22%, 31%);
     // --primary-color:
-    --background-color: hsl(216, 26%, 96%);
-    --main-text-color: hsl(0, 0%, 100%);
+    --color-background: hsl(216, 26%, 96%);
 
 
-    --color-primary:#7380ec;
-    --color-info-dark:#7d8da1;
-    --color-info-light:#dce1eb;
-    --color-white:#fff;
-    --color-dark:#363949;
-    --color-light:rgb(132,139,200,0.18);
-    --color-primary--variant:#111e88;
-    --color-dark--variant:#677483;
-    --secondary-color:#363a3a;
-    --secondary-color-light:rgb(132, 139, 200,0.18);
+    --color-primary:hsl(234, 76%, 69%);
+    --color-info-dark:hsl(213, 16%, 56%);
+    --color-info-light:hsl(220, 27%, 89%);
+    --color-white:hsl(0, 0%, 100%);
+    --color-dark:hsl(231, 15%, 25%);
+    --color-light:hsla(234, 38%, 65%, 0.18);
+    --color-primary--variant:hsl(233, 78%, 30%);
+    --color-dark--variant:hsl(212, 12%, 46%);
     --transparent-secondary-color:hsla(212, 12%, 46%, 0.141);
 
     --card-border-radius:2rem;
@@ -29,28 +42,20 @@
     --border-radius-2:0.8rem;
     --border-radius-3:1.2rem;
     
-    --card-padding:1.8rem;
-    --padding-1: 1.2rem;
+    --card-padding: 1.5rem;
+    --padding-1: .8rem;
 
     --box-shadow: 0 2rem 3rem var(--color-light);
     
     //Dark theme --dashboard-background-color:
     .dark{
-    --background-color: #181a1e;
-    --color-background: #181a1e;
-    --color-white:#202528;
-    // --color-info-dark:#7d8da1;
-    --color-info-light:#dce1eb;
-    --color-dark:#edeffd;
-    --color-dark-variant:#a3bdcc;
-    --color-light:rgb(0,0,0,0.4);
-    --box-shadow: 0 2rem 3rem var(--color-light);
+@include darkTheme()
+}
+@media (prefers-color-scheme: dark) {
+@include darkTheme()
+}
+}
 
-    main h3, span, i, div {
-        color: var(--color-dark);
-    }
-}
-}
 
 $basePadding: 0.25rem;
 $baseMargin: 0.25rem;
@@ -373,6 +378,14 @@ $rangeBasedUtilityClasses:(
         "end":12
         ),
 ),
+"font-size":(
+    "prefix":"fs",
+    // "baseValue":1%,
+    "values":(
+        "start":0,
+        "end":120
+        ),
+),
 
 );
 .f{
@@ -562,6 +575,60 @@ $valueBasedUtilityClasses:(
         "outset":outset,
         "none":none,
         "hidden":hidden,
+        
+    ) ),
+  "text-align":(
+     "prefix":"text",
+    "values":(
+        "center":center,
+        "left":left,
+        "justify":justify,
+        "right":right,
+        
+    ) ),
+  "vertical-align":(
+     "prefix":"align",
+    "values":(
+        "middle":middle,
+        "top":top,
+        "bottom":bottom,
+        "text-bottom":text-bottom,
+        "text-top":text-top,
+        "sub":sub,
+        "super":super,
+        "baseline":baseline,
+        "auto":auto,
+        
+    ) ),
+  "font-weight":(
+     "prefix":"fw",
+    "values":(
+           "normal": 400,
+           "semi-bold":500,
+           "bold": 700,
+           "bold-xl": 800,
+           "bold-sm": 900,
+           "bold-md": "bold",
+           "bold-lg": "bolder"
+        
+    ) ),
+  "font-size":(
+     "prefix":"fs",
+    "values":(
+           "normal": 14px,
+           "xs": 8px,
+           "sm": 10px,
+           "md": 16px,
+           "xl": 20px,
+           "2xl": 24px,
+           "3xl": 28px,
+           "4xl": 32px,
+           "5xl": 36px,
+           "6xl": 40px,
+           "7xl": 44px,
+           "8xl": 48px,
+           "9xl": 52px,
+           "10xl": 56px,
         
     ) ),
 )

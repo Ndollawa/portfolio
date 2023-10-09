@@ -1,0 +1,372 @@
+@use '../../../../styles/globals';
+@use '../../../../styles/utils';
+@use '../../../../styles/components';
+
+body {
+    background: var(--color-background);
+    width: 100%;
+    overflow-x: hidden;
+}
+
+section {
+    min-height: 100vh;
+    padding: 7rem 9% 7rem;
+    width: 100%;
+   
+
+
+    @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
+        padding: 5rem 2% 4.5rem;
+
+    }
+
+    @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "sm") - .2px) {
+        padding: 4rem 2% 2.5rem;
+
+    }
+}
+
+.cta {
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 2rem;
+}
+
+.app {
+    width: clamp(100%, 90%, 90rem);
+    min-height: 100vh;
+    background: var(--color-background);
+    // overflow: auto;
+    margin-inline: auto;
+
+    #{&}__header {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        margin: 0 auto;
+
+        &.sticky {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: var(--color-background);
+            box-shadow: 0 utils.pxToRem(2) utils.pxToRem(5) rgba(0, 0, 0, 0.4);
+            border-bottom: .1rem solid rgba(255, 255, 255, 0.1);
+            z-index: 9999;
+
+            section {
+                min-height: 100vh;
+                padding-top: 10rem;
+
+            }
+        }
+    }
+}
+
+.nav {
+    display: flex;
+    width: 100%;
+    height: utils.pxToRem(80);
+    line-height: utils.pxToRem(80);
+    justify-content: space-between;
+    padding-inline: 1rem;
+    z-index: 111;
+    user-select: none;
+
+    @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
+        height: utils.pxToRem(60);
+
+    }
+        #{&}__logo {
+            display: flex;
+            flex: 0.5;
+            font-size: utils.pxToRem(35);
+            font-weight: utils.fontWeight("bold-xl");
+            color: var(--color-dark);
+            line-height: utils.pxToRem(3);
+            cursor: pointer;
+            text-transform: capitalize;
+            justify-content: flex-start;
+            align-items: center;
+    
+    
+            @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "lg")) {
+                font-size: utils.pxToRem(23);
+            }
+    
+            @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
+                font-size: utils.pxToRem(24);
+            }
+    
+            & img {
+                width: 100%;
+                object-fit: cover;
+                cursor: pointer;
+    
+                @include globals.breakPointsUp(map-get(globals.$screenBreakPoints, "xs")) {}
+            }
+    
+            & strong {
+                font-size: utils.pxToRem(70);
+                color: var(--primary-color);
+    
+                @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
+                    font-size: utils.pxToRem(32);
+    
+                }
+            }
+        }
+
+    #{&}__mobile {
+        display: none;
+
+        @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        svg,
+        i {
+            cursor: pointer;
+        }
+    }
+
+
+    #{&}__menu {
+        display: flex;
+        flex: 1;
+        justify-content: space-between;
+        align-items: center;
+
+        @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
+            display: none;
+        }
+
+        &--items {
+
+
+            li {
+                list-style: none;
+                margin: 0 utils.pxToRem(10);
+
+                a {
+                    color: var(--primary-color);
+                    font-size: 1rem;
+                    text-transform: capitalize;
+                }
+
+                @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
+                    &:hover a.active {
+                        color: var(--color-dark);
+                    }
+
+                    a,
+                    a.active {
+                        color: var(--color-white);
+                        font-size: utils.pxToRem(14);
+                    }
+                }
+
+            }
+
+            @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
+                // display:none
+            }
+
+            @include globals.breakPointsUp(map-get(globals.$screenBreakPoints, "md")) {
+                display: flex;
+                flex: 1;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+        }
+
+        &--items>li:hover a,
+        &--items>li>a.active,
+        #{&}__social--icons>a:hover {
+            //   font-size:utils.pxToRem(25);
+            transform: scale(1.2);
+            font-weight: utils.fontWeight(bold);
+            color: var(--color-dark);
+            text-decoration: none;
+            text-transform: capitalize;
+            transition: .3s;
+
+            @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
+                color: var(--color-white);
+            }
+        }
+
+        @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
+            &.show {
+                display: block;
+                position: absolute;
+                background-color: var(--color-background);
+                padding: 0;
+                width: 15rem;
+                top: 5rem;
+                right: 1rem;
+                border-radius: 1.2rem;
+                align-items: center;
+                user-select: none;
+
+
+            }
+
+            &--items {
+                li {
+                    margin: 0;
+                    padding: utils.pxToRem(15) utils.pxToRem(25);
+                    height: 3rem;
+                    color: var(--color-white);
+                    display: flex;
+                    align-items: center;
+                    text-transform: capitalize;
+
+                    &:hover {
+                        background-color: var(--color-background);
+
+                        a {
+
+                            color: var(--color-dark);
+                        }
+                    }
+
+                    &:first-child:hover {
+                        border-top-left-radius: 1.2rem;
+                        border-top-right-radius: 1.2rem;
+                    }
+
+                    //    &:last-child:hover{
+                    //     border-bottom-left-radius: 1.2rem;
+                    //     border-bottom-right-radius: 1.2rem;
+                    //    }
+                }
+            }
+        }
+    }
+
+    #{&}__social--icons {
+        @include globals.flexCenter;
+
+        @include globals.breakPointsUp(map-get(globals.$screenBreakPoints, "md")) {
+            padding-inline: 1.9rem
+        }
+
+    }
+
+    #{&}__social--icons a {
+        @include globals.flexCenter;
+        font-size: utils.pxToRem(18);
+        color: var(--color-dark);
+        border: 0.2rem var(--color-dark) solid;
+        border-radius: 50%;
+        padding: 0.32rem;
+        margin: utils.pxToRem(25) utils.pxToRem(10);
+
+        @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "lg")) {
+
+            font-size: utils.pxToRem(15);
+            margin: utils.pxToRem(15) utils.pxToRem(5);
+        }
+
+        @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
+            font-size: utils.pxToRem(14);
+            color: var(--color-white);
+            border: 0.2rem var(--color-white) solid;
+            border-radius: 50%;
+            padding: 0.32rem;
+            margin: utils.pxToRem(15) utils.pxToRem(5);
+            justify-content: space-around
+        }
+
+        &:hover {
+            transform: translate(2);
+            border: 0.2rem var(--primary-color) solid;
+            color: var(--primary-color);
+
+            @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
+                filter: saturate(80);
+            }
+        }
+
+        @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
+            position: relative;
+
+        }
+
+    }
+}
+
+
+main{
+    width: 100%;
+    overflow-x: hidden
+}
+.footer {
+    @include globals.flexCenter;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    background: var(--color-light);
+    filter: contrast(70%);
+
+  
+
+    #{&}__text {
+        font-size: 1.6rem;
+        @include globals.flexCenter;
+        color: var(--color-white);
+        text-align: center;
+
+        @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
+            font-size: 1rem;
+            text-align: center
+        }
+
+    }
+
+    #{&}__iconToTop a {
+        @include globals.flexCenter;
+        padding: .8rem;
+        background: var(--primary-color);
+        margin: 10px;
+        color: var(--color-white);
+        transition: .5s ease;
+
+        &:hover {
+            box-shadow: 0 0 1rem var(--primary-color);
+        }
+
+        i,
+        svg {
+            font-size: 1.6rem;
+            color: var(--color-white);
+
+            @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
+                font-size: 1rem;
+                color: var(--color-white);
+            }
+        }
+
+        // @include globals.breakPointsDown(map-get(globals.$screenBreakPoints,"md")){
+
+
+        // }
+    }
+
+
+    @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
+        flex-direction: column-reverse;
+        flex-flow: wrap-reverse;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem 3%;
+    }
+
+    @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "sm")) {
+        padding: 1rem 2%;
+    }
+}
