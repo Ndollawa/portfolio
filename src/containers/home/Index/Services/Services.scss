@@ -1,6 +1,4 @@
-@use '../../../../../styles/globals';
-@use '../../../../../styles/utils';
-@use '../../../../../styles/components';
+@use '../../../../../styles';
 @use '../../../../app/(home)/styles/mixins';
 
 
@@ -29,14 +27,14 @@
         z-index: 2;
 
         &--box {
-            @include globals.flexCenter(column);
+            @include styles.flexCenter(column);
             background-color: var(--color-white);
             text-align: center;
             // flex: 1 1 30rem;
             border: .2rem solid var(--color-background-2);
             border-radius: 2rem;
-            box-shadow: 0 utils.pxToRem(15) utils.pxToRem(10) rgba(0, 0, 0, 0.4);
-            padding: 3rem 2rem 4rem;
+            box-shadow: 0 styles.pxToRem(15) styles.pxToRem(10) rgba(0, 0, 0, 0.4);
+            padding: 2rem 1rem 3rem;
             transition: .3s ease;
             overflow: hidden;
 
@@ -48,21 +46,21 @@
             &_heading {
                 line-height: 1.2;
                 margin: .4rem 0;
-                font-size: 1.7rem;
+                font-size: 1.2rem;
             }
 
             i,
             svg {
-                font-size: 4rem;
+                font-size: 3rem;
                 color: var(--primary-color);
 
-                @include globals.breakPointsUp(map-get(globals.$screenBreakPoints, "xs")) {
+                @include styles.breakPointsUp(map-get(styles.$screenBreakPoints, "xs")) {
                     font-size: 3rem;
                 }
             }
 
             p {
-                font-size: 1rem;
+                font-size: .8rem;
                 margin: 1rem 0 3rem;
                 height: fit-content;
                 display: -webkit-box;
@@ -74,7 +72,7 @@
                 -webkit-box-orient: vertical;
                 overflow: hidden;
 
-                @include globals.breakPointsUp(map-get(globals.$screenBreakPoints, "xs")) {
+                @include styles.breakPointsUp(map-get(styles.$screenBreakPoints, "xs")) {
                     -webkit-line-clamp: 8;
                 }
             }

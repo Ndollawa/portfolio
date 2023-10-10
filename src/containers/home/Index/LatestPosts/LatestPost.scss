@@ -1,9 +1,9 @@
-@use '../../../../../styles/globals';
-@use '../../../../../styles/utils';
-@use '../../../../../styles/components';
+@use '../../../../../styles';
 @use '../../../../app/(home)/styles/mixins';
 
 .blog {
+background-color: var(--color-white);
+
     &__heading {
         @include mixins.heading;
         color: var(--color-background-2);
@@ -121,8 +121,8 @@
                     color: var(--primary-color)
                 }
 
-                @include globals.breakPointsUp(map-get(globals.$screenBreakPoints, "md")) {
-                    font-size: utils.pxToRem(20);
+                @include styles.breakPointsUp(map-get(styles.$screenBreakPoints, "md")) {
+                    font-size: styles.pxToRem(20);
                     line-height: 0.05;
                 }
             }

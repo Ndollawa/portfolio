@@ -1,16 +1,14 @@
-@use '../../../../../styles/globals';
-@use '../../../../../styles/utils';
-@use '../../../../../styles/components';
+@use '../../../../../styles';
 @use '../../../../app/(home)/styles/mixins';
 
 .home {
-    @include globals.flexCenter;
+    @include styles.flexCenter;
     width: 100%;
-    height: calc(100vh - utils.pxToRem(80));
+    height: calc(100vh - styles.pxToRem(50));
     // overflow: hidden;
     position: relative;
 
-    @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
+    @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
         padding-inline: 3%;
         height: auto;
     }
@@ -28,24 +26,24 @@
             background-repeat: no-repeat;
             background-position: top center;
             position: absolute;
-            top: - utils.pxToRem(25);
-            right: - utils.pxToRem(100);
+            top: - styles.pxToRem(25);
+            right: - styles.pxToRem(100);
 
 
-            @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
+            @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
                 width: 134px;
                 height: 129px;
                 position: absolute;
-                top: - utils.pxToRem(35);
-                right: - utils.pxToRem(70);
+                top: - styles.pxToRem(35);
+                right: - styles.pxToRem(70);
             }
         }
 
         &::before {
             position: absolute;
             content: '';
-            height: utils.pxToRem(600);
-            width: utils.pxToRem(600);
+            height: styles.pxToRem(600);
+            width: styles.pxToRem(600);
             border-radius: 50%;
             left: -12%;
             top: 40%;
@@ -54,11 +52,11 @@
 
 
 
-            @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "lg")) {
+            @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "lg")) {
                 left: -13%;
                 top: 55%;
-                height: utils.pxToRem(400);
-                width: utils.pxToRem(400);
+                height: styles.pxToRem(400);
+                width: styles.pxToRem(400);
 
                 @keyframes object1 {
                     50% {
@@ -68,11 +66,11 @@
                 }
             }
 
-            @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
+            @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
                 left: -13%;
                 top: 20%;
-                height: utils.pxToRem(200);
-                width: utils.pxToRem(200);
+                height: styles.pxToRem(200);
+                width: styles.pxToRem(200);
 
                 @keyframes object1 {
                     50% {
@@ -88,19 +86,19 @@
         &::after {
             position: absolute;
             content: '';
-            height: utils.pxToRem(200);
-            width: utils.pxToRem(200);
+            height: styles.pxToRem(200);
+            width: styles.pxToRem(200);
             border-radius: 50%;
             left: 27%;
             top: 0;
             background: linear-gradient(45deg, var(--primary-color), pink);
             animation: object2 6s linear infinite;
 
-            @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "lg")) {
+            @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "lg")) {
                 left: 45%;
                 top: 5%;
-                height: utils.pxToRem(150);
-                width: utils.pxToRem(150);
+                height: styles.pxToRem(150);
+                width: styles.pxToRem(150);
 
                 @keyframes object2 {
                     50% {
@@ -110,12 +108,12 @@
                 }
             }
 
-            @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
+            @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
 
                 left: 35%;
                 top: 1%;
-                height: utils.pxToRem(70);
-                width: utils.pxToRem(70);
+                height: styles.pxToRem(70);
+                width: styles.pxToRem(70);
 
                 @keyframes object2 {
                     50% {
@@ -147,59 +145,59 @@
             align-items: center;
             position: relative;
             z-index: 5;
-            // @include globals.breakPointsUp(map-get(globals.$screenBreakPoints,"xs")) {
+            // @include styles.breakPointsUp(map-get(styles.$screenBreakPoints,"xs")) {
             //     margin-top: 20%;
 
             // }
 
 
-            @include globals.breakPointsUp(utils.pxToRem(375)) {
+            @include styles.breakPointsUp(styles.pxToRem(375)) {
                 margin-top: 3.5rem;
             }
 
-            @include globals.breakPointsDown(utils.pxToRem(375)) {
+            @include styles.breakPointsDown(styles.pxToRem(375)) {
                 margin-top: 3rem;
             }
 
             &__topline {
                 display: block;
                 position: relative;
-                font-size: utils.pxToRem(35);
-                letter-spacing: utils.pxToRem(5);
+                font-size: styles.pxToRem(24);
+                letter-spacing: styles.pxToRem(5);
                 color: var(--color-dark);
 
 
-                @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "lg")) {
-                    font-size: utils.pxToRem(26);
-                    letter-spacing: utils.pxToRem(4);
+                @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "lg")) {
+                    font-size: styles.pxToRem(26);
+                    letter-spacing: styles.pxToRem(4);
 
                 }
 
-                @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
-                    font-size: utils.pxToRem(16);
-                    letter-spacing: utils.pxToRem(3);
+                @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
+                    font-size: styles.pxToRem(16);
+                    letter-spacing: styles.pxToRem(3);
 
                 }
 
                 &::after {
                     position: absolute;
                     content: '';
-                    height: utils.pxToRem(4);
-                    width: utils.pxToRem(45);
-                    bottom: utils.pxToRem(10);
+                    height: styles.pxToRem(4);
+                    width: styles.pxToRem(45);
+                    bottom: styles.pxToRem(10);
                     background-color: var(--primary-color);
 
-                    @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "lg")) {
-                        height: utils.pxToRem(3);
-                        width: utils.pxToRem(33.3);
-                        bottom: utils.pxToRem(7);
+                    @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "lg")) {
+                        height: styles.pxToRem(3);
+                        width: styles.pxToRem(33.3);
+                        bottom: styles.pxToRem(7);
 
                     }
 
-                    @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
-                        height: utils.pxToRem(2);
-                        width: utils.pxToRem(22.3);
-                        bottom: utils.pxToRem(5);
+                    @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
+                        height: styles.pxToRem(2);
+                        width: styles.pxToRem(22.3);
+                        bottom: styles.pxToRem(5);
 
                     }
 
@@ -208,23 +206,24 @@
 
             h1 {
                 display: block;
-                font-size: clamp(3.5rem, 3.5rem - 2vw, 6rem);
-                font-weight: utils.fontWeight("bold-sm");
+                font-size: clamp(2.5rem, 3rem - 2vw, 4rem);
+                font-weight: styles.fontWeight("bold-sm");
                 color: var(--color-dark);
 
-                @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "lg")) {
+                @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "lg")) {
                     font-size: clamp(2.5rem, 2.4rem - 2vw, 3rem);
                 }
 
-                @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
+                @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
                     font-size: clamp(1.8rem, 1.8rem - 2vw, 2rem);
                 }
 
             }
 
 
-            &__multi-text span span {
+            &__multi-text {
                 text-transform: capitalize;
+                font-size: inherit;
                 color: var(--primary-color) !important;
 
 
@@ -236,15 +235,15 @@
                 font-size: 1rem;
                 color: var(--color-dark);
 
-                @include globals.breakPointsUp(map-get(globals.$screenBreakPoints, "xs")) {
+                @include styles.breakPointsUp(map-get(styles.$screenBreakPoints, "xs")) {
                     width: 100%;
                     text-align: justify;
-                    font-size: utils.pxToRem(16);
+                    font-size: styles.pxToRem(16);
                 }
 
-                @include globals.breakPointsUp(map-get(globals.$screenBreakPoints, "md")) {
+                @include styles.breakPointsUp(map-get(styles.$screenBreakPoints, "md")) {
                     text-align: left;
-                    // font-size: utils.pxToRem(16);
+                    // font-size: styles.pxToRem(16);
                 }
             }
 
@@ -252,14 +251,14 @@
                 width: 100%;
                 display: flex;
                 position: relative;
-                left: utils.pxToRem(80);
+                left: styles.pxToRem(80);
 
 
-                @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "lg")) {
-                    left: utils.pxToRem(5)
+                @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "lg")) {
+                    left: styles.pxToRem(5)
                 }
 
-                @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
+                @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
                     left: 0;
                 }
 
@@ -269,26 +268,26 @@
                 outline: none;
                 border: none;
                 cursor: pointer;
-                font-size: utils.pxToRem(16);
-                font-weight: utils.fontWeight("normal");
+                font-size: styles.pxToRem(14);
+                font-weight: styles.fontWeight("normal");
                 color: #fff;
                 background-color: var(--color-background-2);
-                // padding: utils.pxToRem(8) utils.pxToRem(14);
-                margin: utils.pxToRem(40) utils.pxToRem(5);
-                letter-spacing: utils.pxToRem(2);
+                // padding: styles.pxToRem(8) styles.pxToRem(14);
+                margin: styles.pxToRem(40) styles.pxToRem(5);
+                letter-spacing: styles.pxToRem(2);
                 text-transform: capitalize;
-                box-shadow: 0 utils.pxToRem(15) utils.pxToRem(10) rgba(0, 0, 0, 0.4);
+                box-shadow: 0 styles.pxToRem(15) styles.pxToRem(10) rgba(0, 0, 0, 0.4);
 
                 &:hover {
                     background-color: var(--primary-color);
                 }
 
-                @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
-                    font-size: utils.pxToRem(16);
-                    // padding: utils.pxToRem(4) utils.pxToRem(2);
-                    margin: utils.pxToRem(10) utils.pxToRem(2.5);
-                    letter-spacing: utils.pxToRem(1.5);
-                    box-shadow: 0 utils.pxToRem(12) utils.pxToRem(8) rgba(0, 0, 0, 0.4);
+                @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
+                    font-size: styles.pxToRem(16);
+                    // padding: styles.pxToRem(4) styles.pxToRem(2);
+                    margin: styles.pxToRem(10) styles.pxToRem(2.5);
+                    letter-spacing: styles.pxToRem(1.5);
+                    box-shadow: 0 styles.pxToRem(12) styles.pxToRem(8) rgba(0, 0, 0, 0.4);
 
                 }
             }
@@ -300,13 +299,13 @@
             height: 100%;
 
             // background: linear-gradient(to top,hsl(216, 26%, 96%), hsla(216, 26%, 96%, 0.371), transparent);
-            @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
+            @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
                 margin-top: 5rem;
 
                 @keyframes animateUser {
                     50% {
-                        right: utils.pxToRem(20);
-                        top: - utils.pxToRem(60);
+                        right: styles.pxToRem(20);
+                        top: - styles.pxToRem(60);
                     }
                 }
 
@@ -321,14 +320,14 @@
 
             img {
                 position: relative;
-                width: calc(120% - utils.pxToRem(80));
+                width: calc(120% - styles.pxToRem(80));
                 height: 100%;
-                top: - utils.pxToRem(10);
-                right: utils.pxToRem(50);
+                top: - styles.pxToRem(10);
+                right: styles.pxToRem(50);
                 animation: animateUser 4s linear infinite;
 
-                @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
-                    top: - utils.pxToRem(30);
+                @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
+                    top: - styles.pxToRem(30);
                     animation: animateUser 4s linear infinite;
 
                 }
@@ -337,8 +336,8 @@
 
             @keyframes animateUser {
                 50% {
-                    right: utils.pxToRem(30);
-                    top: - utils.pxToRem(50);
+                    right: styles.pxToRem(30);
+                    top: - styles.pxToRem(50);
                 }
             }
 
@@ -352,7 +351,7 @@
                 filter: saturate(200%);
                 animation: animate 4s linear infinite;
 
-                @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
+                @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
                     position: absolute;
                     top: 60%;
                     width: 160%;

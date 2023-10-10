@@ -29,7 +29,7 @@ export default function Menuitem() {
                 <span>{item.icon} </span>
                 <h3>{item.title}</h3>
               </div>
-              <span className="message__count">3</span>
+              {/* <span className="message__count">3</span> */}
             </a>
           </li>
         );
@@ -48,7 +48,7 @@ export default function Menuitem() {
                 <span> {item.icon}</span>
                 <h3>{item.title}</h3>
               </div>
-              <span className="message__count">3</span>
+              {/* <span className="message__count">3</span> */}
               <span className="toggle-icon">
                 <svg
                   className=""
@@ -83,17 +83,17 @@ export default function Menuitem() {
               </span>
             </div>
             <ul
-              className="text-sm border-l-2 border-gray-800 mx-6 my-2.5 px-2.5 flex flex-col gap-y-1"
+              className=""
               style={!item.isOpen ? { display: "none" } : undefined}
             >
               {item.subMenu?.map((link, i): JSX.Element | undefined => {
                 return (
-                  <li className={`sidebar__menu--item`} key={"subMenu_" + i}>
+                  <li className={``} key={"subMenu_" + i}>
                     <a
                       href={link.url}
                       className={` ${item.isActive ? "active" : null}`}
                     >
-                      <span>{link.icon} </span>
+                      {/* <span>{link.icon} </span> */}
                       <h3>{link.title}</h3>
                       {/* <span className="message__count">3</span> */}
                     </a>

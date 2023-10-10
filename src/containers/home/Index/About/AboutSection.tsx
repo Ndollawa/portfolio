@@ -14,8 +14,8 @@ const AboutSection = () => {
               {/* <img src={process.env.REACT_APP_BASE_URL+"uploads/settings/"+aboutUsBg} alt={siteName}/> */}
               <Image
                 src="/assets/images/images(23).jpeg"
-                width={600}
-                height={600}
+                width={300}
+                height={300}
                 alt=""
               />
               <div className="about__image--caption">

@@ -12,12 +12,9 @@
         // --color-background-2: var(--color-dark--variant);
         --box-shadow: 0 2rem 3rem var(--color-light);
     
-        main h3,
-        span,
-        i,
-        div {
-            color: var(--color-dark);
-        }
+ 
+      color: var(--color-dark);
+    
 }
 :root{
     --primary-color:hsl(270, 100%, 50%);
@@ -57,12 +54,34 @@
 }
 
 
+$baseFontSize: 1rem;
 $basePadding: 0.25rem;
 $baseMargin: 0.25rem;
 $baseBorder: 0.25rem;
 $baseGap: 0.25rem;
 $baseGutter: 0.25rem;
 $baseOpacity: 1%;
+
+
+ $fontSize:(
+    "normal": $baseFontSize,
+   "xxs": $baseFontSize * 0.25,
+   "xs": $baseFontSize * 0.5,
+   "sm": $baseFontSize * 0.75,
+   "md": $baseFontSize * 1.25,
+   "lg": $baseFontSize * 1.5,
+   "xl": $baseFontSize * 1.75,
+   "2xl": $baseFontSize * 2,
+   "3xl": $baseFontSize * 2.25,
+   "4xl": $baseFontSize * 2.5,
+   "5xl": $baseFontSize * 2.75,
+   "6xl": $baseFontSize * 3,
+   "7xl": $baseFontSize * 3.25,
+   "8xl": $baseFontSize * 3.5,
+   "9xl": $baseFontSize * 3.75,
+   "10xl": $baseFontSize * 4,
+
+ );
 
 $rangeBasedUtilityClasses:(
 "padding":(
@@ -380,17 +399,15 @@ $rangeBasedUtilityClasses:(
 ),
 "font-size":(
     "prefix":"fs",
-    // "baseValue":1%,
+    // "baseValue":0.25rem,
     "values":(
-        "start":0,
+        "start":1,
         "end":120
         ),
 ),
 
 );
-.f{
-    visibility: collapse;
-}
+
 $valueBasedUtilityClasses:(
 "display":(
     "prefix":"d",
@@ -615,20 +632,22 @@ $valueBasedUtilityClasses:(
   "font-size":(
      "prefix":"fs",
     "values":(
-           "normal": 14px,
-           "xs": 8px,
-           "sm": 10px,
-           "md": 16px,
-           "xl": 20px,
-           "2xl": 24px,
-           "3xl": 28px,
-           "4xl": 32px,
-           "5xl": 36px,
-           "6xl": 40px,
-           "7xl": 44px,
-           "8xl": 48px,
-           "9xl": 52px,
-           "10xl": 56px,
+           "normal": $baseFontSize,
+           "xxs": $baseFontSize * 0.25,
+           "xs": $baseFontSize * 0.5,
+           "sm": $baseFontSize * 0.75,
+           "md": $baseFontSize * 1.25,
+            "lg": $baseFontSize * 1.5,
+            "xl": $baseFontSize * 1.75,
+            "2xl": $baseFontSize * 2,
+            "3xl": $baseFontSize * 2.25,
+            "4xl": $baseFontSize * 2.5,
+            "5xl": $baseFontSize * 2.75,
+            "6xl": $baseFontSize * 3,
+            "7xl": $baseFontSize * 3.25,
+            "8xl": $baseFontSize * 3.5,
+            "9xl": $baseFontSize * 3.75,
+            "10xl": $baseFontSize * 4,
         
     ) ),
 )

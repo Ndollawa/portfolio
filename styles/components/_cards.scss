@@ -1,0 +1,21 @@
+@use '../globals/variables' as var;
+
+.card{
+    display: block;
+    padding: var.$basePadding * 7;
+    background-color: var(--color-white);
+    // padding: var(--card-padding);
+    box-shadow: var(--box-shadow);
+    
+    #{&}__heading{
+    font-size: 2rem;
+    font-weight: 900;
+
+}
+
+#{&}__body{
+    padding: var(--card-padding);
+}
+}
+
+

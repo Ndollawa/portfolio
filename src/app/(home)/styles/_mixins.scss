@@ -1,5 +1,5 @@
   @mixin heading($size: null) {
-      font-size: 4rem;
+      font-size: 2rem;
       font-weight: 900;
       display: flex;
       width: 100%;
@@ -7,7 +7,7 @@
       place-content: center;
       align-items: center;
 
-      margin-bottom: 5rem;
+      margin-bottom:2rem;
 
       &::before,
       &::after {

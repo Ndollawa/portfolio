@@ -16,3 +16,9 @@
  @function fontWeight($weightName){
     @return map-get(fonts.$fontWeights,$weightName);
  }
+
+ @function lightComp($color){
+    $complement: complement($color);
+    $lightComplement: lighten($complement,30%);
+    @return $lightComplement;
+ }

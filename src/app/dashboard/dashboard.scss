@@ -1,87 +1,9 @@
-@use '../../../styles/globals';
-@use '../../../styles/utils';
-@use '../../../styles/components';
+@use '../../../styles';
 
 
 //DASHBOARD
-.color-dark {
-    background-color: var(--color-dark);
-}
-.color-dark-variant {
-    background-color: var(--color-dark-variant);
-}
-.color-light {
-    background-color: var(--color-light);
-}
-.color-primary-variant {
-    background-color: var(--color-primary-variant);
-}
-.color-primary {
-    background-color: var(--color-primary);
-}
-.color-info-dark {
-    background-color: var(--color-info-dark);
-}
-.color-info-light {
-    background-color: var(--color-info-light);
-}
-.color-white {
-    background-color: var(--color-white);
-}
-.color-primary {
-    background-color: var(--color-primary);
-}
-.color-background {
-    background-color: var(--color-background);
-}
-.color-background-2 {
-    background-color: var(--color-background-2);
-}
-.transparent-secondary-color {
-    background-color: var(--transparent-secondary-color);
-}
-.transparent-primary-color {
-    background-color: var(--transparent-primary-color);
-}
 
-
-.text-dark {
-    color: var(--color-dark);
-}
-.text-dark-variant {
-    color: var(--color-dark-variant);
-}
-.text-light {
-    color: var(--color-light);
-}
-.text-primary-variant {
-    color: var(--color-primary-variant);
-}
-.text-primary {
-    color: var(--color-primary);
-}
-.text-info-dark {
-    color: var(--color-info-dark);
-}
-.text-info-light {
-    color: var(--color-info-light);
-}
-.text-white {
-    color: var(--color-white);
-}
-.text-primary {
-    color: var(--color-primary);
-}
-.text-background {
-    color: var(--color-background);
-}
-
-
-.box-shadow {
-    box-shadow: var(--box-shadow);
-}
-
-
+  
 main{
     overflow-x:hidden;
     width:100%;
@@ -131,41 +53,41 @@ main{
 
 
             // &__logo {
-            //     @include globals.flexCenter;
+            //     @include styles.flexCenter;
             //     gap: 0.8rem;
 
             //     // h2{
 
-            //     //     @include globals.breakPointsDown(map-get(globals.$screenBreakPoints,"lg")) {
+            //     //     @include styles.breakPointsDown(map-get(styles.$screenBreakPoints,"lg")) {
             //     //         display: none;      
             //     //     }  
-            //     //     @include globals.breakPointsDown(map-get(globals.$screenBreakPoints,"md")) {
+            //     //     @include styles.breakPointsDown(map-get(styles.$screenBreakPoints,"md")) {
             //     //         display: inline;      
             //     //     }  
             //     // }
-            //     @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
+            //     @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
             //         margin-left: 1rem;
             //     }
             // }
 &__logo {
     display: flex;
     flex: 0.5;
-    font-size: utils.pxToRem(35);
-    font-weight: utils.fontWeight("bold-xl");
+    font-size: styles.pxToRem(30);
+    font-weight: styles.fontWeight("bold-xl");
     color: var(--color-dark);
-    line-height: utils.pxToRem(3);
+    line-height: styles.pxToRem(3);
     cursor: pointer;
     text-transform: capitalize;
     justify-content: flex-start;
     align-items: center;
 
 
-    @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "lg")) {
-        font-size: utils.pxToRem(23);
+    @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "lg")) {
+        font-size: styles.pxToRem(23);
     }
 
-    @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
-        font-size: utils.pxToRem(24);
+    @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
+        font-size: styles.pxToRem(24);
     }
 
     & img {
@@ -173,15 +95,15 @@ main{
         object-fit: cover;
         cursor: pointer;
 
-        @include globals.breakPointsUp(map-get(globals.$screenBreakPoints, "xs")) {}
+        @include styles.breakPointsUp(map-get(styles.$screenBreakPoints, "xs")) {}
     }
 
     & strong {
-        font-size: utils.pxToRem(70);
+        font-size: styles.pxToRem(70);
         color: var(--primary-color);
 
-        @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
-            font-size: utils.pxToRem(32);
+        @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
+            font-size: styles.pxToRem(32);
 
         }
     }
@@ -189,7 +111,7 @@ main{
             &__close {
                 display: none;
 
-                @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
+                @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
                     display: inline-block;
                     cursor: pointer;
                 }
@@ -200,17 +122,25 @@ main{
             height: 86vh;
             position: relative;
             bottom: 0;
-            width: 100%;
             // top: 3rem;
 
             &__menu {
                 display: flex;
                 flex-direction: column;
                 position: relative;
-                width: 100%;
+                height: 90%;
+                overflow-x: hidden;
+                overflow-y: auto;
+                scroll-behavior: smooth;
+                scrollbar-width: 4px;
 
                 &--item {
                    position: relative;
+
+                   &:not(:last-child){
+                    // border-bottom: 1px solid var(--color-info-dark);
+                    box-shadow:0  0 4px var(--color-light);
+                   }
 
                     a,
                     &> div {
@@ -219,28 +149,27 @@ main{
                         margin-left: 2rem;
                         padding-right: .5rem;
                         width: 80%;
-                        justify-content: space-between;
                         align-items: center;
                         position: relative;
                         height: 3rem;
                         transition: .3s ease;
 
          div h3 {
-                        font-weight: utils.fontWeight(medium);
+                        font-weight: styles.fontWeight(medium);
                         align-self: center;
                         font-size: .7rem;
                         width: 100%;
 
-                        @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "lg")) {
+                        @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "lg")) {
                             display: none;
                         }
 
-                        @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
+                        @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
                             display: inline;
                         }
                     }
                         span {
-                            font-size: utils.pxToRem(16);
+                            font-size: styles.pxToRem(14);
                             transition: .3s ease;
                             line-height: 1.2;
                             display: flex;
@@ -248,7 +177,7 @@ main{
                             align-self: center;
 
                             svg {
-                                font-size: utils.pxToRem(16);
+                                font-size: styles.pxToRem(16);
                                 color: var(--color-info-dark);
                                 width: 20px;
                                 margin-right: 5px;
@@ -256,8 +185,15 @@ main{
                         }
 
                         .toggle__icon{
-                            position: absolute;
+                            position: relative;
                             right: 5px;
+                            width: 15px;
+                            justify-self: end;
+
+                            svg{
+                             font-size: 10px;   
+                            }
+                            
                         }
                             
 
@@ -287,11 +223,11 @@ main{
                             }
                         }
 
-                        @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "lg")) {
+                        @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "lg")) {
                             width: 5.6rem;
                         }
 
-                        @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
+                        @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
                             width: 100%;
                             height: 3.4rem;
                         }
@@ -304,13 +240,40 @@ main{
                             margin-left: .5rem;
                         }
                     }
+                    ul{
+                        display: block;
+                        margin: 0;
+
+                        li{
+                        margin: 5px 10px;
+                            padding:0;
+                            width: 100%;
+                            display: flex;
+                            justify-content: flex-end;
+                            height: 30px;
+
+                            a{
+                                padding: auto;
+                                height: 15px;
+
+                                h3{
+                                  font-size: .7rem;  
+                                }
+                                
+                            }
+                        }
+                    }
+                     div{
+
+                        justify-content: space-between;
+                    }
                 }
 
                 .message__count {
                     background: red;
                     color: var(--color-white);
-                    padding: utils.pxToRem(2) utils.pxToRem(10);
-                    font-size: utils.pxToRem(11);
+                    padding: styles.pxToRem(2) styles.pxToRem(10);
+                    font-size: styles.pxToRem(11);
                     border-radius: var(--border-radius-1)
                 }
 
@@ -332,23 +295,23 @@ main{
                     transition: .3s ease;
 
                     span {
-                        font-size:utils.pxToRem(14);
+                        font-size:styles.pxToRem(14);
                         transition: .3s ease;
 
                         svg {
-                            font-size: utils.pxToRem(15);
+                            font-size: styles.pxToRem(15);
                             color: var(--color-info-dark)
                         }
                     }
                 }
             }
 
-            @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
+            @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
                 background: transparent;
             }
         }
 
-        @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "lg")) {
+        @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "lg")) {
             grid-template-columns: 7rem auto 23rem;
             width: 94%;
 
@@ -359,7 +322,7 @@ main{
 
         }
 
-        @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
+        @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
             position: fixed;
             left: -100%;
             background: var(--color-white);
@@ -390,13 +353,13 @@ main{
         }
     }
 
-    @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "lg")) {
+    @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "lg")) {
         grid-template-columns: 7rem auto 23rem;
         width: 94%;
     }
 
-    @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
-        grid-template-columns: 1fr;
+    @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
+        grid-template-columns: auto 18rem;
         width: 100%;
     }
 
@@ -433,7 +396,7 @@ main{
             }
         }
 
-        @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
+        @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
             margin-top: 8rem;
             padding: 0 1rem;
         }
@@ -450,24 +413,25 @@ main{
             justify-content: flex-end;
             gap: 2rem;
 
-            button {
+            .mobile__menu {
                 display: none;
 
                 span,
                 svg {
-                    @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
-                        font-size: utils.pxToRem(24);
+                color: var(--color-dark);
+                    @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
+                        font-size: styles.pxToRem(24);
                     }
                 }
 
-                @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
+                @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
                     display: inline-block;
                     background: transparent;
                     cursor: pointer;
                     color: var(--color-dark);
                     position: absolute;
                     left: 1rem;
-                    font-size:utils.pxToRem(24);
+                    font-size:styles.pxToRem(24);
                 }
             }
 
@@ -483,7 +447,7 @@ main{
                 border-radius: var(--border-radius-1);
 
                 span {
-                    font-size: utils.pxToRem(14);
+                    font-size: styles.pxToRem(14);
                     width: 50%;
                     display: flex;
                     align-items: center;
@@ -505,10 +469,10 @@ main{
                     }
                 }
 
-                @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
-                    position: absolute;
-                    width: 4.4rem;
-                    left: 66%;
+                @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
+                    // position: absolute;
+                    width: 5.4rem;
+                    margin-right: 5px;
                 }
             }
 
@@ -519,19 +483,20 @@ main{
 
                 .info {
 
-                    @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
+                    @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
                         display: none;
                     }
                 }
             }
 
-            @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
+            @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
                 position: fixed;
                 top: 0;
                 left: 0;
                 align-items: center;
                 padding: 0 0.8rem;
-                height: 4.6rem;
+                height: 4rem;
+                gap:0;
                 background: var(--color-white);
                 margin: 0;
                 z-index: 2;
@@ -628,13 +593,13 @@ main{
             }
         }
 
-        @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
+        @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
             margin: 0 auto 4rem;
             width: 94%;
         }
     }
 
- @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "sm")) {
+ @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "sm")) {
             margin-top: 8rem;
             padding: 0 1rem;
             grid-template-columns: 1;

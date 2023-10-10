@@ -1,7 +1,10 @@
 // import '../styles/main.scss'
 import { Poppins } from "next/font/google";
 
-const poppins = Poppins({ weight: "500", subsets: ["latin"] });
+const poppins = Poppins({
+  weight: ["100", "200", "400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+});
 
 export const metadata = {
   title: "Create Next App",
@@ -20,7 +23,7 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
       </head>
-      <body className={poppins.className}>{children}</body>
+      <body className={poppins.className + " scrollbar"}>{children}</body>
     </html>
   );
 }

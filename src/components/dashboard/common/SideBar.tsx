@@ -19,7 +19,7 @@ const SideBar = () => {
         </div>
       </div>
       <div className="sidebar">
-        <ul className="sidebar__menu">
+        <ul className="sidebar__menu scrollbar">
           <Menuitem />
         </ul>
         <MenuUserProfile />

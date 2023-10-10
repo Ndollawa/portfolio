@@ -15,7 +15,6 @@ import {
 import { BsCodeSlash } from "react-icons/bs";
 import { SiAzuredevops } from "react-icons/si";
 import { GiHamburgerMenu } from "react-icons/gi";
-import ScrollReveal from "scrollreveal";
 import useWindowSize from "@/utils/hooks/useWindowSize";
 import {
   IntroSection,
@@ -28,27 +27,36 @@ import {
 
 export default function Home() {
   useEffect(() => {
-    ScrollReveal({
-      reset: true,
-      distance: "80px",
-      duration: 2000,
-      delay: 200,
-    });
+    async function animate() {
+      if (typeof window !== "undefined") {
+        const ScrollReveal = (await import("scrollreveal")).default;
+        // sr().reveal(refToComponent.current)
+        ScrollReveal({
+          reset: true,
+          distance: "80px",
+          duration: 2000,
+          delay: 200,
+        });
 
-    ScrollReveal().reveal(".home__container--intro, .heading", {
-      origin: "top",
-    });
-    ScrollReveal().reveal(
-      ".home__container--image, .service__container,.project_container,.blog__container,.contact__container",
-      { origin: "bottom" }
-    );
-    ScrollReveal().reveal(".home__container--intro h1, .about__image", {
-      origin: "left",
-    });
-    ScrollReveal().reveal(".home__container--intro p, .about__content", {
-      origin: "right",
-    });
+        ScrollReveal().reveal(".home__container--intro, .heading", {
+          origin: "top",
+        });
+        ScrollReveal().reveal(
+          ".home__container--image, .service__container,.project_container,.blog__container,.contact__container",
+          { origin: "bottom" }
+        );
+        ScrollReveal().reveal(".home__container--intro h1, .about__image", {
+          origin: "left",
+        });
+        ScrollReveal().reveal(".home__container--intro p, .about__content", {
+          origin: "right",
+        });
+      }
+    }
+
+    animate();
   }, []);
+
   return (
     <>
       <IntroSection />

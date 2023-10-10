@@ -1,6 +1,4 @@
-@use '../../../../../styles/globals';
-@use '../../../../../styles/utils';
-@use '../../../../../styles/components';
+@use '../../../../../styles';
 @use '../../../../app/(home)/styles/mixins';
 
 
@@ -36,29 +34,29 @@
             }
 
             &_layer {
-                @include globals.flexCenter(column);
+                @include styles.flexCenter(column);
                 text-align: center;
-                padding: .5rem 2rem 0;
+                padding: .5rem 1rem 0;
                 position: absolute;
                 bottom: 0;
                 left: 0;
                 width: 100%;
                 height: 100%;
-                    color: var(--color-white);
+                color: var(--color-white);
                 background: linear-gradient(rgba(0, 0, 0, 0.1), var(--primary-color));
                 transform: translateY(100%);
                 transition: .5s ease;
 
                 h4 {
-                    font-size: 2rem;
-                    font-weight: utils.fontWeight("bold-sm");
+                    font-size: map-get($map:styles.$fontSize , $key: "lg");
+                    font-weight: styles.fontWeight("bold-sm");
                 }
 
                 p {
-                    font-size: 1rem;
+                    font-size: map-get($map: styles.$fontSize , $key: "sm");
                     margin: .2rem 0 .5rem;
                     display: -webkit-box;
-                    height: fit-content;
+                    // height: fit-content;
                     -webkit-line-clamp: 5;
                     text-overflow: ellipsis;
                     line-height: 1.3;
@@ -74,7 +72,7 @@
 
                 a i,
                 a svg {
-                    font-size: 2rem;
+                    font-size: 1rem;
                     color: var(--color-background);
                 }
             }

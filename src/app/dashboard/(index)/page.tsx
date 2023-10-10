@@ -1,12 +1,7 @@
-<<<<<<< HEAD:app/dashboard/(index)/page.tsx
-"use client"
+"use client";
 
-import React, {useState} from "react";
-import Insight from "./components/Insight";
-=======
-import React from "react";
-import Insight from "../../../components/dashboard/index/Insight";
->>>>>>> e480366 (refactored code):src/app/dashboard/(index)/page.tsx
+import React, { useState } from "react";
+import Insight from "@/components/dashboard/index/Insight";
 import {
   FaFacebook,
   FaGithub,
@@ -21,11 +16,11 @@ import {
 import { BsCodeSlash } from "react-icons/bs";
 import { SiAzuredevops } from "react-icons/si";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { Header, Modal } from ".@/components/dashboard/common";
+import { Header, Modal } from "@/components/dashboard/common";
 import "./index.scss";
 
-const page = () => {
- const {isVisible,setIsVisible} = useState(false)
+const Home = () => {
+  const { isVisible, setIsVisible } = useState(false);
   const insightReports = [
     {
       title: "Total Projects",
@@ -76,10 +71,10 @@ const page = () => {
       <div className="page__content">
         <h2>Recent Projects</h2>
         <table></table>
-        <Modal onClose={()=>setIsVisible(false)} isVisible={isVisible} />
+        <Modal onClose={() => setIsVisible(false)} isVisible={isVisible} />
       </div>
     </div>
   );
 };
 
-export default page;
+export default Home;

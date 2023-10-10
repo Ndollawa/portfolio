@@ -1,3 +1,3 @@
 export const config = {
-  baseURL: "https://backend.getlinked.ai",
+  baseURL: "http://localhost:3500",
 };
