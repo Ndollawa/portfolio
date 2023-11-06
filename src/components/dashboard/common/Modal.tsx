@@ -22,7 +22,7 @@ const Modal = ({ title }: ModalProps) => {
         trigger?.current?.contains(target)
       )
         return;
-      setModalOpen(true);
+      setModalOpen(false);
     };
     document.addEventListener("click", clickHandler);
     return () => document.removeEventListener("click", clickHandler);

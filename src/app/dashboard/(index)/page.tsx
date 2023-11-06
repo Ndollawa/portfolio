@@ -16,7 +16,12 @@ import {
 import { BsCodeSlash } from "react-icons/bs";
 import { SiAzuredevops } from "react-icons/si";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { Header, Modal } from "@/components/dashboard/common";
+import {
+  Analytics,
+  Header,
+  Modal,
+  RecentUpdate,
+} from "@/components/dashboard/common";
 import "./index.scss";
 
 const Home = () => {
@@ -50,28 +55,32 @@ const Home = () => {
 
   return (
     <div className="page">
-      <Header title="Dashbord" />
-
-      <div className="insight">
-        {insightReports?.map(
-          ({ title, icon, counter, color, progress, timeAgo }, i) => (
-            <Insight
-              key={i}
-              title={title}
-              color={color}
-              icon={icon}
-              counter={counter}
-              progress={progress}
-              timeAgo={timeAgo}
-            />
-          )
-        )}
+      <Header title="Dashboard" />
+      <div className="data-analytics">
+        <div className="insight">
+          {insightReports?.map(
+            ({ title, icon, counter, color, progress, timeAgo }, i) => (
+              <Insight
+                key={i}
+                title={title}
+                color={color}
+                icon={icon}
+                counter={counter}
+                progress={progress}
+                timeAgo={timeAgo}
+              />
+            )
+          )}
+        </div>
+        <div className="side-report">
+          <RecentUpdate />
+          <Analytics />
+        </div>
       </div>
-
       <div className="page__content">
         <h2>Recent Projects</h2>
         <table></table>
-        <Modal onClose={() => setIsVisible(false)} isVisible={isVisible} />
+        {/* <Modal /> */}
       </div>
     </div>
   );

@@ -1,152 +1,177 @@
-@use './variables' as var;
+@use "./variables" as var;
 
-
-@mixin flexCenter($dir:row){
-
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: $dir;
+@mixin flexCenter($dir: row) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $dir;
 }
 
-@mixin gridCenter(){
-    display:grid;
-    justify-content: center;
-    align-items: center;
-   
+@mixin gridCenter() {
+  display: grid;
+  justify-content: center;
+  align-items: center;
 }
 
-@mixin breakPointsUp($breakPoint){
-    @media screen and (min-width:$breakPoint){
-        @content;
+@mixin breakPointsUp($breakPoint) {
+  @media screen and (min-width: $breakPoint) {
+    @content;
+  }
+}
+
+@mixin breakPointsDown($breakPoint) {
+  @media screen and (max-width: $breakPoint) {
+    @content;
+  }
+}
+
+@mixin flexLayout($label, $count) {
+  @if ($label != "default") {
+    .col-#{$label}-#{$count} {
+      width: calc((100% / 12) * $count);
+      box-sizing: border-box;
     }
-}
-
-@mixin breakPointsDown($breakPoint){
-    @media screen and (max-width:$breakPoint){
-        @content;
+  } @else {
+    .col-#{$count} {
+      width: calc((100% / 12) * $count);
+      box-sizing: border-box;
     }
+  }
 }
 
-@mixin flexLayout($label, $count){
-    @if($label != "default"){
-        .col-#{$label}-#{$count} {
-            width: calc((100% /12)* $count);
-            box-sizing: border-box;
-         }
-    }@else{ 
-        .col-#{$count} {
-            width: calc((100% /12)* $count);
-            box-sizing: border-box;
-         }   
+@mixin flexLayoutOffset($label, $count) {
+  @if ($label != "default") {
+    .col-#{$label}-offset-#{$count} {
+      width: calc((100% / 12) * $count);
+      box-sizing: border-box;
     }
-}
-
-@mixin flexLayoutOffset($label, $count){
-    @if($label != "default"){
-        .col-#{$label}-offset-#{$count} {
-            width: calc((100% /12)* $count);
-            box-sizing: border-box;
-            
-         }
-    }@else{ 
-        .col-offset-#{$count} {
-        width: calc((100% /12)* $count);
-            box-sizing: border-box;
-         }   
+  } @else {
+    .col-offset-#{$count} {
+      width: calc((100% / 12) * $count);
+      box-sizing: border-box;
     }
+  }
 }
 
-@mixin flexLayoutGutter($label, $count){
-  
-        .#{$label}-#{$count}>* {
-            padding: $count* var.$baseGutter!important;  
-         }
-    
-         .#{$label}-#{$count} {
-           margin: - $count* var.$baseGutter!important;
-         }  
+@mixin flexLayoutGutter($label, $count) {
+  .#{$label}-#{$count} > * {
+    padding: $count * var.$baseGutter !important;
+  }
+
+  .#{$label}-#{$count} {
+    margin: -$count * var.$baseGutter !important;
+  }
 }
-@mixin flexLayoutGutterX($label, $count){
-  
-        .#{$label}-#{$count}>* {
-            padding-inline: $count* var.$baseGutter!important;  
-         }
-    
-         .#{$label}-#{$count} {
-           margin-inline: - $count* var.$baseGutter!important;
-         }  
+@mixin flexLayoutGutterX($label, $count) {
+  .#{$label}-#{$count} > * {
+    padding-inline: $count * var.$baseGutter !important;
+  }
+
+  .#{$label}-#{$count} {
+    margin-inline: -$count * var.$baseGutter !important;
+  }
 }
-@mixin flexLayoutGutterY($label, $count){
-  
-        .#{$label}-#{$count}>* {
-            padding-block: $count* var.$baseGutter!important;  
-         }
-    
-         .#{$label}-#{$count} {
-           margin-block: - $count* var.$baseGutter!important;
-         }  
+@mixin flexLayoutGutterY($label, $count) {
+  .#{$label}-#{$count} > * {
+    padding-block: $count * var.$baseGutter !important;
+  }
+
+  .#{$label}-#{$count} {
+    margin-block: -$count * var.$baseGutter !important;
+  }
 }
 
-
-@mixin gridLayout( $tempType,$label, $count){
-    @if($label != "default"){
-        .grid-#{$tempType}-#{$label}-#{$count} {
-            grid-template-#{$tempType}: repeat($count,1fr);
-         }
-     }@else{
-        .grid-#{$tempType}-#{$count} {
-            grid-template-#{$tempType}: repeat($count,1fr);
-         }
+@mixin gridLayout($tempType, $label, $count) {
+  @if ($label != "default") {
+    .grid-#{$tempType}-#{$label}-#{$count} {
+      grid-template-#{$tempType}: repeat($count, 1fr);
     }
+  } @else {
+    .grid-#{$tempType}-#{$count} {
+      grid-template-#{$tempType}: repeat($count, 1fr);
+    }
+  }
 }
 
+@mixin modifiers(
+  $map,
+  $attribute,
+  $prefix: "-",
+  $separator: "-",
+  $base: "base"
+) {
+  @each $key, $value in $map {
+    &#{if($key != $base, #{$prefix}#{$key}, '')} {
+      @if type-of($value) == "map" {
+        @include modifiers($value, $attribute, $separator);
+      } @else {
+        #{$attribute}: $value;
+      }
+    }
+  }
+}
 
-@mixin modifiers($map, $attribute, $prefix: '-', $separator: '-', $base: 'base') {
-    @each $key, $value in $map {
-      &#{if($key != $base, #{$prefix}#{$key}, '')} {
-        @if type-of($value) == 'map' {
-          @include modifiers($value, $attribute, $separator);
-        }
-        @else {
-          #{$attribute}: $value;
+@mixin generateColorClasses($colors) {
+  @each $key, $color in $colors {
+    @each $shade
+      in ("100", "200", "300", "400", "500", "600", "700", "800", "900")
+    {
+      @each $class in ("text", "bg", "border") {
+        .#{$class}-#{$key}-#{$shade} {
+          @if ($class == "text") {
+            color: $color !important;
+          } @else if($class == "bg") {
+            background-color: $color !important;
+          } @else if($class == "border") {
+            border-color: $color !important;
+          }
         }
       }
     }
   }
-
-  @mixin generateColorClasses ($colors){
-    @each $key,$color in $colors{
-        @each $shade in ("100","200","300", "400", "500", "600", "700", "800", "900"){
-        @each $class in ("text","bg"){
-                .#{$class}-#{$key}-#{$shade} {
-                    @if($class == "text"){
-                        color: $color !important;
-                    }@else if($class == "bg"){
-                        background-color:$color !important;
-                    }
-                 }
-            
-            }
-        }
-    }
-    }
-
-
-  @mixin theme($name, $color) {
-    // Define colors in your theme
-    $primary: $color;
-    $secondary: lighten(adjust-hue($color, 20), 10%);
-    // Add your classes with css colors added
-    .#{$name} {
-      .element {
-        color: $primary;
-      }
-      .other-element {
-        background: $secondary;
+}
+@mixin generateGridColumnClasses() {
+  @for $i from 1 through 12 {
+    @for $j from /*$i+1*/ 1 through 12 {
+      .col-span-#{$i}\/#{$j} {
+        grid-column: $i/$j;
       }
     }
   }
+}
+@mixin generateGridRowClasses() {
+  @for $i from 1 through 12 {
+    @for $j from /*$i+1*/ 1 through 12 {
+      .row-span-#{$i}\/#{$j} {
+        grid-row: $i/$j;
+      }
+    }
+  }
+}
+@mixin generateWidthClasses() {
+  @for $i from 1 through 12 {
+    @for $j from /*$i+1*/ 1 through 12 {
+      .w-#{$i}\/#{$j} {
+        flex-basis: $i/$j;
+      }
+    }
+  }
+}
+
+@mixin theme($name, $color) {
+  // Define colors in your theme
+  $primary: $color;
+  $secondary: lighten(adjust-hue($color, 20), 10%);
+  // Add your classes with css colors added
+  .#{$name} {
+    .element {
+      color: $primary;
+    }
+    .other-element {
+      background: $secondary;
+    }
+  }
+}
 // .grid{
 //     grid-template-columns: ;
 //     grid-template-rows: ;

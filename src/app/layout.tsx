@@ -1,6 +1,6 @@
 // import '../styles/main.scss'
 import { Poppins } from "next/font/google";
-
+import { ToastContainer } from "react-toastify";
 const poppins = Poppins({
   weight: ["100", "200", "400", "500", "600", "700", "800", "900"],
   subsets: ["latin"],
@@ -23,7 +23,10 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
       </head>
-      <body className={poppins.className + " scrollbar"}>{children}</body>
+      <body className={poppins.className + " scrollbar"}>
+        <ToastContainer />
+        {children}
+      </body>
     </html>
   );
 }

@@ -1,122 +1,219 @@
-@use '../../../../styles/globals';
-@use '../../../../styles/utils';
-@use '../../../../styles/components';
+@use "../../../../styles/globals";
+@use "../../../../styles/utils";
+@use "../../../../styles/components";
 
-.main__content{
+.main__content {
+  .data-analytics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: minmax(2, auto);
+    gap: 0.8rem;
+
     .insight {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin-block: 1rem;
-    
-            &__card {
-                background: var(--color-white);
-                padding: var(--card-padding);
-                margin-top: 1rem;
-                border-radius: var(--card-border-radius);
-                box-shadow: var(--box-shadow);
-                transition: .3s ease;
-    
-                &:hover {
-                    box-shadow: none;
-                }
-    
-                span {
-                    @include globals.flexCenter;
-                    background: var(--color-primary);
-                    color: var(--color-white);
-                    padding: 0.5rem;
-                    width: utils.pxToRem(40);
-                    height: utils.pxToRem(40);
-                    border-radius: 50%;
-                    font-size: utils.pxToRem(14);
-                    line-height: 1.2
-    
-    
-                }
-    
-                &--content {
-                    @include globals.flexCenter;
-                    justify-content: space-between;
-                    padding: 0.5rem;
-    
-                    &__metrics {
-                        h3 {
-                            // margin: 1rem 0 0.6rem;
-                            font-size: utils.pxToRem(14);
-                            line-height: 1.2;
-                        }
-                    }
-    
-                    &__progress {
-                        position: relative;
-                        width: utils.pxToRem(70);
-                        height: utils.pxToRem(70);
-                        border-radius: 50%;
-                        padding: 0.2rem;
-    
-                        svg,
-                        i {
-                            width: 2rem;
-                            height: 2rem;
-                            padding: 0.8rem;
-                            color: var(--color-white) !important;
-    
-    
-                            circle {
-                                fill: none;
-                                stroke: var(--color-primary);
-                                stroke-width: 10;
-                                stroke-linecap: round;
-                                stroke-dashoffset: 110;
-                                stroke-dashoffset: 92;
-                                transform: translate(5px);
-    
-                            }
-                        }
-    
-                        .number {
-                            position: absolute;
-                            @include globals.flexCenter;
-                            top: .3rem;
-                            left: .7rem;
-                            height: 100%;
-                            width: 100%;
-                        }
-                    }
-                }
-    
-            }
-    
-            small {
-                display: block;
-                margin-top: .6rem;
-            }
-    
-            @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "lg")) {
-                grid-template-columns: 1fr;
-                gap: 0;
-            }
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: minmax(2, auto);
+      grid-row: 1/2;
+      grid-column: 1/4;
+      gap: 1rem;
+      margin-block: 1rem;
+
+      &__card {
+        background: var(--color-white);
+        padding: var(--card-padding);
+        margin-top: 1rem;
+        height: 200px;
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--box-shadow);
+        transition: 0.3s ease;
+
+        &:hover {
+          box-shadow: none;
         }
-    
-        #{&}__content {
-    
-            h2 {
-                margin: 0.75rem;
-            }
-    
-            @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "lg")) {
-                display: flex;
-                justify-content: center;
-                margin: 2rem 0 0 8.8rem;
-                padding: 2.5rem;
-                width: 94%;
-            }
-    
-            @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
-                position: relative;
-                margin: 3rem 0 0 0;
-                width: 100%;
-            }
+
+        span {
+          @include globals.flexCenter;
+          background: var(--color-primary);
+          color: var(--color-white);
+          padding: 0.5rem;
+          width: utils.pxToRem(40);
+          height: utils.pxToRem(40);
+          border-radius: 50%;
+          font-size: utils.pxToRem(14);
+          line-height: 1.2;
         }
+
+        &--content {
+          @include globals.flexCenter;
+          justify-content: space-between;
+          padding: 0.5rem;
+
+          &__metrics {
+            h3 {
+              // margin: 1rem 0 0.6rem;
+              font-size: utils.pxToRem(14);
+              line-height: 1.2;
+            }
+          }
+
+          &__progress {
+            position: relative;
+            width: utils.pxToRem(70);
+            height: utils.pxToRem(70);
+            border-radius: 50%;
+            padding: 0.2rem;
+
+            svg,
+            i {
+              width: 2rem;
+              height: 2rem;
+              padding: 0.8rem;
+              color: var(--color-white) !important;
+
+              circle {
+                fill: none;
+                stroke: var(--color-primary);
+                stroke-width: 10;
+                stroke-linecap: round;
+                stroke-dashoffset: 110;
+                stroke-dashoffset: 92;
+                transform: translate(5px);
+              }
+            }
+
+            .number {
+              position: absolute;
+              @include globals.flexCenter;
+              top: 0.3rem;
+              left: 0.7rem;
+              height: 100%;
+              width: 100%;
+            }
+          }
+        }
+      }
+
+      small {
+        display: block;
+        margin-top: 0.6rem;
+      }
+
+      @include globals.breakPointsDown(
+        map-get(globals.$screenBreakPoints, "lg")
+      ) {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+    }
+
+    .recent__updates {
+      h2 {
+        margin-bottom: 0.8rem;
+      }
+
+      .updates {
+        background: var(--color-white);
+        padding: var(--card-padding);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--box-shadow);
+        transition: 0.3s ease;
+
+        &:hover {
+          box-shadow: none;
+        }
+
+        .update__box {
+          display: grid;
+          grid-template-columns: 2.6rem auto;
+          gap: 1rem;
+          margin-bottom: 1rem;
+        }
+      }
+    }
+
+    .analytics {
+      margin-top: 2rem;
+
+      h2 {
+        margin-bottom: 0.8rem;
+      }
+
+      .item {
+        background: var(--color-white);
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 0.8rem;
+        padding: 1.4rem var(--card-padding);
+        border-radius: var(--border-radius-3);
+        box-shadow: var(--box-shadow);
+        transition: 0.3s ease;
+
+        &:hover {
+          box-shadow: none;
+        }
+
+        .icon {
+          padding: 0.6rem;
+          color: var(--color-white);
+          border-radius: 50%;
+          background: var(--color-primary);
+          display: flex;
+        }
+
+        .item__description {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          margin: 0;
+          width: 100%;
+
+          #{&}--content {
+          }
+        }
+      }
+
+      .add__project {
+        background-color: transparent;
+        border: 2px dashed var(--color-primary);
+        color: var(--color-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        div {
+          display: flex;
+          align-items: center;
+          gap: 0.6rem;
+
+          h3 {
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+  #{&}__content {
+    h2 {
+      margin: 0.75rem;
+    }
+
+    @include globals.breakPointsDown(
+      map-get(globals.$screenBreakPoints, "lg")
+    ) {
+      display: flex;
+      justify-content: center;
+      margin: 2rem 0 0 8.8rem;
+      padding: 2.5rem;
+      width: 94%;
+    }
+
+    @include globals.breakPointsDown(
+      map-get(globals.$screenBreakPoints, "md")
+    ) {
+      position: relative;
+      margin: 3rem 0 0 0;
+      width: 100%;
+    }
+  }
 }

@@ -1,5 +1,5 @@
 @use 'sass:math';
-@use './fonts' as fonts;
+@use '../globals/variables' as var;
 
 
 
@@ -14,7 +14,7 @@
  }
 
  @function fontWeight($weightName){
-    @return map-get(fonts.$fontWeights,$weightName);
+    @return map-get(var.$fontWeights,$weightName);
  }
 
  @function lightComp($color){

@@ -7,5 +7,5 @@ export interface PostInterface {
   status: string | undefined;
   category: string | undefined;
   tags: string[] | undefined;
-  image: string | File | undefined;
+  image: string | File | FileList | undefined | null;
 }

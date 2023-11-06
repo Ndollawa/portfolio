@@ -179,7 +179,7 @@ export const MenuItems: NavLinks = [
     id: 18,
     title: "Post Categories",
     type: "link",
-    url: "/dashboard/category",
+    url: "/dashboard/categories",
     icon: <IoMdPricetags />,
     isActive: false,
     isOpen: false,

@@ -11,8 +11,9 @@ button{
             cursor: pointer;
             display: inline-block;
             border: 0;
+            font-size:.8rem;
             user-select: none;
-            padding: globals.$basePadding * 2;
+            padding: globals.$basePadding * 2 globals.$basePadding * 4;
             border-radius: globals.$baseBorder* 4;
             background-color: $bgColor;
 }
@@ -33,6 +34,32 @@ button{
     }
    
 }
+
+.btn-xs{
+font-size:map-get(globals.$fontSizes,"xs");
+padding:globals.$basePadding * 1, globals.$basePadding * 2;
+}
+.btn-sm{
+font-size:map-get(globals.$fontSizes,"sm");
+padding:globals.$basePadding * 2, globals.$basePadding * 4;
+}
+.btn-md{
+font-size:map-get(globals.$fontSizes,"normal");
+padding:globals.$basePadding * 3, globals.$basePadding * 6;
+}
+.btn-lg{
+font-size:map-get(globals.$fontSizes,"lg");
+padding:globals.$basePadding * 4, globals.$basePadding * 8;
+}
+.btn-xl{
+font-size:map-get(globals.$fontSizes,"xl");
+padding:globals.$basePadding * 5, globals.$basePadding * 10;
+}
+.btn-xxl{
+font-size:map-get(globals.$fontSizes,"2xl");
+padding:globals.$basePadding * 6, globals.$basePadding * 12;
+}
+
 .btn:hover{
     opacity: 0.8;
 }

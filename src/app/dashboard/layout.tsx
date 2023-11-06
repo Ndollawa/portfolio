@@ -15,18 +15,17 @@ import "./dashboard.scss";
 
 const AdminLayout = ({ children }: { children: React.ReactNode }) => {
   const [themeDark, setThemeDark] = useState(false);
+  const [toggleMenu, setToggleMenu] = useState(false);
 
   return (
     <div className={`app__dashboard ${themeDark ? "dark" : null}`}>
+      <div className="nav">
+        <TopNav setToggleMenu={setToggleMenu} setThemeDark={setThemeDark} />
+      </div>
       <SideBar />
       <main className="main">
         <div className="main__content">{children}</div>
       </main>
-      <div className="right__nav">
-        <TopNav setThemeDark={setThemeDark} />
-        <RecentUpdate />
-        <Analytics />
-      </div>
     </div>
   );
 };
