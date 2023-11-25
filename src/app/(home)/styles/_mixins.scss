@@ -1,25 +1,25 @@
-  @mixin heading($size: null) {
-      font-size: 2rem;
-      font-weight: 900;
-      display: flex;
-      width: 100%;
-      color: var(--color-dark)!important;
-      place-content: center;
-      align-items: center;
+@mixin heading($size: null) {
+  font-size: 2rem;
+  font-weight: 900;
+  display: flex;
+  width: 100%;
+  color: var(--color-dark);
+  place-content: center;
+  align-items: center;
 
-      margin-bottom:2rem;
+  margin-bottom: 2rem;
 
-      &::before,
-      &::after {
-          content: '||';
-          margin-inline: .4rem;
-          color: var(--primary-color)!important;
-          font-size: 1rem;
-          // font-weight: 800;
-      }
-
-      span {
-          color: var(--primary-color)!important;
-          margin-inline: .8rem;
-      }
+  &::before,
+  &::after {
+    content: "||";
+    margin-inline: 0.4rem;
+    color: var(--primary-color);
+    font-size: 1rem;
+    // font-weight: 800;
   }
+
+  span {
+    color: var(--primary-color);
+    margin-inline: 0.8rem;
+  }
+}

@@ -11,7 +11,7 @@ import {
   RecentUpdate,
   SideBar,
 } from "@/components/dashboard/common";
-import "./dashboard.scss";
+import "./styles/styles.scss";
 
 const AdminLayout = ({ children }: { children: React.ReactNode }) => {
   const [themeDark, setThemeDark] = useState(false);

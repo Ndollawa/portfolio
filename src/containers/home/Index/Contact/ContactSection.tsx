@@ -1,17 +1,16 @@
 import React from "react";
-import "./Contact.scss";
 
 const ContactSection = () => {
   return (
     <section className="contact" id="contact">
-      <h2 className="contact__heading">
+      <h2 className="contact__heading text-white">
         Contact <span>Me!</span>
       </h2>
       <div className="contact__container container">
-        <div className="row gutter-2">
-          <div className="col-md-4 col-sm-12">
+        <div className="row gutter-5">
+          <div className="md:col-4 sm:col-12">
             <div className="contact__content">
-              <p className="contact__content--text">
+              <p className="contact__content--text text-white">
                 There are many variations of passages of lorem ipsum available
                 the majority have alteration in some form by injected humour.
               </p>
@@ -23,10 +22,10 @@ const ContactSection = () => {
               </div>
             </div>
           </div>
-          <div className="col-md-8 col-sm-12 col-xs-12">
+          <div className="md:col-8 sm:col-12 xs:col-12">
             <form className=" contact__form">
-              <div className="contact__form--box row gutter-x-2">
-                <div className="col-md-6 col-sm-12 col-xs-12">
+              <div className="contact__form--box row gutter-2">
+                <div className="md:col-6 sm:col-12 xs:col-12 p-2">
                   <div className="form-group">
                     <input
                       className="form-control"
@@ -36,7 +35,7 @@ const ContactSection = () => {
                     />
                   </div>
                 </div>
-                <div className="col-md-6 col-sm-12 col-xs-12">
+                <div className="md:col-6 sm:col-12 xs:col-12 p-2">
                   <div className="form-group">
                     <input
                       className="form-control"
@@ -46,7 +45,7 @@ const ContactSection = () => {
                     />
                   </div>
                 </div>
-                <div className="col-md-6 col-sm-12 col-xs-12">
+                <div className="md:col-6 sm:col-12 xs:col-12 p-2">
                   <div className="form-group">
                     <input
                       className="form-control"
@@ -56,7 +55,7 @@ const ContactSection = () => {
                     />
                   </div>
                 </div>
-                <div className="col-md-6 col-sm-12 col-xs-12">
+                <div className="md:col-6 sm:col-12 xs:col-12 p-2">
                   <div className="form-group">
                     <input
                       className="form-control"
@@ -66,12 +65,12 @@ const ContactSection = () => {
                     />
                   </div>
                 </div>
-                <div className="col-md-12 col-xs-12">
+                <div className="md:col-12 xs:col-12 p-2">
                   <div className="form-group">
                     <textarea placeholder="Message" name="message"></textarea>
                   </div>
                 </div>
-                <div className="col-md-12 d-grid">
+                <div className="md:col-12 d-grid">
                   <button type="submit" className="btn cta place-self-end">
                     Send a Message
                   </button>

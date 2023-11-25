@@ -14,76 +14,88 @@
 }
 
 @mixin breakPointsUp($breakPoint) {
-  @media screen and (min-width: $breakPoint) {
+  @if ($breakPoint == "default") {
     @content;
+  } @else {
+    @media screen and (min-width: $breakPoint) {
+      @content;
+    }
   }
 }
 
 @mixin breakPointsDown($breakPoint) {
-  @media screen and (max-width: $breakPoint) {
+  @if ($breakPoint == "default") {
     @content;
+  } @else {
+    @media screen and (max-width: $breakPoint) {
+      @content;
+    }
   }
 }
 
-@mixin flexLayout($label, $count) {
+@mixin flexLayout($count, $label: "default") {
   @if ($label != "default") {
-    .col-#{$label}-#{$count} {
-      width: calc((100% / 12) * $count);
-      box-sizing: border-box;
+    .#{$label}\:col-#{$count} {
+      flex-basis: calc((100% / 12) * $count);
+    }
+    .#{$label}\:col-offset-#{$count} {
+      margin-left: calc((100% / 12) * $count);
     }
   } @else {
     .col-#{$count} {
-      width: calc((100% / 12) * $count);
-      box-sizing: border-box;
+      flex-basis: calc((100% / 12) * $count);
     }
-  }
-}
-
-@mixin flexLayoutOffset($label, $count) {
-  @if ($label != "default") {
-    .col-#{$label}-offset-#{$count} {
-      width: calc((100% / 12) * $count);
-      box-sizing: border-box;
-    }
-  } @else {
     .col-offset-#{$count} {
-      width: calc((100% / 12) * $count);
-      box-sizing: border-box;
+      margin-left: calc((100% / 12) * $count);
     }
   }
 }
 
-@mixin flexLayoutGutter($label, $count) {
-  .#{$label}-#{$count} > * {
-    padding: $count * var.$baseGutter !important;
-  }
-
-  .#{$label}-#{$count} {
-    margin: -$count * var.$baseGutter !important;
+@mixin flexLayoutGutter($count, $breakpoint: "default", $scheme: "light") {
+  @each $label in ("gutter", "gutter-x", "gutter-y") {
+    @for $count from 1 through 30 {
+      @if ($breakpoint == "default") {
+        @if ($label == "gutter") {
+          .#{$label}-#{$count} {
+            padding: $count * var.$baseGutter !important;
+            margin: -$count * var.$baseGutter !important;
+          }
+        } @else if ($label == "gutter-x") {
+          .#{$label}-#{$count} {
+            padding-inline: $count * var.$baseGutter !important;
+            margin-inline: -$count * var.$baseGutter !important;
+          }
+        } @else {
+          .#{$label}-#{$count} {
+            padding-block: $count * var.$baseGutter !important;
+            margin-block: -$count * var.$baseGutter !important;
+          }
+        }
+      } @else {
+        @if ($label == "gutter") {
+          .#{$breakpoint}\:#{$label}-#{$count} {
+            padding: $count * var.$baseGutter !important;
+            margin: -$count * var.$baseGutter !important;
+          }
+        } @else if ($label == "gutter-x") {
+          .#{$breakpoint}\:#{$label}-#{$count} {
+            padding-inline: $count * var.$baseGutter !important;
+            margin-inline: -$count * var.$baseGutter !important;
+          }
+        } @else {
+          .#{$breakpoint}\:#{$label}-#{$count} {
+            padding-block: $count * var.$baseGutter !important;
+            margin-block: -$count * var.$baseGutter !important;
+          }
+        }
+      }
+    }
   }
 }
-@mixin flexLayoutGutterX($label, $count) {
-  .#{$label}-#{$count} > * {
-    padding-inline: $count * var.$baseGutter !important;
-  }
 
-  .#{$label}-#{$count} {
-    margin-inline: -$count * var.$baseGutter !important;
-  }
-}
-@mixin flexLayoutGutterY($label, $count) {
-  .#{$label}-#{$count} > * {
-    padding-block: $count * var.$baseGutter !important;
-  }
-
-  .#{$label}-#{$count} {
-    margin-block: -$count * var.$baseGutter !important;
-  }
-}
-
-@mixin gridLayout($tempType, $label, $count) {
+@mixin gridLayout($tempType, $count, $label: "default") {
   @if ($label != "default") {
-    .grid-#{$tempType}-#{$label}-#{$count} {
+    .#{$label}\:grid-#{$tempType}-#{$count} {
       grid-template-#{$tempType}: repeat($count, 1fr);
     }
   } @else {
@@ -111,54 +123,189 @@
   }
 }
 
-@mixin generateColorClasses($colors) {
+@mixin generateColorClasses($colors, $breakpoint: "default", $scheme: "light") {
+  .bg-transpartent {
+    background-color: transparent;
+  }
+  .text-transpartent {
+    color: transparent;
+  }
+  .border-transpartent {
+    border-color: transparent;
+  }
   @each $key, $color in $colors {
     @each $shade
       in ("100", "200", "300", "400", "500", "600", "700", "800", "900")
     {
       @each $class in ("text", "bg", "border") {
-        .#{$class}-#{$key}-#{$shade} {
-          @if ($class == "text") {
-            color: $color !important;
-          } @else if($class == "bg") {
-            background-color: $color !important;
-          } @else if($class == "border") {
-            border-color: $color !important;
+        @if ($scheme == "light") {
+          @if ($breakpoint == "default") {
+            .#{$class}-#{$key}-#{$shade} {
+              @if ($class == "text") {
+                color: $color;
+              } @else if($class == "bg") {
+                background-color: $color;
+              } @else if($class == "border") {
+                border-color: $color;
+              }
+            }
+          } @else {
+            .#{$breakpoint}\:#{$class}-#{$key}-#{$shade} {
+              @if ($class == "text") {
+                color: $color;
+              } @else if($class == "bg") {
+                background-color: $color;
+              } @else if($class == "border") {
+                border-color: $color;
+              }
+            }
+          }
+        } @else {
+          @if ($breakpoint == "default") {
+            .dark\:#{$class}-#{$key}-#{$shade} {
+              @if ($class == "text") {
+                color: $color;
+              } @else if($class == "bg") {
+                background-color: $color;
+              } @else if($class == "border") {
+                border-color: $color;
+              }
+            }
+          } @else {
+            .dark\:#{$breakpoint}\:#{$class}-#{$key}-#{$shade} {
+              @if ($class == "text") {
+                color: $color;
+              } @else if($class == "bg") {
+                background-color: $color;
+              } @else if($class == "border") {
+                border-color: $color;
+              }
+            }
           }
         }
       }
     }
   }
 }
-@mixin generateGridColumnClasses() {
+
+@mixin generateGridAndWidthClasses($breakpoint: "default", $scheme: "light") {
   @for $i from 1 through 12 {
-    @for $j from /*$i+1*/ 1 through 12 {
-      .col-span-#{$i}\/#{$j} {
-        grid-column: $i/$j;
+    @if ($breakpoint == "default") {
+      .col-span-#{$i} {
+        grid-column: $i;
+      }
+      .row-span-#{$i} {
+        grid-row: $i;
+      }
+    } @else {
+      .#{$breakpoint}\:col-span-#{$i} {
+        grid-column: $i;
+      }
+      .#{$breakpoint}\:row-span-#{$i} {
+        grid-row: $i;
       }
     }
-  }
-}
-@mixin generateGridRowClasses() {
-  @for $i from 1 through 12 {
-    @for $j from /*$i+1*/ 1 through 12 {
-      .row-span-#{$i}\/#{$j} {
-        grid-row: $i/$j;
-      }
-    }
-  }
-}
-@mixin generateWidthClasses() {
-  @for $i from 1 through 12 {
-    @for $j from /*$i+1*/ 1 through 12 {
-      .w-#{$i}\/#{$j} {
-        flex-basis: $i/$j;
+    @for $j from 1 through 12 {
+      @if ($breakpoint == "default") {
+        .col-span-#{$i}\/#{$j} {
+          grid-column: #{$i}/ #{$j};
+        }
+        .row-span-#{$i}\/#{$j} {
+          grid-row: #{$i}/ #{$j};
+        }
+        .w-#{$i}\/#{$j} {
+          width: #{$i}/ #{$j};
+        }
+      } @else {
+        .#{$breakpoint}\:col-span-#{$i}\/#{$j} {
+          grid-column: #{$i}/ #{$j};
+        }
+        .#{$breakpoint}\:row-span-#{$i}\/#{$j} {
+          grid-row: #{$i}/ #{$j};
+        }
+        .#{$breakpoint}\:w-#{$i}\/#{$j} {
+          width: #{$i}/ #{$j};
+        }
       }
     }
   }
 }
 
-@mixin theme($name, $color) {
+@mixin generateUtilityClasses($breakpoint: "default", $scheme: "light") {
+  @each $property, $map in var.$rangeBasedUtilityClasses {
+    $prefix: map-get($map, "prefix");
+    $values: map-get($map, "values");
+    $baseValue: map-get($map, "baseValue");
+    @for $k from map-get($values, "start") through map-get($values, "end") {
+      @if ($breakpoint == "default") {
+        @if ($k == "default") {
+          .#{$prefix} {
+            @if (map-has-key($map, "baseValue")) {
+              #{$property}: $baseValue * $k;
+            } @else {
+              #{$property}: $k;
+            }
+          }
+        } @else {
+          .#{$prefix}-#{$k} {
+            @if (map-has-key($map, "baseValue")) {
+              #{$property}: $baseValue * $k;
+            } @else {
+              #{$property}: $k;
+            }
+          }
+        }
+      } @else {
+        @if ($k == "default") {
+          .#{$breakpoint}\:#{$prefix} {
+            @if (map-has-key($map, "baseValue")) {
+              #{$property}: $baseValue * $k;
+            } @else {
+              #{$property}: $k;
+            }
+          }
+        } @else {
+          .#{$breakpoint}\:#{$prefix}-#{$k} {
+            @if (map-has-key($map, "baseValue")) {
+              #{$property}: $baseValue * $k;
+            } @else {
+              #{$property}: $k;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @each $vbproperty, $vbmap in var.$valueBasedUtilityClasses {
+    $vbprefix: map-get($vbmap, "prefix");
+    $vbvalues: map-get($vbmap, "values");
+    @each $vbk, $vbv in $vbvalues {
+      @if ($breakpoint == "default") {
+        @if ($vbk == "default") {
+          .#{$vbprefix} {
+            #{$vbproperty}: $vbv;
+          }
+        } @else {
+          .#{$vbprefix}-#{$vbk} {
+            #{$vbproperty}: $vbv;
+          }
+        }
+      } @else {
+        @if ($vbk == "default") {
+          .#{$breakpoint}\:#{$vbprefix} {
+            #{$vbproperty}: $vbv;
+          }
+        } @else {
+          .#{$breakpoint}\:#{$vbprefix}-#{$vbk} {
+            #{$vbproperty}: $vbv;
+          }
+        }
+      }
+    }
+  }
+}
+@mixin MakeTheme($name, $color) {
   // Define colors in your theme
   $primary: $color;
   $secondary: lighten(adjust-hue($color, 20), 10%);
@@ -172,10 +319,3 @@
     }
   }
 }
-// .grid{
-//     grid-template-columns: ;
-//     grid-template-rows: ;
-//     grid-column: ;
-//     grid-row: ;
-//     grid-column-start: ;
-// }

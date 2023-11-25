@@ -1,7 +1,8 @@
+import { RegisterOne, RegisterTwo } from "@/components/auth";
 import React from "react";
 
 const page = () => {
-  return <div>page</div>;
+  return <RegisterOne />;
 };
 
 export default page;

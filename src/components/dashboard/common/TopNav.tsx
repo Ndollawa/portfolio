@@ -18,6 +18,12 @@ function TopNav({ setThemeDark, setToggleMenu }: IProp) {
 
   return (
     <div className="top mb-5">
+      <div className="col-5 search">
+        <input
+          type="text"
+          className="form-control input-md  r-10  py-2 px-4 "
+        />
+      </div>
       <div className="mobile__menu" id="menu-btn">
         <svg
           width="19"

@@ -3,17 +3,18 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { TypeAnimation } from "react-type-animation";
-import "./Intro.scss";
+import { myPic, image } from "@/utils/images";
+import { poppins } from "@/utils/fonts";
 
 const IntroSection = () => {
   return (
     <section className="home" id="home">
       <div className="home__container container row">
         <div className="home__container--background"></div>
-        <div className="col-sm-12 col-md-6">
+        <div className="sm:col-12 md:col-6 md:pr-5 sm:px-0">
           <div className="home__container--intro">
             <span className="home__container--intro__topline">Hello</span>
-            <h1 className="mb-2">
+            <h1 className={`${poppins.className} mb-2`}>
               I&lsquo;m a{" "}
               <TypeAnimation
                 className="home__container--intro__multi-text"
@@ -47,21 +48,10 @@ const IntroSection = () => {
             </div>
           </div>
         </div>
-        <div className="col-sm-12 col-md-6">
+        <div className="sm:col-12 md:col-6">
           <div className="home__container--image">
-            <Image
-              src="/assets/images/images(20).png"
-              width={1200}
-              height={1200}
-              alt=""
-              id="splash"
-            />
-            <Image
-              src="/assets/images/ei_1686252170869-removebg.png"
-              width={1200}
-              height={1200}
-              alt=""
-            />
+            <Image src={image} width={400} height={400} alt="" id="splash" />
+            <Image src={myPic} width={400} height={400} alt="" />
           </div>
         </div>
       </div>

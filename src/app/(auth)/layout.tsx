@@ -1,5 +1,5 @@
-import "./authStyles.scss";
 import { Inter } from "next/font/google";
+import "./auth.scss";
 
 const inter = Inter({ subsets: ["latin"] });
 

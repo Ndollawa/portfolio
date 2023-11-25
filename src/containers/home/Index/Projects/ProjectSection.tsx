@@ -6,7 +6,6 @@ import {
   FaLinkedinIn,
   FaComments,
 } from "react-icons/fa";
-import "./Projects.scss";
 
 const ProjectSection = () => {
   return (
@@ -15,8 +14,8 @@ const ProjectSection = () => {
         Latest <span>Project</span>
       </h2>
 
-      <div className="project__container container gutter-3 mx-auto row">
-        <div className="col-xs-12 col-sm-2 col-md-6 col-lg-4">
+      <div className="project__container container gutter-2 row">
+        <div className="xs:col-12 sm:col-2 md:col-6 lg:col-4 p-2">
           <div className="project__container--box">
             <img src="assets/images/blog-1-1.png" alt="" />
             <div className="project__container--box_layer">
@@ -32,7 +31,7 @@ const ProjectSection = () => {
             </div>
           </div>
         </div>
-        <div className="col-xs-12 col-sm-2 col-md-6 col-lg-4">
+        <div className="xs:col-12 sm:col-2 md:col-6 lg:col-4 p-2">
           <div className="project__container--box">
             <img src="assets/images/blog-1-1.png" alt="" />
             <div className="project__container--box_layer">
@@ -48,7 +47,7 @@ const ProjectSection = () => {
             </div>
           </div>
         </div>
-        <div className="col-xs-12 col-sm-2 col-md-6 col-lg-4">
+        <div className="xs:col-12 sm:col-2 md:col-6 lg:col-4 p-2">
           <div className="project__container--box">
             <img src="assets/images/blog-1-1.png" alt="" />
             <div className="project__container--box_layer">
@@ -64,7 +63,7 @@ const ProjectSection = () => {
             </div>
           </div>
         </div>
-        <div className="col-xs-12 col-sm-2 col-md-6 col-lg-4">
+        <div className="xs:col-12 sm:col-2 md:col-6 lg:col-4 p-2">
           <div className="project__container--box">
             <img src="assets/images/blog-1-1.png" alt="" />
             <div className="project__container--box_layer">
@@ -80,7 +79,7 @@ const ProjectSection = () => {
             </div>
           </div>
         </div>
-        <div className="col-xs-12 col-sm-2 col-md-6 col-lg-4">
+        <div className="xs:col-12 sm:col-2 md:col-6 lg:col-4 p-2">
           <div className="project__container--box">
             <img src="assets/images/blog-1-1.png" alt="" />
             <div className="project__container--box_layer">
@@ -96,7 +95,7 @@ const ProjectSection = () => {
             </div>
           </div>
         </div>
-        <div className="col-xs-12 col-sm-2 col-md-6 col-lg-4">
+        <div className="xs:col-12 sm:col-2 md:col-6 lg:col-4 p-2">
           <div className="project__container--box">
             <img src="assets/images/blog-1-1.png" alt="" />
             <div className="project__container--box_layer">

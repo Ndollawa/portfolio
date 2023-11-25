@@ -1,368 +1,1676 @@
-@use '../../../../styles';
+@use "../../../../styles";
+
+@use "./mixins";
+
+@mixin darkTheme {
+  --color-background: hsl(220, 11%, 11%);
+  --color-white: hsl(202, 11%, 14%);
+  // --primary-color:var(--color-primary);
+  // --color-info-dark:#7d8da1;
+  --color-info-light: hsl(220, 27%, 89%);
+  --color-dark: hsl(233, 80%, 96%);
+  --color-dark-variant: hsl(202, 29%, 72%);
+  --color-light: hsla(0, 0%, 0%, 0.4);
+  // --color-background-2: var(--color-dark--variant);
+  --box-shadow: 0 2rem 3rem var(--color-light);
+
+  color: var(--color-dark);
+}
+:root {
+  --primary-color: hsl(270, 100%, 50%);
+  --transparent-primary-color: hsla(270, 100%, 50%, 0.145);
+  --color-background-2: hsl(201, 22%, 31%);
+  // --primary-color:
+  --color-background: hsl(216, 26%, 96%);
+
+  --color-primary: hsl(234, 76%, 69%);
+  --color-info-dark: hsl(213, 16%, 56%);
+  --color-info-light: hsl(220, 27%, 89%);
+  --color-white: hsl(0, 0%, 100%);
+  --color-dark: hsl(231, 15%, 25%);
+  --color-light: hsla(234, 38%, 65%, 0.18);
+  --color-primary--variant: hsl(233, 78%, 30%);
+  --color-dark--variant: hsl(212, 12%, 46%);
+  --transparent-secondary-color: hsla(212, 12%, 46%, 0.141);
+
+  --card-border-radius: 2rem;
+  --border-radius-1: 0.4rem;
+  --border-radius-2: 0.8rem;
+  --border-radius-3: 1.2rem;
+
+  --card-padding: 1.5rem;
+  --padding-1: 0.8rem;
+
+  --box-shadow: 0 2rem 3rem var(--color-light);
+
+  //Dark theme --dashboard-background-color:
+  .dark {
+    @include darkTheme();
+  }
+  // @media (prefers-color-scheme: dark) {
+  //   @include darkTheme();
+  // }
+}
+
+.color-dark {
+  background-color: var(--color-dark);
+}
+
+.color-dark-variant {
+  background-color: var(--color-dark-variant);
+}
+
+.color-light {
+  background-color: var(--color-light);
+}
+
+.color-primary-variant {
+  background-color: var(--color-primary-variant);
+}
+
+.color-primary {
+  background-color: var(--color-primary);
+}
+
+.color-info-dark {
+  background-color: var(--color-info-dark);
+}
+
+.color-info-light {
+  background-color: var(--color-info-light);
+}
+
+.color-white {
+  background-color: var(--color-white);
+}
+
+.color-primary {
+  background-color: var(--color-primary);
+}
+
+.color-background {
+  background-color: var(--color-background);
+}
+
+.color-background-2 {
+  background-color: var(--color-background-2);
+}
+
+.transparent-secondary-color {
+  background-color: var(--transparent-secondary-color);
+}
+
+.transparent-primary-color {
+  background-color: var(--transparent-primary-color);
+}
+
+.text-dark {
+  color: var(--color-dark);
+}
+
+.text-dark-variant {
+  color: var(--color-dark-variant);
+}
+
+.text-light {
+  color: var(--color-light);
+}
+
+.text-primary-variant {
+  color: var(--color-primary-variant);
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.text-info-dark {
+  color: var(--color-info-dark);
+}
+
+.text-info-light {
+  color: var(--color-info-light);
+}
+
+.text-white {
+  color: var(--color-white);
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.text-background {
+  color: var(--color-background);
+}
+
+.box-shadow {
+  box-shadow: var(--box-shadow);
+}
 
 body {
-    background: var(--color-background);
-    width: 100%;
-    overflow-x: hidden;
+  background: var(--color-background);
+  width: 100%;
+  overflow-x: hidden;
 }
 
 section {
-    min-height: 100vh;
-    padding: 5rem 9% 5rem;
-    width: 100%;
-   
+  min-height: 100vh;
+  padding: 5rem 9% 5rem;
+  width: 100%;
+  overflow-x: none;
 
+  @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
+    padding: 4rem 2% 4.5rem;
+    min-height: auto;
+  }
 
-    @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
-        padding: 4rem 2% 4.5rem;
-        min-height: auto;
-
-    }
-
-    @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "sm") - .2px) {
-        padding: 4rem 2% 2.5rem;
-
-
-    }
+  @include styles.breakPointsDown(
+    map-get(styles.$screenBreakPoints, "sm") - 0.2px
+  ) {
+    padding: 4rem 2% 2.5rem;
+  }
 }
 
 .cta {
-    background-color: var(--primary-color);
-    color: #fff;
-    border-radius: 2rem;
+  background-color: var(--primary-color);
+  color: #fff;
+  border-radius: 2rem;
 }
 
 .app {
-    width: clamp(100%, 90%, 90rem);
-    min-height: 100vh;
-    background: var(--color-background);
-    // overflow: auto;
-    margin-inline: auto;
+  width: clamp(100%, 90%, 90rem);
+  min-height: 100vh;
+  background: var(--color-background);
+  // overflow: auto;
+  margin-inline: auto;
 
-    #{&}__header {
-        display: flex;
-        width: 100%;
-        justify-content: space-around;
-        margin: 0 auto;
+  #{&}__header {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    margin: 0 auto;
 
-        &.sticky {
-            position: fixed;
-            top: 0;
-            left: 0;
-            background-color: var(--color-background);
-            box-shadow: 0 styles.pxToRem(2) styles.pxToRem(5) rgba(0, 0, 0, 0.4);
-            border-bottom: .1rem solid rgba(255, 255, 255, 0.1);
-            z-index: 9999;
-
-        
-        }
+    &.sticky {
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: var(--color-background);
+      box-shadow: 0 styles.pxToRem(2) styles.pxToRem(5) rgba(0, 0, 0, 0.4);
+      border-bottom: 0.1rem solid rgba(255, 255, 255, 0.1);
+      z-index: 9999;
     }
+  }
 }
 
 .nav {
-    display: flex;
-    width: 100%;
+  display: flex;
+  width: 100%;
+  height: styles.pxToRem(60);
+  line-height: 1.2;
+  justify-content: space-between;
+  padding-inline: 1rem;
+  z-index: 111;
+  user-select: none;
+
+  @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
     height: styles.pxToRem(60);
-    line-height: 1.2;
-    justify-content: space-between;
-    padding-inline: 1rem;
-    z-index: 111;
-    user-select: none;
+  }
+  #{&}__logo {
+    display: flex;
+    flex: 0.5;
+    font-size: styles.pxToRem(30);
+    font-weight: styles.fontWeight("bold-xl");
+    color: var(--color-dark);
+    line-height: styles.pxToRem(3);
+    cursor: pointer;
+    text-transform: capitalize;
+    justify-content: flex-start;
+    align-items: center;
+
+    @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "lg")) {
+      font-size: styles.pxToRem(23);
+    }
 
     @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
-        height: styles.pxToRem(60);
-
+      font-size: styles.pxToRem(24);
     }
-        #{&}__logo {
-            display: flex;
-            flex: 0.5;
-            font-size: styles.pxToRem(30);
-            font-weight: styles.fontWeight("bold-xl");
+
+    & img {
+      width: 100%;
+      object-fit: cover;
+      cursor: pointer;
+
+      @include styles.breakPointsUp(map-get(styles.$screenBreakPoints, "xs")) {
+      }
+    }
+
+    & strong {
+      font-size: styles.pxToRem(70);
+      color: var(--primary-color);
+
+      @include styles.breakPointsDown(
+        map-get(styles.$screenBreakPoints, "md")
+      ) {
+        font-size: styles.pxToRem(32);
+      }
+    }
+  }
+
+  #{&}__mobile {
+    display: none;
+
+    @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    svg,
+    i {
+      cursor: pointer;
+    }
+  }
+
+  #{&}__menu {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+
+    @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
+      display: none;
+    }
+
+    &--items {
+      li {
+        list-style: none;
+        margin: 0 styles.pxToRem(10);
+
+        a {
+          color: var(--primary-color);
+          font-size: 0.8rem;
+          text-transform: capitalize;
+        }
+
+        @include styles.breakPointsDown(
+          map-get(styles.$screenBreakPoints, "md")
+        ) {
+          &:hover a.active {
             color: var(--color-dark);
-            line-height: styles.pxToRem(3);
-            cursor: pointer;
-            text-transform: capitalize;
-            justify-content: flex-start;
-            align-items: center;
-    
-    
-            @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "lg")) {
-                font-size: styles.pxToRem(23);
-            }
-    
-            @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
-                font-size: styles.pxToRem(24);
-            }
-    
-            & img {
-                width: 100%;
-                object-fit: cover;
-                cursor: pointer;
-    
-                @include styles.breakPointsUp(map-get(styles.$screenBreakPoints, "xs")) {}
-            }
-    
-            & strong {
-                font-size: styles.pxToRem(70);
-                color: var(--primary-color);
-    
-                @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
-                    font-size: styles.pxToRem(32);
-    
-                }
-            }
+          }
+
+          a,
+          a.active {
+            color: var(--color-white);
+            font-size: styles.pxToRem(14);
+          }
         }
+      }
 
-    #{&}__mobile {
-        display: none;
+      @include styles.breakPointsDown(
+        map-get(styles.$screenBreakPoints, "md")
+      ) {
+        // display:none
+      }
 
-        @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        svg,
-        i {
-            cursor: pointer;
-        }
-    }
-
-
-    #{&}__menu {
+      @include styles.breakPointsUp(map-get(styles.$screenBreakPoints, "md")) {
         display: flex;
         flex: 1;
         justify-content: space-between;
         align-items: center;
-
-        @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
-            display: none;
-        }
-
-        &--items {
-
-
-            li {
-                list-style: none;
-                margin: 0 styles.pxToRem(10);
-
-                a {
-                    color: var(--primary-color);
-                    font-size: .8rem;
-                    text-transform: capitalize;
-                }
-
-                @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
-                    &:hover a.active {
-                        color: var(--color-dark);
-                    }
-
-                    a,
-                    a.active {
-                        color: var(--color-white);
-                        font-size: styles.pxToRem(14);
-                    }
-                }
-
-            }
-
-            @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
-                // display:none
-            }
-
-            @include styles.breakPointsUp(map-get(styles.$screenBreakPoints, "md")) {
-                display: flex;
-                flex: 1;
-                justify-content: space-between;
-                align-items: center;
-            }
-
-        }
-
-        &--items>li:hover a,
-        &--items>li>a.active,
-        #{&}__social--icons>a:hover {
-            //   font-size:styles.pxToRem(25);
-            transform: scale(1.2);
-            font-weight: styles.fontWeight(bold);
-            color: var(--color-dark);
-            text-decoration: none;
-            text-transform: capitalize;
-            transition: .3s;
-
-            @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
-                color: var(--color-white);
-            }
-        }
-
-        @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
-            &.show {
-                display: block;
-                position: absolute;
-                background-color: var(--color-background);
-                padding: 0;
-                width: 15rem;
-                top: 5rem;
-                right: 1rem;
-                border-radius: 1.2rem;
-                align-items: center;
-                user-select: none;
-
-
-            }
-
-            &--items {
-                li {
-                    margin: 0;
-                    padding: styles.pxToRem(15) styles.pxToRem(25);
-                    height: 3rem;
-                    color: var(--color-white);
-                    display: flex;
-                    align-items: center;
-                    text-transform: capitalize;
-
-                    &:hover {
-                        background-color: var(--color-background);
-
-                        a {
-
-                            color: var(--color-dark);
-                        }
-                    }
-
-                    &:first-child:hover {
-                        border-top-left-radius: 1.2rem;
-                        border-top-right-radius: 1.2rem;
-                    }
-
-                    //    &:last-child:hover{
-                    //     border-bottom-left-radius: 1.2rem;
-                    //     border-bottom-right-radius: 1.2rem;
-                    //    }
-                }
-            }
-        }
+      }
     }
 
-    #{&}__social--icons {
-        @include styles.flexCenter;
+    &--items > li:hover a,
+    &--items > li > a.active,
+    #{&}__social--icons > a:hover {
+      //   font-size:styles.pxToRem(25);
+      transform: scale(1.2);
+      font-weight: styles.fontWeight(bold);
+      color: var(--color-dark);
+      text-decoration: none;
+      text-transform: capitalize;
+      transition: 0.3s;
 
-        @include styles.breakPointsUp(map-get(styles.$screenBreakPoints, "md")) {
-            padding-inline: 1.9rem
-        }
-
+      @include styles.breakPointsDown(
+        map-get(styles.$screenBreakPoints, "md")
+      ) {
+        color: var(--color-white);
+      }
     }
 
-    #{&}__social--icons a {
-        @include styles.flexCenter;
-        font-size: styles.pxToRem(14);
-        color: var(--color-dark);
-        border: 0.2rem var(--color-dark) solid;
-        border-radius: 50%;
-        padding: 0.32rem;
-        margin: styles.pxToRem(25) styles.pxToRem(10);
+    @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
+      &.show {
+        display: block;
+        position: absolute;
+        background-color: var(--color-background);
+        padding: 0;
+        width: 15rem;
+        top: 5rem;
+        right: 1rem;
+        border-radius: 1.2rem;
+        align-items: center;
+        user-select: none;
+      }
 
-        @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "lg")) {
+      &--items {
+        li {
+          margin: 0;
+          padding: styles.pxToRem(15) styles.pxToRem(25);
+          height: 3rem;
+          color: var(--color-white);
+          display: flex;
+          align-items: center;
+          text-transform: capitalize;
 
-            font-size: styles.pxToRem(15);
-            margin: styles.pxToRem(15) styles.pxToRem(5);
-        }
+          &:hover {
+            background-color: var(--color-background);
 
-        @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
-            font-size: styles.pxToRem(14);
-            color: var(--color-white);
-            border: 0.2rem var(--color-white) solid;
-            border-radius: 50%;
-            padding: 0.32rem;
-            margin: styles.pxToRem(15) styles.pxToRem(5);
-            justify-content: space-around
-        }
-
-        &:hover {
-            transform: translate(2);
-            border: 0.2rem var(--primary-color) solid;
-            color: var(--primary-color);
-
-            @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
-                filter: saturate(80);
+            a {
+              color: var(--color-dark);
             }
+          }
+
+          &:first-child:hover {
+            border-top-left-radius: 1.2rem;
+            border-top-right-radius: 1.2rem;
+          }
+
+          //    &:last-child:hover{
+          //     border-bottom-left-radius: 1.2rem;
+          //     border-bottom-right-radius: 1.2rem;
+          //    }
         }
-
-        @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
-            position: relative;
-
-        }
-
+      }
     }
-}
+  }
 
-
-main{
-    width: 100%;
-    overflow-x: hidden
-}
-.footer {
+  #{&}__social--icons {
     @include styles.flexCenter;
-    justify-content: space-between;
-    flex-wrap: wrap;
 
-    background: var(--color-light);
-    filter: contrast(70%);
+    @include styles.breakPointsUp(map-get(styles.$screenBreakPoints, "md")) {
+      padding-inline: 1.9rem;
+    }
+  }
 
-  
+  #{&}__social--icons a {
+    @include styles.flexCenter;
+    font-size: styles.pxToRem(14);
+    color: var(--color-dark);
+    border: 0.2rem var(--color-dark) solid;
+    border-radius: 50%;
+    padding: 0.32rem;
+    margin: styles.pxToRem(25) styles.pxToRem(10);
 
-    #{&}__text {
-        font-size: 1.6rem;
-        @include styles.flexCenter;
-        color: var(--color-white);
-        text-align: center;
-
-        @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
-            font-size: 1rem;
-            text-align: center
-        }
-
+    @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "lg")) {
+      font-size: styles.pxToRem(15);
+      margin: styles.pxToRem(15) styles.pxToRem(5);
     }
 
-    #{&}__iconToTop a {
-        @include styles.flexCenter;
-        padding: .8rem;
-        background: var(--primary-color);
-        margin: 10px;
-        color: var(--color-white);
-        transition: .5s ease;
+    @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
+      font-size: styles.pxToRem(14);
+      color: var(--color-white);
+      border: 0.2rem var(--color-white) solid;
+      border-radius: 50%;
+      padding: 0.32rem;
+      margin: styles.pxToRem(15) styles.pxToRem(5);
+      justify-content: space-around;
+    }
+
+    &:hover {
+      transform: translate(2);
+      border: 0.2rem var(--primary-color) solid;
+      color: var(--primary-color);
+
+      @include styles.breakPointsDown(
+        map-get(styles.$screenBreakPoints, "md")
+      ) {
+        filter: saturate(80);
+      }
+    }
+
+    @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
+      position: relative;
+    }
+  }
+}
+
+main {
+  width: 100%;
+}
+
+// INTRO START
+.home {
+  @include styles.flexCenter;
+  width: 100%;
+  height: calc(100vh - styles.pxToRem(50));
+  // overflow: hidden;
+  position: relative;
+  // padding-top: 10rem;
+
+  @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
+    padding-inline: 3%;
+    height: auto;
+  }
+
+  #{&}__container {
+    // display: grid;
+
+    align-items: center;
+    justify-content: center;
+
+    &--background {
+      width: 194px;
+      height: 189px;
+      background-image: url("/assets/images/shapes/about-4-dot-1.png");
+      background-repeat: no-repeat;
+      background-position: top center;
+      position: absolute;
+      top: -(styles.pxToRem(25));
+      right: -(styles.pxToRem(100));
+
+      @include styles.breakPointsDown(
+        map-get(styles.$screenBreakPoints, "md")
+      ) {
+        width: 134px;
+        height: 129px;
+        position: absolute;
+        top: -(styles.pxToRem(35));
+        right: -(styles.pxToRem(70));
+      }
+    }
+
+    &::before {
+      position: absolute;
+      content: "";
+      height: styles.pxToRem(600);
+      width: styles.pxToRem(600);
+      border-radius: 50%;
+      left: -12%;
+      top: 40%;
+      background: linear-gradient(45deg, var(--primary-color), pink);
+      animation: object1 6s linear infinite;
+
+      @include styles.breakPointsDown(
+        map-get(styles.$screenBreakPoints, "lg")
+      ) {
+        left: -13%;
+        top: 55%;
+        height: styles.pxToRem(400);
+        width: styles.pxToRem(400);
+
+        @keyframes object1 {
+          50% {
+            left: -13%;
+            top: 50%;
+          }
+        }
+      }
+
+      @include styles.breakPointsDown(
+        map-get(styles.$screenBreakPoints, "md")
+      ) {
+        left: -13%;
+        top: 20%;
+        height: styles.pxToRem(200);
+        width: styles.pxToRem(200);
+
+        @keyframes object1 {
+          50% {
+            left: -13%;
+            top: 40%;
+          }
+        }
+      }
+    }
+
+    &::after {
+      position: absolute;
+      content: "";
+      height: styles.pxToRem(200);
+      width: styles.pxToRem(200);
+      border-radius: 50%;
+      left: 27%;
+      top: 0;
+      background: linear-gradient(45deg, var(--primary-color), pink);
+      animation: object2 6s linear infinite;
+
+      @include styles.breakPointsDown(
+        map-get(styles.$screenBreakPoints, "lg")
+      ) {
+        left: 45%;
+        top: 5%;
+        height: styles.pxToRem(150);
+        width: styles.pxToRem(150);
+
+        @keyframes object2 {
+          50% {
+            left: 65%;
+            top: 10%;
+          }
+        }
+      }
+
+      @include styles.breakPointsDown(
+        map-get(styles.$screenBreakPoints, "md")
+      ) {
+        left: 35%;
+        top: 1%;
+        height: styles.pxToRem(70);
+        width: styles.pxToRem(70);
+
+        @keyframes object2 {
+          50% {
+            left: 45%;
+            top: 4.5%;
+          }
+        }
+      }
+    }
+
+    @keyframes object1 {
+      50% {
+        left: -13%;
+        top: 31%;
+      }
+    }
+
+    @keyframes object2 {
+      50% {
+        left: 32%;
+        top: 8%;
+      }
+    }
+
+    &--intro {
+      display: grid;
+      align-items: center;
+      position: relative;
+      z-index: 5;
+      // @include styles.breakPointsUp(map-get(styles.$screenBreakPoints,"xs")) {
+      //     margin-top: 20%;
+
+      // }
+
+      @include styles.breakPointsUp(styles.pxToRem(375)) {
+        margin-top: 3.5rem;
+      }
+
+      @include styles.breakPointsDown(styles.pxToRem(375)) {
+        margin-top: 3rem;
+      }
+
+      &__topline {
+        display: block;
+        position: relative;
+        font-size: styles.pxToRem(24);
+        letter-spacing: styles.pxToRem(5);
+        color: var(--color-dark);
+
+        @include styles.breakPointsDown(
+          map-get(styles.$screenBreakPoints, "lg")
+        ) {
+          font-size: styles.pxToRem(26);
+          letter-spacing: styles.pxToRem(4);
+        }
+
+        @include styles.breakPointsDown(
+          map-get(styles.$screenBreakPoints, "md")
+        ) {
+          font-size: styles.pxToRem(16);
+          letter-spacing: styles.pxToRem(3);
+        }
+
+        &::after {
+          position: absolute;
+          content: "";
+          height: styles.pxToRem(4);
+          width: styles.pxToRem(45);
+          bottom: styles.pxToRem(10);
+          background-color: var(--primary-color);
+
+          @include styles.breakPointsDown(
+            map-get(styles.$screenBreakPoints, "lg")
+          ) {
+            height: styles.pxToRem(3);
+            width: styles.pxToRem(33.3);
+            bottom: styles.pxToRem(7);
+          }
+
+          @include styles.breakPointsDown(
+            map-get(styles.$screenBreakPoints, "md")
+          ) {
+            height: styles.pxToRem(2);
+            width: styles.pxToRem(22.3);
+            bottom: styles.pxToRem(5);
+          }
+        }
+      }
+
+      h1 {
+        display: block;
+        font-size: clamp(2.5rem, 3rem - 2vw, 4rem);
+        font-weight: styles.fontWeight("bold-sm");
+        color: var(--color-dark);
+
+        @include styles.breakPointsDown(
+          map-get(styles.$screenBreakPoints, "lg")
+        ) {
+          font-size: clamp(2.5rem, 2.4rem - 2vw, 3rem);
+        }
+
+        @include styles.breakPointsDown(
+          map-get(styles.$screenBreakPoints, "md")
+        ) {
+          font-size: clamp(1.8rem, 1.8rem - 2vw, 2rem);
+        }
+      }
+
+      &__multi-text {
+        text-transform: capitalize;
+        font-size: inherit;
+        color: var(--primary-color) !important;
+      }
+
+      &__bio {
+        display: block;
+        width: 100%;
+        font-size: 1rem;
+        color: var(--color-dark);
+
+        @include styles.breakPointsUp(
+          map-get(styles.$screenBreakPoints, "xs")
+        ) {
+          width: 100%;
+          text-align: justify;
+          font-size: styles.pxToRem(16);
+        }
+
+        @include styles.breakPointsUp(
+          map-get(styles.$screenBreakPoints, "md")
+        ) {
+          text-align: left;
+          // font-size: styles.pxToRem(16);
+        }
+      }
+
+      &__btn {
+        width: 100%;
+        display: flex;
+        position: relative;
+        left: styles.pxToRem(80);
+
+        @include styles.breakPointsDown(
+          map-get(styles.$screenBreakPoints, "lg")
+        ) {
+          left: styles.pxToRem(5);
+        }
+
+        @include styles.breakPointsDown(
+          map-get(styles.$screenBreakPoints, "md")
+        ) {
+          left: 0;
+        }
+      }
+
+      .btn {
+        outline: none;
+        border: none;
+        cursor: pointer;
+        font-size: styles.pxToRem(14);
+        font-weight: styles.fontWeight("normal");
+        color: #fff;
+        background-color: var(--color-background-2);
+        // padding: styles.pxToRem(8) styles.pxToRem(14);
+        margin: styles.pxToRem(40) styles.pxToRem(5);
+        letter-spacing: styles.pxToRem(2);
+        text-transform: capitalize;
+        box-shadow: 0 styles.pxToRem(15) styles.pxToRem(10) rgba(0, 0, 0, 0.4);
 
         &:hover {
-            box-shadow: 0 0 1rem var(--primary-color);
+          background-color: var(--primary-color);
+        }
+
+        @include styles.breakPointsDown(
+          map-get(styles.$screenBreakPoints, "md")
+        ) {
+          font-size: styles.pxToRem(16);
+          // padding: styles.pxToRem(4) styles.pxToRem(2);
+          margin: styles.pxToRem(10) styles.pxToRem(2.5);
+          letter-spacing: styles.pxToRem(1.5);
+          box-shadow: 0 styles.pxToRem(12) styles.pxToRem(8) rgba(0, 0, 0, 0.4);
+        }
+      }
+    }
+
+    &--image {
+      position: relative;
+      width: 100%;
+      height: 100%;
+
+      // background: linear-gradient(to top,hsl(216, 26%, 96%), hsla(216, 26%, 96%, 0.371), transparent);
+      @include styles.breakPointsDown(
+        map-get(styles.$screenBreakPoints, "md")
+      ) {
+        margin-top: 5rem;
+
+        @keyframes animateUser {
+          50% {
+            right: styles.pxToRem(20);
+            top: -(styles.pxToRem(60));
+          }
+        }
+
+        @keyframes animate {
+          50% {
+            top: 55%;
+            left: 51%;
+            width: 155%;
+          }
+        }
+      }
+
+      img {
+        position: relative;
+        width: calc(120% - styles.pxToRem(80));
+        height: 100%;
+        top: -(styles.pxToRem(10));
+        right: styles.pxToRem(50);
+        animation: animateUser 4s linear infinite;
+
+        @include styles.breakPointsDown(
+          map-get(styles.$screenBreakPoints, "md")
+        ) {
+          top: -(styles.pxToRem(30));
+          animation: animateUser 4s linear infinite;
+        }
+      }
+
+      @keyframes animateUser {
+        50% {
+          right: styles.pxToRem(30);
+          top: -(styles.pxToRem(50));
+        }
+      }
+
+      //  rotate(-35deg)
+      #splash {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 130%;
+        filter: saturate(200%);
+        animation: animate 4s linear infinite;
+
+        @include styles.breakPointsDown(
+          map-get(styles.$screenBreakPoints, "md")
+        ) {
+          position: absolute;
+          top: 60%;
+          animation: animate 4s linear infinite;
+        }
+      }
+
+      @keyframes animate {
+        50% {
+          top: 45%;
+          left: 51%;
+          width: 125%;
+        }
+      }
+    }
+  }
+}
+// INTRO END
+
+// ABOUT START
+
+.about {
+  @include styles.flexCenter;
+  position: relative;
+  flex-direction: column;
+  // background-color: var(--color-background-2);
+
+  &__heading {
+    @include mixins.heading;
+    color: var(--color-background-2);
+  }
+
+  #{&}__images {
+    img {
+      height: 100%;
+      width: 100%;
+    }
+
+    .about__image {
+      position: relative;
+      display: inline-block;
+
+      &::before {
+        content: "";
+        border: 2px solid var(--primary-color);
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        right: 30px;
+        bottom: 30px;
+        z-index: 11;
+      }
+
+      &--img {
+        max-width: 100%;
+        position: relative;
+        z-index: 10;
+      }
+
+      &--caption {
+        position: absolute;
+        bottom: -45px;
+        left: -45px;
+        width: 275px;
+        height: 275px;
+        padding-left: 40px;
+        display: none;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding-bottom: 20px;
+
+        &.caption-right {
+          padding-left: auto;
+          padding-right: 40px;
+          left: auto;
+          right: -45px;
+          text-align: right;
+
+          &::after {
+            clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+          }
+
+          .about__image--caption_shape-1 {
+            transform: rotate(225deg);
+            left: auto;
+            right: 18px;
+          }
+
+          .about__image--caption_shape-2 {
+            right: auto;
+            left: -43px;
+          }
+
+          .about__image--caption_shape-3 {
+            left: auto;
+            right: 0;
+
+            &::before {
+              transform: rotate(270deg);
+            }
+          }
+        }
+
+        @include styles.breakPointsUp(
+          map-get(styles.$screenBreakPoints, "md")
+        ) {
+          & {
+            display: flex;
+          }
+        }
+
+        &::after {
+          content: "";
+          clip-path: polygon(0 0, 0% 100%, 100% 100%);
+          background: var(--color-background-2);
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          z-index: 12;
+        }
+
+        &_shape-1 {
+          width: 90px;
+          height: 90px;
+          background: var(--color-background-2);
+          position: absolute;
+          top: -43px;
+          left: 18px;
+          clip-path: polygon(100% 100%, 0 0, 0 100%);
+          transform: rotate(45deg);
+
+          @include styles.breakPointsDown(
+            map-get(styles.$screenBreakPoints, "lg")
+          ) {
+            width: 70px;
+            height: 70px;
+            left: 15.5px;
+            top: -32.5px;
+          }
+        }
+
+        &_shape-2 {
+          width: 90px;
+          height: 90px;
+          background: var(--color-background-2);
+          position: absolute;
+          bottom: 18px;
+          right: -43px;
+          clip-path: polygon(100% 100%, 0 0, 0 100%);
+          transform: rotate(-45deg);
+
+          @include styles.breakPointsDown(
+            map-get(styles.$screenBreakPoints, "lg")
+          ) {
+            width: 70px;
+            height: 70px;
+            right: -31.5px;
+            bottom: 16px;
+          }
+        }
+
+        &_shape-3 {
+          position: absolute;
+          bottom: 0;
+          z-index: 14;
+          background: var(--primary-color);
+          width: 20px;
+          height: 200px;
+          left: 0;
+
+          @include styles.breakPointsDown(
+            map-get(styles.$screenBreakPoints, "lg")
+          ) {
+            width: 10px;
+            height: 100px;
+          }
+
+          &::before {
+            content: "";
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            clip-path: polygon(100% 100%, 0 0, 0 100%);
+
+            @include styles.breakPointsDown(
+              map-get(styles.$screenBreakPoints, "lg")
+            ) {
+              width: 10px;
+              height: 10px;
+            }
+          }
+        }
+
+        @include styles.breakPointsDown(
+          map-get(styles.$screenBreakPoints, "lg")
+        ) {
+          width: 250px;
+          height: 250px;
+        }
+      }
+
+      &--title {
+        margin: 0;
+        color: #fff;
+        font-size: 60px;
+        font-weight: 800;
+        line-height: 1;
+        position: relative;
+        z-index: 13;
+
+        span {
+          font-size: 32px;
+          font-style: normal;
+          position: relative;
+          top: -2px;
+        }
+      }
+
+      &--text {
+        margin: 0;
+        font-size: map-get($map: styles.$fontSizes, $key: "normal");
+        position: relative;
+        z-index: 13;
+        color: #fff;
+      }
+
+      &--floated {
+        text-transform: uppercase;
+        color: var(--color-background-2);
+        font-size: map-get($map: styles.$fontSizes, $key: "9xl");
+        font-weight: 200;
+        letter-spacing: 0.32em;
+        position: absolute;
+        right: calc(100% - 150px);
+        top: calc(50% - -18px);
+        transform: rotate(90deg);
+        transform-origin: top center;
+        display: none;
+
+        @include styles.breakPointsUp(
+          map-get(styles.$screenBreakPoints, "lg")
+        ) {
+          & {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+
+  #{&}__content {
+    &--heading {
+      text-align: left;
+      line-height: 1.2;
+    }
+
+    &--supheading {
+      font-size: 2.6rem;
+    }
+
+    &--subtitle {
+      margin: 0;
+      text-transform: uppercase;
+      font-size: 18px;
+      color: var(--primary-text-color);
+      font-weight: 700;
+    }
+
+    &--text {
+      margin: 0;
+      margin-top: 34px;
+      margin-bottom: 23px;
+      text-align: justify;
+    }
+
+    &--author {
+      display: flex;
+      align-items: center;
+
+      &__image img {
+        border-radius: 50%;
+        height: 76px;
+        width: 76px;
+        padding: 3px;
+        border: 2px solid var(--primary-text-color);
+      }
+
+      &__name {
+        color: var(--secondary-text-color);
+        // font-family: var(--special-font);
+        font-size: 24px;
+        margin-left: 10px;
+      }
+
+      @include styles.breakPointsUp(map-get(styles.$screenBreakPoints, "xs")) {
+        &__image img {
+          height: 60px;
+          width: 60px;
+        }
+
+        &__name {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}
+// ABOUT END
+
+// CONTACT START
+.contact {
+  background: url(/assets/images/shapes/benefit-circle-1-1.png),
+    no-repeat url("/assets/images/shapes/about-6-bg-c-1.png") 100% -10%;
+  background-repeat: no-repeat;
+  opacity: 1;
+  transition: 0.3s, border-radius 0.3s, opacity 0.3s;
+  height: 100%;
+  width: 100%;
+  background-color: var(--color-background-2);
+  // filter: contrast(0.9);
+
+  &__heading {
+    @include mixins.heading(60);
+    color: #fff;
+  }
+
+  &__content {
+    &--text {
+      margin: 0;
+      margin-top: -10px;
+      color: #fff;
+    }
+
+    &--socials {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 30px;
+
+      a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 41px;
+        height: 41px;
+        background-color: var(--color-background-2);
+        color: #fff;
+        font-size: 12px;
+        transition: all 0.5s ease;
+        border-radius: 50%;
+
+        & + a {
+          margin-left: 10px;
+        }
+
+        &:hover {
+          background-color: var(--primary-color);
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  #{&}__form {
+    margin: 1rem auto;
+    text-align: center;
+    margin-bottom: 3rem;
+
+    &--box {
+      // @include globals.breakPointsUp(map-get(globals.$screenBreakPoints,"sm")){
+      //                 display: block;
+
+      //                 }
+      .form-group {
+        position: relative;
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        margin-bottom: 7px;
+        color: var(--color-dark);
+        font-weight: 400;
+
+        input {
+          border-radius: 0.5rem;
+        }
+      }
+
+      .form-group i {
+        position: absolute;
+        right: 30px;
+        top: 62px;
+        pointer-events: none;
+        font-size: 12px;
+      }
+
+      textarea {
+        height: 170px;
+        padding-top: 20px;
+
+        &::placeholder {
+          color: var(--color-dark-variant);
+        }
+      }
+
+      button[type="submit"] {
+        align-self: flex-end;
+      }
+    }
+  }
+}
+// CONTACT END
+
+// POST END
+.blog {
+  background-color: var(--color-white);
+
+  &__heading {
+    @include mixins.heading;
+    color: var(--color-background-2);
+  }
+
+  #{&}___container {
+    &--box {
+    }
+  }
+
+  #{&}__card {
+    position: relative;
+    background-color: var(--color-white);
+    transition: all 0.5s ease-out;
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.07);
+
+    &--image {
+      position: relative;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        transform: scale(1);
+        transition: transform 0.5s ease;
+      }
+
+      & > a {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        background-color: var(--transparent-secondary-color2);
+        position: absolute;
+        top: 0;
+        left: 0;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transform: translateY(-20%);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+
+        &:before,
+        &:after {
+          content: "";
+          width: 32px;
+          height: 2px;
+          background-color: var(--color-white);
+          display: block;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+
+        &:after {
+          transform: translate(-50%, -50%) rotate(90deg);
+        }
+      }
+
+      // &:hover &>a {
+      //     opacity: 1;
+      //     transform: translateY(0)
+      // }
+    }
+
+    &:hover {
+      box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.12);
+
+      .blog__card--image {
+        img {
+          transform: scale(1.05);
+        }
+
+        a {
+          opacity: 1;
+          // transform: translateY(0);
+        }
+      }
+
+      .blog__card--link {
+        background-color: var(--color-background-2);
+        color: var(--color-white);
+      }
+    }
+
+    &--content {
+      padding: 20px;
+      position: relative;
+      border: 1px solid var(--color-background-2);
+      transition: all 0.5s ease;
+      text-align: left;
+    }
+
+    &--image + &--content {
+      border-top: 0;
+    }
+
+    &--title {
+      margin: 0;
+      color: var(--color-background-2);
+      font-size: 18px;
+      line-height: 1.4;
+      font-weight: 700;
+      margin-bottom: 15px;
+
+      a {
+        color: inherit;
+        transition: all 0.5s ease;
+
+        &:hover {
+          color: var(--primary-color);
+        }
+
+        @include styles.breakPointsUp(
+          map-get(styles.$screenBreakPoints, "md")
+        ) {
+          font-size: styles.pxToRem(20);
+          line-height: 0.05;
+        }
+      }
+    }
+
+    &--text {
+      margin: 0;
+      margin-bottom: 31px;
+    }
+
+    &--date {
+      width: 70px;
+      height: 70px;
+      background-color: var(--primary-color);
+      font-size: 12px;
+      letter-spacing: 0.2rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      line-height: 1;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      z-index: 10;
+      color: var(--color-white);
+
+      span {
+        display: block;
+        letter-spacing: 0;
+        font-size: 20px;
+        margin-bottom: 1px;
+      }
+    }
+
+    &--meta {
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 5px;
+
+      a:hover {
+        color: var(--primary-color);
+      }
+
+      .meta__list {
+        align-items: center;
+
+        &t:not(:last-child):after {
+          content: "/";
+          margin-left: 10px;
+          margin-right: 10px;
+          opacity: 0.45;
         }
 
         i,
         svg {
-            font-size: 1.6rem;
-            color: var(--color-white);
+          color: var(--primary-color);
+          margin-right: 5px;
+          transition: all 0.5s ease;
+        }
+      }
 
-            @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
-                font-size: 1rem;
-                color: var(--color-white);
-            }
+      .meta__list a,
+      .meta__list span {
+        color: var(--color-background-2);
+        font-size: 13px;
+        transition: all 0.5s ease;
+        font-weight: 400;
+      }
+    }
+
+    &--link {
+      display: flex;
+      width: 100%;
+      color: var(--color-background-2);
+      background-color: var(--color-background);
+      text-transform: uppercase;
+      justify-content: center;
+      align-items: center;
+      font-size: 12px;
+      font-weight: 700;
+      transition: all 0.5s ease;
+      padding: 13.75px 0;
+      letter-spacing: 0.2em;
+
+      &:hover {
+        background-color: var(--color-light);
+        color: #fff !important;
+      }
+    }
+  }
+}
+// POST END
+
+// PROJECTS END
+.project {
+  background: no-repeat url(/assets/images/shapes/faq-form-bg-1-1.png) top
+    center;
+  opacity: 1;
+  transition: 0.3s, border-radius 0.3s, opacity 0.3s;
+
+  &__heading {
+    @include mixins.heading;
+    color: #fff;
+  }
+
+  #{&}__container {
+    // flex-flow:wrap-reverse;
+
+    &--box {
+      position: relative;
+      border-radius: 2rem;
+      box-shadow: 0 0 1rem var(--color-light);
+      overflow: hidden;
+      display: flex;
+
+      img {
+        width: 100%;
+      }
+
+      &:hover img {
+        transform: scale(1.1);
+      }
+
+      &_layer {
+        @include styles.flexCenter(column);
+        text-align: center;
+        padding: 0.5rem 1rem 0;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        color: var(--color-white);
+        background: linear-gradient(rgba(0, 0, 0, 0.1), var(--primary-color));
+        transform: translateY(100%);
+        transition: 0.5s ease;
+
+        h4 {
+          font-size: map-get($map: styles.$fontSizes, $key: "lg");
+          font-weight: styles.fontWeight("bold-sm");
         }
 
-        // @include styles.breakPointsDown(map-get(styles.$screenBreakPoints,"md")){
+        p {
+          font-size: map-get($map: styles.$fontSizes, $key: "sm");
+          margin: 0.2rem 0 0.5rem;
+          display: -webkit-box;
+          // height: fit-content;
+          -webkit-line-clamp: 5;
+          text-overflow: ellipsis;
+          line-height: 1.3;
+          word-spacing: 2px;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
 
+        a {
+          text-decoration: none;
+          margin: 0.5rem;
+        }
 
-        // }
+        a i,
+        a svg {
+          font-size: 1rem;
+          color: var(--color-background);
+        }
+      }
+
+      &:hover .project__container--box_layer {
+        transform: translateY(0);
+      }
     }
+  }
+}
 
+// PROJECTS END
+
+// SERVICES END
+
+.services {
+  position: relative;
+  background: no-repeat url("/assets/images/shapes/about-6-bg-1-1.png") 0 -20%,
+    no-repeat url("/assets/images/shapes/about-6-bg-c-1.png") 100% -10%;
+  background-color: var(--color-background-2);
+
+  &__heading {
+    @include mixins.heading(80);
+    color: var(--color-white);
+  }
+
+  &.container::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-right: 10rem var(--primary-color) solid;
+    border-bottom: 5rem var(--primary-color) solid;
+    border-top: 5rem var(--primary-color) solid;
+  }
+
+  #{&}__container {
+    z-index: 2;
+
+    &--box {
+      @include styles.flexCenter(column);
+      background-color: var(--color-white);
+      text-align: center;
+      // flex: 1 1 30rem;
+      border: 0.2rem solid var(--color-background-2);
+      border-radius: 2rem;
+      box-shadow: 0 styles.pxToRem(15) styles.pxToRem(10) rgba(0, 0, 0, 0.4);
+      padding: 2rem 1rem 3rem;
+      transition: 0.3s ease;
+      overflow: hidden;
+
+      &:hover {
+        transform: scale(1.02);
+        border: 0.2rem solid var(--primary-color);
+      }
+
+      &_heading {
+        line-height: 1.2;
+        margin: 0.4rem 0;
+        font-size: 1.2rem;
+      }
+
+      i,
+      svg {
+        font-size: 3rem;
+        color: var(--primary-color);
+
+        @include styles.breakPointsUp(
+          map-get(styles.$screenBreakPoints, "xs")
+        ) {
+          font-size: 3rem;
+        }
+      }
+
+      p {
+        font-size: 0.8rem;
+        margin: 1rem 0 3rem;
+        height: fit-content;
+        display: -webkit-box;
+        -webkit-line-clamp: 6;
+        line-height: 1.3;
+        text-overflow: ellipsis;
+        /* text-align: center; */
+        word-spacing: 2px;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+
+        @include styles.breakPointsUp(
+          map-get(styles.$screenBreakPoints, "xs")
+        ) {
+          -webkit-line-clamp: 8;
+        }
+      }
+
+      a.btn {
+      }
+    }
+  }
+}
+// SERVICES END
+
+.footer {
+  @include styles.flexCenter;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  background: var(--color-light);
+  filter: contrast(70%);
+
+  #{&}__text {
+    font-size: 1.6rem;
+    @include styles.flexCenter;
+    color: var(--color-white);
+    text-align: center;
 
     @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
-        flex-direction: column-reverse;
-        flex-flow: wrap-reverse;
-        justify-content: center;
-        align-items: center;
-        padding: 2rem 3%;
+      font-size: 1rem;
+      text-align: center;
+    }
+  }
+
+  #{&}__iconToTop a {
+    @include styles.flexCenter;
+    padding: 0.8rem;
+    background: var(--primary-color);
+    margin: 10px;
+    color: var(--color-white);
+    transition: 0.5s ease;
+
+    &:hover {
+      box-shadow: 0 0 1rem var(--primary-color);
     }
 
-    @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "sm")) {
-        padding: 1rem 2%;
+    i,
+    svg {
+      font-size: 1.6rem;
+      color: var(--color-white);
+
+      @include styles.breakPointsDown(
+        map-get(styles.$screenBreakPoints, "md")
+      ) {
+        font-size: 1rem;
+        color: var(--color-white);
+      }
     }
+
+    // @include styles.breakPointsDown(map-get(styles.$screenBreakPoints,"md")){
+
+    // }
+  }
+
+  @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
+    flex-direction: column-reverse;
+    flex-flow: wrap-reverse;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 3%;
+  }
+
+  @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "sm")) {
+    padding: 1rem 2%;
+  }
 }

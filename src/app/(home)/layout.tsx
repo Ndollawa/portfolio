@@ -15,7 +15,7 @@ export default function LandingPageLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="app dark">
+    <div className="app">
       <Header />
       <main className=""> {children}</main>
       <Footer />

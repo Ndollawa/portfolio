@@ -1,7 +1,9 @@
 @use "mixins";
 @use "breakpoints";
 @use "utils";
-// @use 'breakpoints';
+@use "colors";
+@use "variables";
+@use "../utils/function" as func;
 
 $gridCount: 12;
 // $label:'sm';
@@ -42,45 +44,47 @@ $gridCount: 12;
   }
 }
 
-@each $key, $val in breakpoints.$screenBreakPoints {
-  @include mixins.breakPointsUp($val) {
-    @for $count from 1 through $gridCount {
-      @include mixins.flexLayout($key, $count);
-    }
+@each $tempType in ("columns", "rows") {
+  @for $count from 1 through $gridCount {
+    @include mixins.gridLayout($tempType, $count);
   }
 }
-@each $key, $val in breakpoints.$screenBreakPoints {
-  @include mixins.breakPointsUp($val) {
-    @for $count from 1 through $gridCount {
-      @include mixins.flexLayoutOffset($key, $count);
-    }
-  }
+@for $count from 1 through $gridCount {
+  @include mixins.flexLayout($count);
 }
 
-// GRID LAYOUT
+@include mixins.flexLayoutGutter(40);
+@include mixins.generateGridAndWidthClasses();
+@include mixins.generateUtilityClasses();
+@include mixins.generateColorClasses(colors.$colors);
 
+@media (prefers-color-scheme: dark) {
+  @include mixins.generateColorClasses(colors.$colors, "default", "dark");
+}
 @each $key, $val in breakpoints.$screenBreakPoints {
   @include mixins.breakPointsUp($val) {
     @each $tempType in ("columns", "rows") {
       @for $count from 1 through $gridCount {
-        @include mixins.gridLayout($tempType, $key, $count);
+        @include mixins.gridLayout($tempType, $count, $key);
       }
+    }
+
+    @for $count from 1 through $gridCount {
+      @include mixins.flexLayout($count, $key);
+    }
+
+    @include mixins.flexLayoutGutter(40, $key);
+    @include mixins.generateGridAndWidthClasses($key);
+    @include mixins.generateUtilityClasses($key);
+
+    @include mixins.generateColorClasses(colors.$colors, $key);
+
+    @media (prefers-color-scheme: dark) {
+      @include mixins.generateColorClasses(colors.$colors, $key, "dark");
     }
   }
 }
 
-@for $count from 1 through 30 {
-  @include mixins.flexLayoutGutter("gutter", $count);
+.center {
+  @include mixins.flexCenter(column);
 }
-
-@for $count from 1 through 30 {
-  @include mixins.flexLayoutGutterX("gutter-x", $count);
-}
-
-@for $count from 1 through 30 {
-  @include mixins.flexLayoutGutterY("gutter-y", $count);
-}
-
-@include mixins.generateGridRowClasses();
-@include mixins.generateGridColumnClasses();
-@include mixins.generateWidthClasses();

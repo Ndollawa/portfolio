@@ -1,5 +1,5 @@
 import Image from "next/image";
-import "./About.scss";
+import { image23, image25 } from "@/utils/images";
 
 const AboutSection = () => {
   return (
@@ -8,16 +8,11 @@ const AboutSection = () => {
         About <span>Me</span>
       </h2>
       <div className="container row">
-        <div className="about__images center col-sm-12 col-md-6 p-2">
+        <div className="about__images center sm:col-12 md:col-6 p-2">
           <div className="container">
             <div className="about__image">
               {/* <img src={process.env.REACT_APP_BASE_URL+"uploads/settings/"+aboutUsBg} alt={siteName}/> */}
-              <Image
-                src="/assets/images/images(23).jpeg"
-                width={300}
-                height={300}
-                alt=""
-              />
+              <Image src={image23} width={300} height={300} alt="" />
               <div className="about__image--caption">
                 <div className="about__image--caption_shape-1"></div>
 
@@ -34,7 +29,7 @@ const AboutSection = () => {
             </div>
           </div>
         </div>
-        <div className="about__content col-sm-12 col-md-6 px-2">
+        <div className="about__content sm:col-12 md:col-6 px-2">
           {/* <h2 className='about__content--heading'></h2>
                           <h3 className='about__content--subheading'></h3> */}
           <p className="about__content--text">
@@ -50,7 +45,7 @@ const AboutSection = () => {
           <div className="about__content--author mb-3">
             <div className="about__content--author__image">
               {/* <img src={process.env.REACT_APP_BASE_URL+"uploads/settings/"+aboutUsBg} alt={siteName}/> */}
-              <img src="/assets/images/images(25).png" alt="" />
+              <Image src={image25} alt="" width={50} height={50} />
             </div>
             <div className="about__content--author__name">Ndubuisi Ollawa</div>
           </div>

@@ -1,6 +1,7 @@
 import React from "react";
+import Image from "next/image";
+import { blog } from "@/utils/images";
 import { FaUserCircle, FaComments } from "react-icons/fa";
-import "./LatestPost.scss";
 
 const LatestPostSection = () => {
   return (
@@ -10,16 +11,18 @@ const LatestPostSection = () => {
       </h2>
       <div className="blog__container container">
         <div className="blog__container--box row">
-          <div className="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+          <div className="lg:col-3 md:col-6 sm:col-12 xs:col-12 gutter-3">
             <div className="blog__card">
               <div className="blog__card--image">
                 <div className="blog__card--date">
                   <span>23</span>Aug
                 </div>
-                <img
+                <Image
                   decoding="async"
-                  src="/assets/images/blog-1-1.png"
+                  src={blog}
                   className="img-fluid"
+                  width={320}
+                  height={150}
                   alt=""
                 />
                 <a href="which-growth-strategies-you-should-adopt/index.html"></a>
@@ -39,7 +42,7 @@ const LatestPostSection = () => {
                     </a>
                   </span>
                 </div>
-                <h3 className="blog__card--title">
+                <h3 className="blog__card--title fs-14">
                   <a href="which-growth-strategies-you-should-adopt/index.html">
                     Which loan credit strategies you adopt
                   </a>

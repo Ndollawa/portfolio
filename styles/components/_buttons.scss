@@ -1,93 +1,92 @@
-@use '../globals';
-@use '../utils';
+@use "../globals";
+@use "../utils";
 
-button{
-    user-select: none;
-    
+button {
+  user-select: none;
 }
 
-@mixin btn($bgColor: #e2e2e2){
-        text-decoration: none;
-            cursor: pointer;
-            display: inline-block;
-            border: 0;
-            font-size:.8rem;
-            user-select: none;
-            padding: globals.$basePadding * 2 globals.$basePadding * 4;
-            border-radius: globals.$baseBorder* 4;
-            background-color: $bgColor;
+@mixin btn($bgColor: null) {
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  border: 0;
+  font-size: 0.8rem;
+  user-select: none;
+  padding: globals.$basePadding * 2 globals.$basePadding * 4;
+  border-radius: globals.$baseBorder * 4;
+  @if ($bgColor) {
+    background-color: $bgColor;
+  }
 }
 
-.btn{
-   @include btn(transparent);
-    outline: none;
-    border: none;
+.btn {
+  @include btn(transparent);
+  outline: none;
+  border: none;
 
-    @include globals.breakPointsDown(map-get(globals.$screenBreakPoints,"lg")){
-            margin: 1rem;
-            padding: 1rem 2rem ;
-        }
-    @include globals.breakPointsDown(map-get(globals.$screenBreakPoints,"md")){
-         margin: 0.65rem;
-         padding: .5rem 1rem ;
-         font-size: 0.85rem;
+  @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "lg")) {
+    margin: 1rem;
+    padding: 1rem 2rem;
+  }
+  @include globals.breakPointsDown(map-get(globals.$screenBreakPoints, "md")) {
+    margin: 0.65rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+}
+
+.btn-xs {
+  font-size: map-get(globals.$fontSizes, "xs");
+  padding: globals.$basePadding * 1, globals.$basePadding * 2;
+}
+.btn-sm {
+  font-size: map-get(globals.$fontSizes, "sm");
+  padding: globals.$basePadding * 2, globals.$basePadding * 4;
+}
+.btn-md {
+  font-size: map-get(globals.$fontSizes, "normal");
+  padding: globals.$basePadding * 3, globals.$basePadding * 6;
+}
+.btn-lg {
+  font-size: map-get(globals.$fontSizes, "lg");
+  padding: globals.$basePadding * 4, globals.$basePadding * 8;
+}
+.btn-xl {
+  font-size: map-get(globals.$fontSizes, "xl");
+  padding: globals.$basePadding * 5, globals.$basePadding * 10;
+}
+.btn-xxl {
+  font-size: map-get(globals.$fontSizes, "2xl");
+  padding: globals.$basePadding * 6, globals.$basePadding * 12;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+@each $key, $val in globals.$colors {
+  .btn-#{$key} {
+    @include btn($val);
+    &:hover {
+      background-color: lighten($color: $val, $amount: 5);
     }
-   
-}
+  }
 
-.btn-xs{
-font-size:map-get(globals.$fontSizes,"xs");
-padding:globals.$basePadding * 1, globals.$basePadding * 2;
-}
-.btn-sm{
-font-size:map-get(globals.$fontSizes,"sm");
-padding:globals.$basePadding * 2, globals.$basePadding * 4;
-}
-.btn-md{
-font-size:map-get(globals.$fontSizes,"normal");
-padding:globals.$basePadding * 3, globals.$basePadding * 6;
-}
-.btn-lg{
-font-size:map-get(globals.$fontSizes,"lg");
-padding:globals.$basePadding * 4, globals.$basePadding * 8;
-}
-.btn-xl{
-font-size:map-get(globals.$fontSizes,"xl");
-padding:globals.$basePadding * 5, globals.$basePadding * 10;
-}
-.btn-xxl{
-font-size:map-get(globals.$fontSizes,"2xl");
-padding:globals.$basePadding * 6, globals.$basePadding * 12;
-}
-
-.btn:hover{
-    opacity: 0.8;
-}
-
-
-@each $key, $val in globals.$colors{
-    .btn-#{$key}{
-       @include btn( $val);
-       &:hover{
-        background-color: lighten($color: $val, $amount: 5)
-       }
+  .btn-outlined-#{$key} {
+    @include btn(#fff);
+    border: globals.$baseBorder solid $val;
+    &:hover {
+      background-color: $val;
     }
+  }
 
-    .btn-outlined-#{$key}{
-       @include btn(#fff);
-        border: globals.$baseBorder solid $val;
-        &:hover{
-            background-color: $val;
-        }
+  .btn-complement-#{$key} {
+    @include btn($val);
+    color: utils.lightComp($val);
+
+    &:hover {
+      color: $val;
+      background-color: utils.lightComp($val);
     }
-
-           .btn-complement-#{$key} {
-               @include btn($val);
-               color: utils.lightComp($val);
-    
-               &:hover {
-                color: $val;
-                   background-color: utils.lightComp($val)
-               }
-           }
+  }
 }

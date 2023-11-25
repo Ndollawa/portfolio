@@ -1,284 +1,110 @@
-@use '../globals/variables';
-@use '../globals/colors';
-@use '../globals/mixins';
-@use '../utils/function' as func;
-
-@each $property, $map in variables.$rangeBasedUtilityClasses{
-    $prefix:map-get($map,"prefix");
-    $values:map-get($map,"values");
-    $baseValue:map-get($map,"baseValue");
-    @for $k from map-get($values,"start") through map-get($values,"end"){
-        
-        @if($k == "default"){
-            .#{$prefix}{
-                @if(map-has-key($map, 'baseValue')){
-                    #{$property}:$baseValue * $k !important;
-                 }@else{
-                    #{$property}:func.pxToRem($k) !important;
-                 }
-                }
-         }@else{
-            .#{$prefix}-#{$k}{
-                @if(map-has-key($map, 'baseValue')){
-                     #{$property}: $baseValue * $k !important;
-                }@else{
-                     #{$property}:func.pxToRem($k) !important
-                 };
-            } 
-         }
-    }
-}
-@include mixins.generateColorClasses(colors.$colors);
-
-@each $property, $map in variables.$valueBasedUtilityClasses{
-    $prefix:map-get($map,"prefix");
-    $values:map-get($map,"values");
-    @each $k ,$v in $values{
-        @if($k == "default"){
-            .#{$prefix}{
-                    #{$property}:$v !important;
-                }
-         }@else{
-            .#{$prefix}-#{$k}{
-                #{$property}:$v !important
-            } 
-         }
-    }
-}
-
-.color-dark {
-    background-color: var(--color-dark);
-}
-
-.color-dark-variant {
-    background-color: var(--color-dark-variant);
-}
-
-.color-light {
-    background-color: var(--color-light);
-}
-
-.color-primary-variant {
-    background-color: var(--color-primary-variant);
-}
-
-.color-primary {
-    background-color: var(--color-primary);
-}
-
-.color-info-dark {
-    background-color: var(--color-info-dark);
-}
-
-.color-info-light {
-    background-color: var(--color-info-light);
-}
-
-.color-white {
-    background-color: var(--color-white);
-}
-
-.color-primary {
-    background-color: var(--color-primary);
-}
-
-.color-background {
-    background-color: var(--color-background);
-}
-
-.color-background-2 {
-    background-color: var(--color-background-2);
-}
-
-.transparent-secondary-color {
-    background-color: var(--transparent-secondary-color);
-}
-
-.transparent-primary-color {
-    background-color: var(--transparent-primary-color);
-}
-
-
-.text-dark {
-    color: var(--color-dark);
-}
-
-.text-dark-variant {
-    color: var(--color-dark-variant);
-}
-
-.text-light {
-    color: var(--color-light);
-}
-
-.text-primary-variant {
-    color: var(--color-primary-variant);
-}
-
-.text-primary {
-    color: var(--color-primary);
-}
-
-.text-info-dark {
-    color: var(--color-info-dark);
-}
-
-.text-info-light {
-    color: var(--color-info-light);
-}
-
-.text-white {
-    color: var(--color-white);
-}
-
-.text-primary {
-    color: var(--color-primary);
-}
-
-.text-background {
-    color: var(--color-background);
-}
-
-
-.box-shadow {
-    box-shadow: var(--box-shadow);
-}
-
 .scrollbar::-webkit-scrollbar {
-    width: 10px;
-    height: 20px;
+  width: 10px;
+  height: 20px;
 }
 
 .scrollbar::-webkit-scrollbar-track {
-    border-radius: 100vh;
-    background: #f7f4ed;
+  border-radius: 100vh;
+  background: #f7f4ed;
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
-    background: #e0cbcb;
-    border-radius: 100vh;
-    border: 3px solid #f6f7ed;
+  background: #e0cbcb;
+  border-radius: 100vh;
+  border: 3px solid #f6f7ed;
 }
 
 .scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #c0a0b9;
-    width: 15px;
+  background: #c0a0b9;
+  width: 15px;
 }
-.p-auto{
-    padding: auto;
+.p-auto {
+  padding: auto;
 }
-.px-auto{
-    padding-inline: auto;
+.px-auto {
+  padding: 0 auto;
 }
-.py-auto{
-    padding-block: auto;
-}
-
-.m-auto{
-    margin: auto;
+.py-auto {
+  padding: auto 0;
 }
 
-.mx-auto{
-    margin-inline: auto;
+.m-auto {
+  margin: auto auto;
 }
 
-.my-auto{
-    margin-block: auto ;
+.mx-auto {
+  margin: 0 auto;
 }
 
-.flex-grow-0{
-     flex-grow: 0 !important;
+.my-auto {
+  margin: auto 0;
 }
-.flex-grow-1{
-     flex-grow: 1 !important;
-}
-.flex-grow-2{
-     flex-grow: 2 !important;
-}
-.flex-grow-3{
-     flex-grow: 3 !important;
-}
-.flex-grow-4{
-     flex-grow: 4 !important;
-}
-.flex-grow-5{
-     flex-grow: 5 !important;
-}
-
 
 // TEXT CLAMP
 
-
-.s-card{
-    height:8rem;
-    display: -webkit-box;
-    -webkit-line-clamp: 5;
-    /* text-align: center; */
-    word-spacing: 2px;
-    color: black;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    }
-    .s-card-6{
-    height:8rem;
-    display: -webkit-box;
-    -webkit-line-clamp: 6;
-    /* text-align: center; */
-    word-spacing: 2px;
-    color: black;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    }
-    .s-card-7{
-    height:8rem;
-    display: -webkit-box;
-    -webkit-line-clamp: 7;
-    /* text-align: center; */
-    word-spacing: 2px;
-    color: black;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    }
-    .s-card-9{
-    height:8rem;
-    display: -webkit-box;
-    -webkit-line-clamp: 9;
-    /* text-align: center; */
-    word-spacing: 2px;
-    color: black;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    }
-    .s-card-10{
-    height:8rem;
-    display: -webkit-box;
-    -webkit-line-clamp: 10;
-    /* text-align: center; */
-    word-spacing: 2px;
-    color: black;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    }
-
-.center{
-    @include mixins.flexCenter(column);
+.s-card {
+  height: 8rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  /* text-align: center; */
+  word-spacing: 2px;
+  color: black;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.s-card-6 {
+  height: 8rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  /* text-align: center; */
+  word-spacing: 2px;
+  color: black;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.s-card-7 {
+  height: 8rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  /* text-align: center; */
+  word-spacing: 2px;
+  color: black;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.s-card-9 {
+  height: 8rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 9;
+  /* text-align: center; */
+  word-spacing: 2px;
+  color: black;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.s-card-10 {
+  height: 8rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 10;
+  /* text-align: center; */
+  word-spacing: 2px;
+  color: black;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.input-group{
-    display: flex;
-    justify-content:start;
-    flex-wrap: wrap;
-    flex-direction: column;
+.input-group {
+  display: flex;
+  justify-content: start;
+  flex-wrap: wrap;
+  flex-direction: column;
 }
 
-.iput-group input, .input-group textarea{
-    width: 100%;
-    padding: 1.5rem;
-    font-size: 1.5rem;
-    border-radius: .8rem;
-    margin: .7rem 0;
-
+.iput-group input,
+.input-group textarea {
+  width: 100%;
+  padding: 1.5rem;
+  font-size: 1.5rem;
+  border-radius: 0.8rem;
+  margin: 0.7rem 0;
 }
-// .center{
-//     @include mixins.flexCenter(column);
-// }

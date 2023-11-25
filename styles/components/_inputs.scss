@@ -1,63 +1,63 @@
-input{
-    width: 100%;
+input {
+  width: 100%;
 }
-.input-sm{
-width: 100%;
-padding: 2px 4px;
-font-size: small;
-height:1.8rem ;
+.input-sm {
+  width: 100%;
+  padding: 2px 4px;
+  font-size: small;
+  height: 1.8rem;
 }
-.input-md{
-width: 100%;
-padding: 3px 6px;
-height:2.4rem ;
-font-size: medium;
+.input-md {
+  width: 100%;
+  padding: 3px 6px;
+  height: 2.4rem;
+  font-size: medium;
 }
-.input-lg{
-width: 100%;
-height:2.8rem ;
-font-size: large;
-padding: 4px 8px;
+.input-lg {
+  width: 100%;
+  height: 2.8rem;
+  font-size: large;
+  padding: 4px 8px;
 }
 
 .form-control:focus {
-    box-shadow: none;
-    background-color: var(--color-light);
-    border: 0
+  box-shadow: none;
+  background-color: var(--color-light);
 }
-.form-control,form input[type=text],form input[type=email],form input[type=number],form select,form textarea {
-    display: block;
-    width: 100%;
-    background-color: var(--color-light);
-    color: var( --color-dark);
-    font-size: 14px;
-    // height: 60px;
-    padding: 5px 10px;
-    font-weight: 400;
-    // border: none;
-    outline: none;
-    border-radius: 0;
-    padding: 10px 30px
+.form-control,
+form input[type="text"],
+form input[type="email"],
+form input[type="number"],
+form select,
+form textarea {
+  display: block;
+  width: 100%;
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  font-size: 14px;
+  // height: 60px;
+  padding: 5px 10px;
+  font-weight: 400;
+  border: none;
+  outline: none;
 }
- label{
-    font-size: 14px;
-    margin-bottom: 15px;
- }
-.small-input{
-    width: 100%;
-        padding: .25rem;
+label {
+  font-size: 14px;
+  margin-bottom: 15px;
 }
-.md-input{
-    width: 100%;
-        padding: .45rem;
+.small-input {
+  width: 100%;
+  padding: 0.25rem;
+}
+.md-input {
+  width: 100%;
+  padding: 0.45rem;
+}
+.lg-input {
+  width: 100%;
+  padding: 0.75rem;
+}
 
-}
-.lg-input{
-width: 100%;
-padding: .75rem;
-
-}
-
-input[name='tags'] {
-    background-color: transparent !important;
+input[name="tags"] {
+  background-color: transparent !important;
 }

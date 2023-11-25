@@ -93,7 +93,7 @@ const Category = () => {
       <Header title="Post > Categories" />
       <div className="w-100 py-5 ">
         <div className="container row gutter-3">
-          <div className="col-md-4 col-sm-12">
+          <div className="md:col-4 sm:col-12">
             <div className="card">
               <div className="card-header fs-16 fw-semibold">
                 Create Category
@@ -103,7 +103,7 @@ const Category = () => {
                   onSubmit={handleSubmit(onSubmit)}
                   className="row gutter-2"
                 >
-                  <div className="form- col-12">
+                  <div className="form-group col-12">
                     <label className="form-label fs-12">
                       Title or Category
                     </label>
@@ -207,7 +207,7 @@ const Category = () => {
                       </span>
                     )}{" "}
                   </div>
-                  <div className="col-12 d-flex justify-end">
+                  <div className="col-12 d-flex jc-end">
                     <button
                       type="submit"
                       className="btn bg-purple-700 btn-sm"
@@ -232,7 +232,7 @@ const Category = () => {
               </div>
             </div>
           </div>
-          <div className="col-md-8 col-sm-12">
+          <div className="md:col-8 sm:col-12">
             <div className="card">
               <div className="card-header">
                 <h4 className="card-title fs-14 font-weight-semibold">
@@ -244,7 +244,7 @@ const Category = () => {
                 <div className="table-responsive w-100 fs-14">
                   <table
                     id="dataTable"
-                    className="table w-100 table-scrollable table-striped mt-10 table-bordered table-hover table-checkable order-column valign-middle border mb-0 align-items-centerid"
+                    className="table w-100 table-scrollable table-striped mt-10 table-bordered table-hover table-checkable order-column valign-middle border mb-0 align-ai-centerid"
                   >
                     <thead>
                       <tr>

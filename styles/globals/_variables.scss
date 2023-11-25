@@ -1,55 +1,5 @@
 @use "sass:math";
 
-@mixin darkTheme {
-  --color-background: hsl(220, 11%, 11%);
-  --color-white: hsl(202, 11%, 14%);
-  // --primary-color:var(--color-primary);
-  // --color-info-dark:#7d8da1;
-  --color-info-light: hsl(220, 27%, 89%);
-  --color-dark: hsl(233, 80%, 96%);
-  --color-dark-variant: hsl(202, 29%, 72%);
-  --color-light: hsla(0, 0%, 0%, 0.4);
-  // --color-background-2: var(--color-dark--variant);
-  --box-shadow: 0 2rem 3rem var(--color-light);
-
-  color: var(--color-dark);
-}
-:root {
-  --primary-color: hsl(270, 100%, 50%);
-  --transparent-primary-color: hsla(270, 100%, 50%, 0.145);
-  --color-background-2: hsl(201, 22%, 31%);
-  // --primary-color:
-  --color-background: hsl(216, 26%, 96%);
-
-  --color-primary: hsl(234, 76%, 69%);
-  --color-info-dark: hsl(213, 16%, 56%);
-  --color-info-light: hsl(220, 27%, 89%);
-  --color-white: hsl(0, 0%, 100%);
-  --color-dark: hsl(231, 15%, 25%);
-  --color-light: hsla(234, 38%, 65%, 0.18);
-  --color-primary--variant: hsl(233, 78%, 30%);
-  --color-dark--variant: hsl(212, 12%, 46%);
-  --transparent-secondary-color: hsla(212, 12%, 46%, 0.141);
-
-  --card-border-radius: 2rem;
-  --border-radius-1: 0.4rem;
-  --border-radius-2: 0.8rem;
-  --border-radius-3: 1.2rem;
-
-  --card-padding: 1.5rem;
-  --padding-1: 0.8rem;
-
-  --box-shadow: 0 2rem 3rem var(--color-light);
-
-  //Dark theme --dashboard-background-color:
-  .dark {
-    @include darkTheme();
-  }
-  @media (prefers-color-scheme: dark) {
-    @include darkTheme();
-  }
-}
-
 $baseFontSize: 1rem;
 $basePadding: 0.25rem;
 $baseMargin: 0.25rem;
@@ -346,7 +296,7 @@ $rangeBasedUtilityClasses: (
     ),
   ),
   "column-gap": (
-    "prefix": "r-gap",
+    "prefix": "c-gap",
     "baseValue": $baseGap,
     "values": (
       "start": 0,
@@ -354,6 +304,14 @@ $rangeBasedUtilityClasses: (
     ),
   ),
 
+  "font-size": (
+    "prefix": "fs",
+    "baseValue": 0.025rem,
+    "values": (
+      "start": 1,
+      "end": 120,
+    ),
+  ),
   // OPACITY
   "opacity":
     (
@@ -400,35 +358,8 @@ $rangeBasedUtilityClasses: (
     "baseValue": 1%,
     "values": (
       "start": 0,
-      "end": 12,
+      "end": 100,
     ),
-  ),
-  "font-size": (
-    "prefix": "fs",
-    // "baseValue":0.25rem,
-    "values":
-      (
-        "start": 1,
-        "end": 120,
-      ),
-  ),
-  "grid-column": (
-    "prefix": "col-span",
-    // "baseValue":0.25rem,
-    "values":
-      (
-        "start": 1,
-        "end": 12,
-      ),
-  ),
-  "grid-row": (
-    "prefix": "row-span",
-    // "baseValue":0.25rem,
-    "values":
-      (
-        "start": 1,
-        "end": 12,
-      ),
   ),
 );
 
@@ -474,7 +405,7 @@ $valueBasedUtilityClasses: (
     ),
   ),
   "justify-content": (
-    "prefix": "justify",
+    "prefix": "jc",
     "values": (
       "center": center,
       "flex-start": flex-start,
@@ -489,7 +420,7 @@ $valueBasedUtilityClasses: (
     ),
   ),
   "justify-items": (
-    "prefix": "justify",
+    "prefix": "ji",
     "values": (
       "baseline": baseline,
       "center": center,
@@ -505,7 +436,7 @@ $valueBasedUtilityClasses: (
     ),
   ),
   "justify-self": (
-    "prefix": "justify",
+    "prefix": "js",
     "values": (
       "baseline": baseline,
       "center": center,
@@ -521,7 +452,7 @@ $valueBasedUtilityClasses: (
     ),
   ),
   "align-content": (
-    "prefix": "align",
+    "prefix": "ac",
     "values": (
       "center": center,
       "flex-end": flex-end,
@@ -535,7 +466,7 @@ $valueBasedUtilityClasses: (
     ),
   ),
   "align-items": (
-    "prefix": "items",
+    "prefix": "ai",
     "values": (
       "center": center,
       "left": left,
@@ -549,7 +480,7 @@ $valueBasedUtilityClasses: (
     ),
   ),
   "align-self": (
-    "prefix": "self",
+    "prefix": "as",
     "values": (
       "center": center,
       "left": left,
@@ -563,7 +494,7 @@ $valueBasedUtilityClasses: (
     ),
   ),
   "place-items": (
-    "prefix": "place-items",
+    "prefix": "pi",
     "values": (
       "center": center,
       "left": left,
@@ -577,7 +508,7 @@ $valueBasedUtilityClasses: (
     ),
   ),
   "place-content": (
-    "prefix": "place-content",
+    "prefix": "pc",
     "values": (
       "center": center,
       "left": left,
@@ -591,7 +522,7 @@ $valueBasedUtilityClasses: (
     ),
   ),
   "place-self": (
-    "prefix": "place-self",
+    "prefix": "ps",
     "values": (
       "center": center,
       "left": left,
@@ -641,14 +572,71 @@ $valueBasedUtilityClasses: (
       "auto": auto,
     ),
   ),
+  "position": (
+    "prefix": "pos",
+    "values": (
+      "absolute": absolute,
+      "fixed": fixed,
+      "sticky": sticky,
+      "relative": relative,
+    ),
+  ),
+  "object-fit": (
+    "prefix": "object",
+    "values": (
+      "none": none,
+      "contain": contain,
+      "cover": cover,
+      "scale-down": scale-down,
+      "fill": fill,
+    ),
+  ),
+  "object-position": (
+    "prefix": "object-pos",
+    "values": (
+      "center": center,
+      "top": top,
+      "bottom": bottom,
+      "left": left,
+      "right": right,
+    ),
+  ),
+  "box-sizing": (
+    "prefix": "box-sizing",
+    "values": (
+      "content-box": content-box,
+      "border-box": border-box,
+    ),
+  ),
+  "cursor": (
+    "prefix": "cursor",
+    "values": (
+      "pointer": pointer,
+      "none": none,
+      "progress": progress,
+      "not-allowed": not-allowed,
+      "grab": grab,
+      "grabbing": grabbing,
+      "zoom-in": zoom-in,
+      "zoom-out": zoom-out,
+      "col-resize": col-resize,
+      "row-resize": row-resize,
+      "wait": wait,
+      "copy": copy,
+      "context-menu": context-menu,
+    ),
+  ),
   "font-weight": (
     "prefix": "fw",
     "values": (
+      "xxs": 100,
+      "xs": 200,
+      "sm": 300,
       "normal": 400,
       "semi-bold": 500,
       "bold": 700,
       "bold-xl": 800,
-      "bold-sm": 900,
+      "bold-xxl": 900,
       "bold-md": "bold",
       "bold-lg": "bolder",
     ),

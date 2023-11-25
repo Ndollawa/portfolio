@@ -1,70 +1,76 @@
-@use 'breakpoints';
-@use 'mixins';
+@use "breakpoints";
+@use "mixins";
 
-html{
-    box-sizing: border-box;
-    font-size: 100%;
-    
-    
-    @include mixins.breakPointsDown(map-get(breakpoints.$screenBreakPoints,"md")){ 
-        font-size: 70%;
-    }
+html {
+  box-sizing: border-box;
+  font-size: 100%;
 
-    @include mixins.breakPointsDown(map-get(breakpoints.$screenBreakPoints,"lg")){
-        font-size: 90%;
-    }
-}
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: inherit;
-    scroll-behavior: smooth;
-}
-*,*::before,*::after{
-    box-sizing: inherit;
+  @include mixins.breakPointsDown(
+    map-get(breakpoints.$screenBreakPoints, "md")
+  ) {
+    font-size: 70%;
+  }
 
-}
-body{
-    font-family: 'Poppins','sans-serif', 'Helvetica';
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-}
-h1,h2,h3{
-    font-weight: 700;
-    line-height: 1.1;
-    margin-top: 0;
-}
-h1{
-    font-size: 1.4rem;
+  @include mixins.breakPointsDown(
+    map-get(breakpoints.$screenBreakPoints, "lg")
+  ) {
+    font-size: 90%;
+  }
 }
 
-h2{
-    font-size: 1rem;
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Poppins", "sans-serif", "Helvetica";
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+h1,
+h2,
+h3 {
+  font-weight: 700;
+  line-height: 1.1;
+  margin-top: 0;
+}
+h1 {
+  font-size: 1.4rem;
 }
 
-h3{
-    font-size: 0.8rem;
+h2 {
+  font-size: 1rem;
 }
 
-h4{
-    font-size: 0.77rem;
-}
-h5{
-    font-size: 0.6rem;
-}
-small{
-    font-size: .75rem;
+h3 {
+  font-size: 0.8rem;
 }
 
-p{
-    margin-top: 0;
-    font-size: .8rem;
+h4 {
+  font-size: 0.77rem;
 }
-a,a:visited,a:active{
-    text-decoration: none;
+h5 {
+  font-size: 0.6rem;
 }
-img{
-    display: block;
-    width: 100%;
+small {
+  font-size: 0.75rem;
+}
+
+p {
+  margin-top: 0;
+  font-size: 0.8rem;
+}
+a,
+a:visited,
+a:active {
+  text-decoration: none;
+}
+img {
+  display: block;
+  width: 100%;
 }

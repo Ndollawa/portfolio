@@ -112,12 +112,12 @@ const CreatePost = () => {
       <Header title="Post > Create New Post" />
       <div className="w-100 py-5 ">
         <form
-          className="form color-white center col-7 col-md-12 p-8 r-5"
+          className="form color-white center col-7 md:col-8 p-8 r-5"
           onSubmit={handleSubmit(formSubmit)} //
         >
           <div className="">
             <div className="row gutter-2 ">
-              <div className="mb-3 col-md-9">
+              <div className="mb-3 p-2 md:col-9">
                 <label className="form-label" htmlFor="title">
                   Title or Heading
                 </label>
@@ -151,7 +151,7 @@ const CreatePost = () => {
                   </span>
                 )}{" "}
               </div>
-              <div className="mb-3 col-md-3">
+              <div className="mb-3 p-2 md:col-3">
                 <label className="form-label" htmlFor="status">
                   Status
                 </label>
@@ -179,7 +179,7 @@ const CreatePost = () => {
                   </span>
                 )}{" "}
               </div>
-              <div className="mb-3 col-md-8">
+              <div className="mb-3 p-2 md:col-8">
                 <label className="form-label" htmlFor="description">
                   Description
                 </label>
@@ -214,7 +214,7 @@ const CreatePost = () => {
                   </span>
                 )}{" "}
               </div>
-              <div className="mb-3 col-md-4">
+              <div className="mb-3 p-2 md:col-4">
                 <label className="form-label" htmlFor="category">
                   Category
                 </label>
@@ -231,11 +231,12 @@ const CreatePost = () => {
                   })}
                 >
                   <option value="">Select ...</option>
-                  {categories?.map((c: any, i: number) => (
-                    <option value={c._id} key={i}>
-                      {c.title}
-                    </option>
-                  ))}
+                  {categories &&
+                    categories?.map((c: any, i: number) => (
+                      <option value={c._id} key={i}>
+                        {c.title}
+                      </option>
+                    ))}
                 </select>
                 {errors.category && (
                   <span className="fs-11 text-red-600">
@@ -253,15 +254,15 @@ const CreatePost = () => {
                 >
                   Post Tags<span className="required"> * </span>
                 </label>
-                <div className="mt-1 d-flex gap-y-4 color-light r-2 shadow-sm items-stretch overflow-hidden h-100">
-                  <span className="d-flex w-10 items-center justify-center r-tl-2 r-bl-2 border px-3 text-xl ">
+                <div className="mt-1 d-flex color-light r-2 shadow-sm ai-stretch overflow-hidden h-100">
+                  <span className="d-flex w-10 ai-center jc-center r-tl-2 r-bl-2 border px-3 text-xl ">
                     <IoMdPricetags fontSize={"1.5rem"} />{" "}
                   </span>
-                  <div className="mt-1 shadow-sm p-1 border-2 border-secondary r-2 d-flex flex-wrap align-items-center m-0 w-100">
+                  <div className="mt-1 shadow-sm p-1 border-2 border-secondary r-2 d-flex flex-wrap ai-center jc-center m-0 w-100">
                     {watch("tags")?.map((tagName: string, i: number) => {
                       return (
                         <div
-                          className="py-1 pl-2 pr-1 fs-12 border border-secondary r-2 d-flex align-items-center color-dark text-white mx-1"
+                          className="py-1 pl-2 pr-1 fs-12 border border-secondary r-2 d-flex ai-center color-dark text-white mx-1"
                           key={i}
                         >
                           <span>{tagName}</span>
@@ -273,7 +274,7 @@ const CreatePost = () => {
                       );
                     })}
                     <input
-                      className="d-flex font-16 outline-none border-0 w-100 form-control input-md r-2 py-2 px-4"
+                      className="d-flex fs-14 outline-none border-0 w-100 form-control bg-transparent input-md r-2 py-2 px-4"
                       type="text"
                       placeholder="Add post tags"
                       id="postTag"
@@ -292,17 +293,17 @@ const CreatePost = () => {
                   </div>
                 </div>
               </div>
-              <div className="row col-12 gutter-x-4 mt-3">
-                <div className="col-md-6">
-                  <div className="flex items-center justify-center w-full">
+              <div className="row col-12 gutter-x-4 mb-3 p-8">
+                <div className="md:col-6">
+                  <div className="d-flex ai-center ji-center w-full">
                     <label
                       htmlFor="image"
-                      className="form-label d-flex flex-col p-5 items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed r-2 cursor-pointer"
+                      className="form-label d-flex flex-column p-5 ai-center ji-center w-full h-64 border-2 border-gray-300 border-dashed r-2 cursor-pointer"
                     >
-                      <div className="d-flex flex-col items-center justify-center pt-5 pb-6">
+                      <div className="d-flex flex-column ai-center ji-center pt-5 pb-6">
                         <svg
                           className="w-8 h-8 mb-4 text-gray-500"
-                          aria-hidden="true"
+                          aria-d-none="true"
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
                           viewBox="0 0 20 16"
@@ -335,7 +336,7 @@ const CreatePost = () => {
                             <input
                               id="image"
                               type="file"
-                              className="hidden"
+                              className="d-none"
                               accept=".png, .jpg, .jpeg,image/*"
                               // value={(value as any)?.fileName as string}
                               onChange={upload}
@@ -354,7 +355,7 @@ const CreatePost = () => {
                     </label>
                   </div>
                 </div>
-                <div className="col-md-6">
+                <div className="md:col-6">
                   Preview
                   <div id="preview">
                     {previewImage && (
@@ -401,7 +402,7 @@ const CreatePost = () => {
                 )}
               </div>
             </div>{" "}
-            <div className="d-flex items-center justify-end w-full py-4 px-10">
+            <div className="d-flex ai-center jc-end w-full py-4 px-10">
               <button
                 type="button"
                 className="btn bg-gray-300 shadow-md mr-5 r-3"
@@ -411,7 +412,7 @@ const CreatePost = () => {
               </button>
               <button
                 type="submit"
-                className="btn d-flex items-center justify-center bg-purple-800 text-white shadow-md r-3 mr-5"
+                className="btn d-flex ai-center ji-center bg-purple-800 text-white shadow-md r-3 mr-5"
                 name=" "
                 disabled={isMutating || isSubmitting}
               >

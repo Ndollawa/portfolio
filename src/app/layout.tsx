@@ -1,10 +1,6 @@
 // import '../styles/main.scss'
-import { Poppins } from "next/font/google";
 import { ToastContainer } from "react-toastify";
-const poppins = Poppins({
-  weight: ["100", "200", "400", "500", "600", "700", "800", "900"],
-  subsets: ["latin"],
-});
+import { poppins } from "@/utils/fonts";
 
 export const metadata = {
   title: "Create Next App",
