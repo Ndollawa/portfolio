@@ -15,7 +15,7 @@ const IntroSection = () => {
           <div className="home__container--intro">
             <span className="home__container--intro__topline">Hello</span>
             <h1 className={`${poppins.className} mb-2`}>
-              I&lsquo;m a{" "}
+              I&lsquo;m a{" "}<br/>
               <TypeAnimation
                 className="home__container--intro__multi-text"
                 sequence={[
@@ -25,18 +25,17 @@ const IntroSection = () => {
                   "Graphics Designer",
                 ]}
                 wrapper="span"
-                speed={80}
-                deletionSpeed={99}
+                speed={30}
+                deletionSpeed={0}
                 style={{ fontSize: "inherit", display: "inline-block" }}
                 repeat={Infinity}
               />
             </h1>
-            <p className="home__container--intro__bio fw-200">
+            <p className="home__container--intro__bio">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo
               recusandae ullam doloremque voluptates fugit culpa facilis maxime
               omnis, dolores fugiat magnam expedita sed, qui saepe excepturi
-              dolor error quos voluptatem voluptatum. Minima rerum error
-              quibusdam? Qui omnis possimus sequi quod.
+              dolor error quos voluptatem voluptatum.
             </p>
             <div className="home__container--intro__btn">
               <button type="button" className="btn r-8 px-10 ">
@@ -48,8 +47,8 @@ const IntroSection = () => {
             </div>
           </div>
         </div>
-        <div className="sm:col-12 md:col-6">
-          <div className="home__container--image">
+        <div className="sm:col-12 md:col-6 center">
+          <div className="home__container--image sm:col-12 md:col-8">
             <Image src={image} width={400} height={400} alt="" id="splash" />
             <Image src={myPic} width={400} height={400} alt="" />
           </div>

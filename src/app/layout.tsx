@@ -1,4 +1,3 @@
-// import '../styles/main.scss'
 import { ToastContainer } from "react-toastify";
 import { poppins } from "@/utils/fonts";
 

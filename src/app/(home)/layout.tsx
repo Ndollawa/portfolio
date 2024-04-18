@@ -1,8 +1,5 @@
 import "./styles/styles.scss";
-import { Inter } from "next/font/google";
 import { Header, Footer } from "@/components/home/common";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Portfolio",

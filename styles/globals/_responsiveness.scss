@@ -1,15 +1,14 @@
 @use "mixins";
 @use "breakpoints";
-@use "utils";
+@use "../utils";
 @use "colors";
 @use "variables";
-@use "../utils/function" as func;
 
 $gridCount: 12;
 // $label:'sm';
 .container {
   width: 100%;
-  max-width: utils.pxToRem(1366);
+  max-width: utils.pxToRem(1080);
   margin: 0 auto;
   padding: 0 utils.pxToRem(20);
 }

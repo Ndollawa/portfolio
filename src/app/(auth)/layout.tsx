@@ -1,7 +1,5 @@
-import { Inter } from "next/font/google";
-import "./auth.scss";
-
-const inter = Inter({ subsets: ["latin"] });
+import { poppins } from "@/utils/fonts";
+// import "./auth.scss";
 
 export const metadata = {
   title: "Create Next App",
@@ -20,7 +18,7 @@ export default function AuthLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Auth</title>
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={poppins.className}>{children}</body>
     </html>
   );
 }

@@ -398,7 +398,7 @@ section {
     @include styles.flexCenter;
     font-size: styles.pxToRem(14);
     color: var(--color-dark);
-    border: 0.2rem var(--color-dark) solid;
+    border: 0.052rem var(--color-dark) solid;
     border-radius: 50%;
     padding: 0.32rem;
     margin: styles.pxToRem(25) styles.pxToRem(10);
@@ -411,7 +411,7 @@ section {
     @include styles.breakPointsDown(map-get(styles.$screenBreakPoints, "md")) {
       font-size: styles.pxToRem(14);
       color: var(--color-white);
-      border: 0.2rem var(--color-white) solid;
+      border: 0.052rem var(--color-white) solid;
       border-radius: 50%;
       padding: 0.32rem;
       margin: styles.pxToRem(15) styles.pxToRem(5);
@@ -420,7 +420,7 @@ section {
 
     &:hover {
       transform: translate(2);
-      border: 0.2rem var(--primary-color) solid;
+      border: 0.052rem var(--primary-color) solid;
       color: var(--primary-color);
 
       @include styles.breakPointsDown(
@@ -484,8 +484,8 @@ main {
     &::before {
       position: absolute;
       content: "";
-      height: styles.pxToRem(600);
-      width: styles.pxToRem(600);
+      height: styles.pxToRem(450);
+      width: styles.pxToRem(450);
       border-radius: 50%;
       left: -12%;
       top: 40%;
@@ -528,8 +528,8 @@ main {
     &::after {
       position: absolute;
       content: "";
-      height: styles.pxToRem(200);
-      width: styles.pxToRem(200);
+      height: styles.pxToRem(150);
+      width: styles.pxToRem(150);
       border-radius: 50%;
       left: 27%;
       top: 0;
@@ -650,7 +650,7 @@ main {
 
       h1 {
         display: block;
-        font-size: clamp(2.5rem, 3rem - 2vw, 4rem);
+        font-size: clamp(2.5rem, 4rem - 2vw, 4.5rem);
         font-weight: styles.fontWeight("bold-sm");
         color: var(--color-dark);
 
@@ -676,7 +676,7 @@ main {
       &__bio {
         display: block;
         width: 100%;
-        font-size: 1rem;
+        font-size: .75rem;
         color: var(--color-dark);
 
         @include styles.breakPointsUp(
@@ -1383,6 +1383,7 @@ main {
     }
 
     &--meta {
+      display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 5px;
@@ -1392,9 +1393,10 @@ main {
       }
 
       .meta__list {
+        display: flex;
         align-items: center;
 
-        &t:not(:last-child):after {
+        &:not(:last-child):after {
           content: "/";
           margin-left: 10px;
           margin-right: 10px;
@@ -1403,6 +1405,8 @@ main {
 
         i,
         svg {
+          display:flex;
+          align-items: center;
           color: var(--primary-color);
           margin-right: 5px;
           transition: all 0.5s ease;

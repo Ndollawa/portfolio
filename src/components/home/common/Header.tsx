@@ -16,25 +16,16 @@ const Header = () => {
     const handleScroll = () => {
       setIsSticky(window.scrollY > 100);
     };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-
-    const sections = document.querySelectorAll("section");
-    const menuLinks = document.querySelectorAll("nav .nav__menu li a");
-
-    const handleSectionScroll = () => {
+   const handleSectionScroll = () => {
       const top = window.scrollY;
-      //  && top < offset + sectHeight
+       
       sections?.forEach((sect) => {
         const offset = sect?.offsetTop - 155;
         const sectHeight = sect?.offsetHeight;
         console.log(top, offset);
         console.log(offset + sectHeight);
         const id = sect?.getAttribute("id");
-        if (top >= offset) {
+        if (top >= offset && top < offset + sectHeight) {
           menuLinks?.forEach((link) => {
             link.classList.remove("active");
             document
@@ -44,9 +35,14 @@ const Header = () => {
         }
       });
     };
+    const sections = document.querySelectorAll("section");
+    const menuLinks = document.querySelectorAll("nav .nav__menu li a");
 
+ 
+    window.addEventListener("scroll", handleScroll);
     window.addEventListener("scroll", handleSectionScroll);
     return () => {
+      window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("scroll", handleSectionScroll);
     };
   }, []);
@@ -74,7 +70,7 @@ const Header = () => {
         </div>
         <div className={`nav__menu ${toggleMenu ? "show" : null}`}>
           <ul className="nav__menu--items">
-            {["home", "about", "services", "project", "contact", "blog"].map(
+            {["home", "about", "services", "project", "blog", "contact"].map(
               (link, i) => (
                 <li key={link} onClick={() => setToggleMenu(false)}>
                   <a

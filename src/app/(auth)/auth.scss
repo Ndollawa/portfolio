@@ -190,7 +190,7 @@ body {
         background: var(--color-dark);
         color: var(--color-white);
         cursor: pointer;
-        justify-self: start;
+        justify-self: flex-start;
         font-size: 0.9rem;
         border-radius: 4px;
         font-weight: 600;
@@ -295,7 +295,7 @@ body {
         max-width: 40rem;
       }
       &__content {
-        justify-self: start;
+        justify-self: flex-start;
         // display: none;
 
         @include styles.breakPointsUp(
